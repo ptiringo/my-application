@@ -9,9 +9,11 @@ class Prefecture(
     @GeneratedValue
     val id: Long = 0,
 
+    @Column(nullable = false)
     val name: String,
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     val type: PrefectureType
 )
 

@@ -4,19 +4,16 @@ import org.hibernate.annotations.Comment
 import javax.persistence.*
 
 @Entity
-class NogizakaMember(
+class SakurazakaMember(
     name: Name,
 
     @Enumerated(EnumType.STRING)
     @Comment("期")
-    val becomingMember: BecomingNogizakaMember
+    val becomingMember: BecomingSakuraMember
 
 ) : Member(name = name)
 
 /** 期 */
-enum class BecomingNogizakaMember {
-    FIRST, SECOND, THIRD, FOURTH, NEW_FOURTH,
-
-    /** 5期 */
-    FIFTH
+enum class BecomingSakuraMember {
+    FIRST, SECOND, NEW_SECOND, THIRD
 }
