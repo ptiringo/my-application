@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.allopen") version "1.7.22"
     id("io.quarkus")
+    id("org.jetbrains.kotlin.plugin.noarg") version "1.7.22"
 }
 
 repositories {
@@ -41,10 +42,15 @@ java {
 tasks.withType<Test> {
     systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
 }
+
 allOpen {
     annotation("jakarta.ws.rs.Path")
     annotation("jakarta.enterprise.context.ApplicationScoped")
     annotation("io.quarkus.test.junit.QuarkusTest")
+    annotation("javax.persistence.Entity")
+}
+
+noArg {
     annotation("javax.persistence.Entity")
 }
 

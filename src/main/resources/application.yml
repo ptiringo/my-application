@@ -8,3 +8,4 @@ quarkus:
       generation: drop-and-create
     log:
       sql: true
+    physical-naming-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
