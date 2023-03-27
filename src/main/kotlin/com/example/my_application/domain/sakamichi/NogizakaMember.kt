@@ -9,6 +9,7 @@ class NogizakaMember(
 
     @Enumerated(EnumType.STRING)
     @Comment("期")
+    @Column(nullable = false, length = 20)
     val becomingMember: BecomingNogizakaMember
 
 ) : Member(name = name)

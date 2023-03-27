@@ -9,11 +9,11 @@ class Prefecture(
     @GeneratedValue
     val id: Long = 0,
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     val name: String,
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
     val type: PrefectureType
 )
 
@@ -21,10 +21,13 @@ class Prefecture(
 enum class PrefectureType {
     /** 都 */
     TO,
+
     /** 道 */
     DOU,
+
     /** 府 */
     FU,
+
     /** 県 */
     KEN
 }

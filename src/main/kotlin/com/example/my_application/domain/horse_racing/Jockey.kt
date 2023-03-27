@@ -1,30 +1,18 @@
-package com.example.my_application.domain.sakamichi
+package com.example.my_application.domain.horse_racing
 
+import com.example.my_application.domain.sakamichi.Name
 import org.hibernate.annotations.Comment
 import javax.persistence.*
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-class Member(
+class Jockey(
     @Id
     @GeneratedValue
     val id: Long = 0,
 
     @Embedded
     val name: Name,
-
-    @OneToOne(
-        optional = true,
-        fetch = FetchType.EAGER,
-        mappedBy = "member",
-        cascade = [CascadeType.ALL]
-    )
-    var leavingFromGroup: LeavingFromGroup? = null
-) {
-    fun graduate() {
-        this.leavingFromGroup = LeavingFromGroup(member = this, type = LeavingType.GRADUATION)
-    }
-}
+)
 
 @Embeddable
 class Name(

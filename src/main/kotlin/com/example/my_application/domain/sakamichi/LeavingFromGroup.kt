@@ -10,11 +10,12 @@ class LeavingFromGroup(
     val id: Long = 0,
 
     @OneToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     @MapsId
     val member: Member,
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
     val type: LeavingType
 ) : Serializable
 

@@ -9,6 +9,7 @@ class SakurazakaMember(
 
     @Enumerated(EnumType.STRING)
     @Comment("期")
+    @Column(nullable = false, length = 20)
     val becomingMember: BecomingSakuraMember
 
 ) : Member(name = name)

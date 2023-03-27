@@ -1,10 +1,18 @@
 package com.example.my_application
 
+import com.example.my_application.domain.horse_racing.Jockey
+import com.example.my_application.domain.horse_racing.Race
+import com.example.my_application.domain.horse_racing.Racecourse
+import com.example.my_application.domain.horse_racing.Racehorse
 import com.example.my_application.domain.sakamichi.*
 import com.example.my_application.domain.urban_sociology.Municipality
 import com.example.my_application.domain.urban_sociology.MunicipalityType
 import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
+import com.example.my_application.infrastructure.horse_racing.JockeyRepository
+import com.example.my_application.infrastructure.horse_racing.RaceRepository
+import com.example.my_application.infrastructure.horse_racing.RacecourseRepository
+import com.example.my_application.infrastructure.horse_racing.RacehorseRepository
 import com.example.my_application.infrastructure.sakamichi.NogizakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.SakurazakaMemberRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
@@ -28,6 +36,18 @@ class Main {
 class MainApplication : QuarkusApplication {
 
     @Inject
+    lateinit var jockeyRepository: JockeyRepository
+
+    @Inject
+    lateinit var raceRepository: RaceRepository
+
+    @Inject
+    lateinit var racecourseRepository: RacecourseRepository
+
+    @Inject
+    lateinit var racehorseRepository: RacehorseRepository
+
+    @Inject
     lateinit var prefectureRepository: PrefectureRepository
 
     @Inject
@@ -41,9 +61,24 @@ class MainApplication : QuarkusApplication {
 
     @Transactional
     override fun run(args: Array<String>): Int {
+        horseRacing()
         urbanSociology()
         sakamichi()
         return 0
+    }
+
+    private fun horseRacing() {
+        val katsumiAndo = Jockey(name = Name("勝己", "安藤", "かつみ", "あんどう"))
+        jockeyRepository.persist(katsumiAndo)
+
+        val dubaiSheemaClassic = Race(name = "ドバイシーマクラシック")
+        raceRepository.persist(dubaiSheemaClassic)
+
+        val sapporo = Racecourse(name = "札幌")
+        racecourseRepository.persist(sapporo)
+
+        val firstForce = Racehorse(name = "ファストフォース")
+        racehorseRepository.persist(firstForce)
     }
 
     private fun urbanSociology() {
@@ -57,24 +92,19 @@ class MainApplication : QuarkusApplication {
     private fun sakamichi() {
         // 乃木坂
         val hinaOkamoto = NogizakaMember(
-            name = Name(
-                firstName = "姫奈",
-                familyName = "岡本",
-                firstNameKana = "ひな",
-                familyNameKana = "おかもと"
-            ),
+            name = Name("姫奈", "岡本", "ひな", "おかもと"),
             becomingMember = BecomingNogizakaMember.FIFTH
         )
-        nogizakaMemberRepository.persist(hinaOkamoto)
+
+        val teresaIkeda = NogizakaMember(
+            name = Name("瑛紗", "池田", "てれさ", "いけだ"),
+            becomingMember = BecomingNogizakaMember.FIFTH
+        )
+        nogizakaMemberRepository.persist(hinaOkamoto, teresaIkeda)
 
         // 櫻坂
         val aoiHarada = SakurazakaMember(
-            name = Name(
-                firstName = "葵",
-                familyName = "原田",
-                firstNameKana = "あおい",
-                familyNameKana = "はらだ"
-            ),
+            name = Name("葵", "原田", "あおい", "はらだ"),
             becomingMember = BecomingSakuraMember.FIRST
         )
         aoiHarada.graduate()
@@ -82,12 +112,7 @@ class MainApplication : QuarkusApplication {
 
         val reinaOdakura =
             SakurazakaMember(
-                name = Name(
-                    firstName = "麗奈",
-                    familyName = "小田倉",
-                    firstNameKana = "おだくら",
-                    familyNameKana = "れいな"
-                ),
+                name = Name("麗奈", "小田倉", "おだくら", "れいな"),
                 becomingMember = BecomingSakuraMember.THIRD
             )
         sakurazakaMemberRepository.persist(reinaOdakura)
