@@ -1,9 +1,6 @@
 package com.example.my_application.domain.horse_racing
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 class Race(
@@ -11,6 +8,16 @@ class Race(
     @GeneratedValue
     val id: Long = 0,
 
-    @Column(nullable = false, length = 50)
-    val name: String
+    @Column(nullable = false)
+    val name: String,
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    val racecourse: Racecourse,
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    val trackSurface: TrackSurface,
+
+    @Column(nullable = false)
+    val distance: Int
 )

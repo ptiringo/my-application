@@ -12,7 +12,7 @@ class IkebukuroIncident(
     @GeneratedValue
     val id: Long = 0,
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     val summary: String,
 
     val occurredOn: LocalDate

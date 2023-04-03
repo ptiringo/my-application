@@ -1,8 +1,8 @@
 plugins {
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.allopen") version "1.7.22"
+    kotlin("plugin.noarg") version "1.7.22"
     id("io.quarkus")
-    id("org.jetbrains.kotlin.plugin.noarg") version "1.7.22"
 }
 
 repositories {
@@ -15,20 +15,21 @@ val quarkusPlatformArtifactId: String by project
 val quarkusPlatformVersion: String by project
 
 dependencies {
-    implementation("io.quarkus:quarkus-config-yaml")
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
-    implementation("io.quarkus:quarkus-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("io.quarkus:quarkus-kotlin")
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-resteasy-reactive")
-    testImplementation("io.quarkus:quarkus-junit5")
-    testImplementation("io.rest-assured:rest-assured")
-
-    implementation("io.quarkus:quarkus-config-yaml")
-
-    annotationProcessor("io.quarkus:quarkus-panache-common")
     implementation("io.quarkus:quarkus-hibernate-orm-panache-kotlin")
     implementation("io.quarkus:quarkus-jdbc-h2")
+    implementation("io.quarkus:quarkus-config-yaml")
+
+    testImplementation("io.quarkus:quarkus-junit5")
+    testImplementation("io.rest-assured:rest-assured")
+    testImplementation("org.assertj:assertj-core:3.24.2")
+    testImplementation("io.mockk:mockk:1.13.4")
+
+    annotationProcessor("io.quarkus:quarkus-panache-common")
 }
 
 group = "com.example.my_application"
@@ -41,6 +42,8 @@ java {
 
 tasks.withType<Test> {
     systemProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager")
+    jvmArgs("--add-opens", "java.base/java.time=ALL-UNNAMED")
+    useJUnitPlatform()
 }
 
 allOpen {

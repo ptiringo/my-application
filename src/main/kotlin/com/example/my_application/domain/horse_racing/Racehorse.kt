@@ -1,5 +1,6 @@
 package com.example.my_application.domain.horse_racing
 
+import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -11,6 +12,11 @@ class Racehorse(
     @GeneratedValue
     val id: Long = 0,
 
-    @Column(nullable = false, length = 30)
-    val name: String
-)
+    @Column(nullable = false)
+    val name: String,
+
+    @Column(nullable = false)
+    val dateOfBirth: LocalDate
+) {
+    val age get() = LocalDate.now().year - dateOfBirth.year
+}

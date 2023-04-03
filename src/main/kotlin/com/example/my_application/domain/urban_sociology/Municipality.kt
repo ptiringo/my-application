@@ -12,14 +12,14 @@ class Municipality(
     val id: Long = 0,
 
     @Comment("市区町村名")
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     val name: String,
 
     @ManyToOne(optional = false, fetch = EAGER)
     val prefecture: Prefecture,
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     val type: MunicipalityType
 )
 

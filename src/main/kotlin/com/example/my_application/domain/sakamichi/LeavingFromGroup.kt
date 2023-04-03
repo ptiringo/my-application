@@ -15,7 +15,7 @@ class LeavingFromGroup(
     val member: Member,
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     val type: LeavingType
 ) : Serializable
 

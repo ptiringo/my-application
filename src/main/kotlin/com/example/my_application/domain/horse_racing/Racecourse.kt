@@ -11,6 +11,6 @@ class Racecourse(
     @GeneratedValue
     val id: Long = 0,
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     val name: String
 )
