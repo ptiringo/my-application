@@ -1,14 +1,14 @@
 package com.example.my_application.domain.horse_racing
 
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
 @Entity
-class Racecourse(
+class Country(
     @Column(nullable = false)
     val name: String,
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    val country: Country,
 
     @Id
     @GeneratedValue

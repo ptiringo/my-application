@@ -6,12 +6,12 @@ import javax.persistence.*
 
 @Entity
 class Jockey(
-    @Id
-    @GeneratedValue
-    val id: Long = 0,
-
     @Embedded
     val name: Name,
+
+    @Id
+    @GeneratedValue
+    val id: Long = 0
 )
 
 @Embeddable

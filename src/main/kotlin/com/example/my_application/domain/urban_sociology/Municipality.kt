@@ -7,10 +7,6 @@ import javax.persistence.FetchType.EAGER
 /** 市区町村 */
 @Entity
 class Municipality(
-    @Id
-    @GeneratedValue
-    val id: Long = 0,
-
     @Comment("市区町村名")
     @Column(nullable = false)
     val name: String,
@@ -20,7 +16,11 @@ class Municipality(
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val type: MunicipalityType
+    val type: MunicipalityType,
+
+    @Id
+    @GeneratedValue
+    val id: Long = 0
 )
 
 enum class MunicipalityType {

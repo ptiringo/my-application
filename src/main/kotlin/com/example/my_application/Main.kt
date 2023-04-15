@@ -7,10 +7,7 @@ import com.example.my_application.domain.urban_sociology.Municipality
 import com.example.my_application.domain.urban_sociology.MunicipalityType
 import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
-import com.example.my_application.infrastructure.horse_racing.JockeyRepository
-import com.example.my_application.infrastructure.horse_racing.RaceRepository
-import com.example.my_application.infrastructure.horse_racing.RacecourseRepository
-import com.example.my_application.infrastructure.horse_racing.RacehorseRepository
+import com.example.my_application.infrastructure.horse_racing.*
 import com.example.my_application.infrastructure.sakamichi.HinatazakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.NogizakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.SakurazakaMemberRepository
@@ -37,6 +34,9 @@ class MainApplication : QuarkusApplication {
 
     @Inject
     lateinit var jockeyRepository: JockeyRepository
+
+    @Inject
+    lateinit var countryRepository: CountryRepository
 
     @Inject
     lateinit var raceRepository: RaceRepository
@@ -71,30 +71,35 @@ class MainApplication : QuarkusApplication {
     }
 
     private fun horseRacing() {
-        val katsumiAndo = Jockey(name = Name("勝己", "安藤", "かつみ", "あんどう"))
-        jockeyRepository.persist(katsumiAndo)
-
-        val meydan = Racecourse(name = "メイダン")
-        val sapporo = Racecourse(name = "札幌")
-        racecourseRepository.persist(meydan, sapporo)
-
-        val dubaiSheemaClassic = Race(
-            name = "ドバイシーマクラシック",
-            racecourse = meydan,
-            trackSurface = TrackSurface.TURF,
-            distance = 2410
+        jockeyRepository.persist(
+            Jockey(Name("勝己", "安藤", "かつみ", "あんどう"))
         )
-        raceRepository.persist(dubaiSheemaClassic)
 
-        val firstForce = Racehorse(name = "ファストフォース", dateOfBirth = LocalDate.of(2016, 5, 9))
-        racehorseRepository.persist(firstForce)
+        val japan = Country(name = "日本")
+        val unitedArabEmirates = Country(name = "アラブ首長国連邦")
+        val australia = Country(name = "オーストラリア")
+        countryRepository.persist(japan, unitedArabEmirates, australia)
+
+        val meydan = Racecourse("メイダン", unitedArabEmirates)
+        val randwick = Racecourse("ランドウィック", australia)
+        val sapporo = Racecourse("札幌", japan)
+        racecourseRepository.persist(meydan, randwick, sapporo)
+
+        raceRepository.persist(
+            Race("ドバイシーマクラシック", Grade.G1, meydan, TrackSurface.TURF, 2410),
+            Race("オールエイジドステークス", Grade.G1, randwick, TrackSurface.TURF, 1400)
+        )
+
+        racehorseRepository.persist(
+            Racehorse("ファストフォース", dateOfBirth = LocalDate.of(2016, 5, 9))
+        )
     }
 
     private fun urbanSociology() {
-        val tokyo = Prefecture(name = "東京", type = PrefectureType.TO)
+        val tokyo = Prefecture("東京", PrefectureType.TO)
         prefectureRepository.persist(tokyo)
 
-        val tama = Municipality(name = "多摩", type = MunicipalityType.SHI, prefecture = tokyo)
+        val tama = Municipality("多摩", tokyo, MunicipalityType.SHI)
         municipalityRepository.persist(tama)
     }
 

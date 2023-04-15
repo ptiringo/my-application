@@ -5,16 +5,16 @@ import javax.persistence.*
 /** 都道府県 */
 @Entity
 class Prefecture(
-    @Id
-    @GeneratedValue
-    val id: Long = 0,
-
     @Column(nullable = false)
     val name: String,
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val type: PrefectureType
+    val type: PrefectureType,
+
+    @Id
+    @GeneratedValue
+    val id: Long = 0
 )
 
 /** 都道府県種類 */

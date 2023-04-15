@@ -8,15 +8,15 @@ import javax.persistence.Id
 
 @Entity
 class Racehorse(
-    @Id
-    @GeneratedValue
-    val id: Long = 0,
-
     @Column(nullable = false)
     val name: String,
 
     @Column(nullable = false)
-    val dateOfBirth: LocalDate
+    val dateOfBirth: LocalDate,
+
+    @Id
+    @GeneratedValue
+    val id: Long = 0
 ) {
     val age get() = LocalDate.now().year - dateOfBirth.year
 }
