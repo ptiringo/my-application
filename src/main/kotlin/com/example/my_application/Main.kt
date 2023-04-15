@@ -11,6 +11,7 @@ import com.example.my_application.infrastructure.horse_racing.JockeyRepository
 import com.example.my_application.infrastructure.horse_racing.RaceRepository
 import com.example.my_application.infrastructure.horse_racing.RacecourseRepository
 import com.example.my_application.infrastructure.horse_racing.RacehorseRepository
+import com.example.my_application.infrastructure.sakamichi.HinatazakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.NogizakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.SakurazakaMemberRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
@@ -58,6 +59,9 @@ class MainApplication : QuarkusApplication {
     @Inject
     lateinit var nogizakaMemberRepository: NogizakaMemberRepository
 
+    @Inject
+    lateinit var hinatazakaMemberRepository: HinatazakaMemberRepository
+
     @Transactional
     override fun run(args: Array<String>): Int {
         horseRacing()
@@ -96,18 +100,44 @@ class MainApplication : QuarkusApplication {
 
     private fun sakamichi() {
         // 乃木坂
-        val hinaOkamoto = NogizakaMember(
-            name = Name("姫奈", "岡本", "ひな", "おかもと"),
-            dateOfBirth = LocalDate.of(2003, 12, 17),
-            becomingMember = BecomingNogizakaMember.FIFTH
+        val nanaseNishino = NogizakaMember(
+            name = Name("七瀬", "西野", "ななせ", "にしの"),
+            dateOfBirth = LocalDate.of(1994, 5, 25),
+            becomingMember = BecomingNogizakaMember.FIRST
         )
+        nanaseNishino.graduate()
 
-        val teresaIkeda = NogizakaMember(
-            name = Name("瑛紗", "池田", "てれさ", "いけだ"),
-            LocalDate.of(2002, 5, 12),
-            becomingMember = BecomingNogizakaMember.FIFTH
+        nogizakaMemberRepository.persist(
+            // 1期
+            nanaseNishino,
+            // 3期
+            NogizakaMember(
+                name = Name("葉月", "向井", "はづき", "むかい"),
+                dateOfBirth = LocalDate.of(1999, 8, 23),
+                becomingMember = BecomingNogizakaMember.THIRD
+            ),
+            // 4期
+            NogizakaMember(
+                name = Name("彩", "小川", "あや", "おがわ"),
+                dateOfBirth = LocalDate.of(2007, 6, 27),
+                becomingMember = BecomingNogizakaMember.FIFTH
+            ),
+            NogizakaMember(
+                name = Name("桜", "川﨑", "さくら", "かわさき"),
+                dateOfBirth = LocalDate.of(2003, 4, 17),
+                becomingMember = BecomingNogizakaMember.FIFTH
+            ),
+            NogizakaMember(
+                name = Name("姫奈", "岡本", "ひな", "おかもと"),
+                dateOfBirth = LocalDate.of(2003, 12, 17),
+                becomingMember = BecomingNogizakaMember.FIFTH
+            ),
+            NogizakaMember(
+                name = Name("瑛紗", "池田", "てれさ", "いけだ"),
+                dateOfBirth = LocalDate.of(2002, 5, 12),
+                becomingMember = BecomingNogizakaMember.FIFTH
+            )
         )
-        nogizakaMemberRepository.persist(hinaOkamoto, teresaIkeda)
 
         // 櫻坂
         val aoiHarada = SakurazakaMember(
@@ -118,11 +148,27 @@ class MainApplication : QuarkusApplication {
         aoiHarada.graduate()
         sakurazakaMemberRepository.persist(aoiHarada)
 
-        val reinaOdakura = SakurazakaMember(
-            name = Name("麗奈", "小田倉", "おだくら", "れいな"),
-            dateOfBirth = LocalDate.of(2004, 7, 25),
-            becomingMember = BecomingSakuraMember.THIRD
+        sakurazakaMemberRepository.persist(
+            SakurazakaMember(
+                name = Name("麗奈", "小田倉", "おだくら", "れいな"),
+                dateOfBirth = LocalDate.of(2004, 7, 25),
+                becomingMember = BecomingSakuraMember.THIRD
+            )
         )
-        sakurazakaMemberRepository.persist(reinaOdakura)
+
+        // 日向坂
+        hinatazakaMemberRepository.persist(
+            // 1期
+            HinatazakaMember(
+                name = Name("久美", "佐々木", "くみ", "ささき"),
+                dateOfBirth = LocalDate.of(1996, 1, 22),
+                becomingMember = BecomingHinataMember.FIRST
+            ),
+            HinatazakaMember(
+                name = Name("京子", "斉藤", "きょうこ", "さいとう"),
+                dateOfBirth = LocalDate.of(1997, 9, 5),
+                becomingMember = BecomingHinataMember.FIRST
+            )
+        )
     }
 }

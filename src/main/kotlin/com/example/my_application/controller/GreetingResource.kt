@@ -1,4 +1,4 @@
-package com.example.my_application
+package com.example.my_application.controller
 
 import javax.ws.rs.GET
 import javax.ws.rs.Path
