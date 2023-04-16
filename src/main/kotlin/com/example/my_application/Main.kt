@@ -65,8 +65,9 @@ class MainApplication : QuarkusApplication {
     @Transactional
     override fun run(args: Array<String>): Int {
         horseRacing()
-        urbanSociology()
         sakamichi()
+        
+        urbanSociology()
         return 0
     }
 
@@ -95,6 +96,97 @@ class MainApplication : QuarkusApplication {
         )
     }
 
+    private fun sakamichi() {
+        // 乃木坂
+        val asukaSaito = NogizakaMember(
+            Name("飛鳥", "齋藤", "あすか", "さいとう"),
+            LocalDate.of(1998, 8, 10),
+            BecomingNogizakaMember.FIRST
+        )
+        asukaSaito.graduate()
+
+        val nanaseNishino = NogizakaMember(
+            Name("七瀬", "西野", "ななせ", "にしの"),
+            LocalDate.of(1994, 5, 25),
+            BecomingNogizakaMember.FIRST
+        )
+        nanaseNishino.graduate()
+
+        nogizakaMemberRepository.persist(
+            // 1期
+            asukaSaito,
+            nanaseNishino,
+            // 3期
+            NogizakaMember(
+                Name("葉月", "向井", "はづき", "むかい"),
+                LocalDate.of(1999, 8, 23),
+                BecomingNogizakaMember.THIRD
+            ),
+            // 4期
+            NogizakaMember(
+                Name("彩", "小川", "あや", "おがわ"),
+                LocalDate.of(2007, 6, 27),
+                BecomingNogizakaMember.FIFTH
+            ),
+            NogizakaMember(
+                Name("桜", "川﨑", "さくら", "かわさき"),
+                LocalDate.of(2003, 4, 17),
+                BecomingNogizakaMember.FIFTH
+            ),
+            NogizakaMember(
+                Name("姫奈", "岡本", "ひな", "おかもと"),
+                LocalDate.of(2003, 12, 17),
+                BecomingNogizakaMember.FIFTH
+            ),
+            NogizakaMember(
+                Name("瑛紗", "池田", "てれさ", "いけだ"),
+                LocalDate.of(2002, 5, 12),
+                BecomingNogizakaMember.FIFTH
+            ),
+            NogizakaMember(
+                Name("和", "井上", "なぎ", "いのうえ"),
+                LocalDate.of(2005, 2, 17),
+                BecomingNogizakaMember.FIFTH
+            )
+        )
+
+        // 櫻坂
+        val aoiHarada = SakurazakaMember(
+            Name("葵", "原田", "あおい", "はらだ"),
+            LocalDate.of(2000, 5, 7),
+            BecomingSakuraMember.FIRST
+        )
+        aoiHarada.graduate()
+        sakurazakaMemberRepository.persist(aoiHarada)
+
+        sakurazakaMemberRepository.persist(
+            SakurazakaMember(
+                Name("麗奈", "小田倉", "おだくら", "れいな"),
+                LocalDate.of(2004, 7, 25),
+                BecomingSakuraMember.THIRD
+            )
+        )
+
+        // 日向坂
+        hinatazakaMemberRepository.persist(
+            // 1期
+            HinatazakaMember(
+                Name("久美", "佐々木", "くみ", "ささき"),
+                LocalDate.of(1996, 1, 22),
+                BecomingHinataMember.FIRST
+            ),
+            HinatazakaMember(
+                Name("京子", "斉藤", "きょうこ", "さいとう"),
+                LocalDate.of(1997, 9, 5),
+                BecomingHinataMember.FIRST
+            )
+        )
+    }
+
+    private fun tennis() {
+
+    }
+
     private fun urbanSociology() {
         val tokyo = Prefecture("東京", PrefectureType.TO)
         prefectureRepository.persist(tokyo)
@@ -103,77 +195,4 @@ class MainApplication : QuarkusApplication {
         municipalityRepository.persist(tama)
     }
 
-    private fun sakamichi() {
-        // 乃木坂
-        val nanaseNishino = NogizakaMember(
-            name = Name("七瀬", "西野", "ななせ", "にしの"),
-            dateOfBirth = LocalDate.of(1994, 5, 25),
-            becomingMember = BecomingNogizakaMember.FIRST
-        )
-        nanaseNishino.graduate()
-
-        nogizakaMemberRepository.persist(
-            // 1期
-            nanaseNishino,
-            // 3期
-            NogizakaMember(
-                name = Name("葉月", "向井", "はづき", "むかい"),
-                dateOfBirth = LocalDate.of(1999, 8, 23),
-                becomingMember = BecomingNogizakaMember.THIRD
-            ),
-            // 4期
-            NogizakaMember(
-                name = Name("彩", "小川", "あや", "おがわ"),
-                dateOfBirth = LocalDate.of(2007, 6, 27),
-                becomingMember = BecomingNogizakaMember.FIFTH
-            ),
-            NogizakaMember(
-                name = Name("桜", "川﨑", "さくら", "かわさき"),
-                dateOfBirth = LocalDate.of(2003, 4, 17),
-                becomingMember = BecomingNogizakaMember.FIFTH
-            ),
-            NogizakaMember(
-                name = Name("姫奈", "岡本", "ひな", "おかもと"),
-                dateOfBirth = LocalDate.of(2003, 12, 17),
-                becomingMember = BecomingNogizakaMember.FIFTH
-            ),
-            NogizakaMember(
-                name = Name("瑛紗", "池田", "てれさ", "いけだ"),
-                dateOfBirth = LocalDate.of(2002, 5, 12),
-                becomingMember = BecomingNogizakaMember.FIFTH
-            )
-        )
-
-        // 櫻坂
-        val aoiHarada = SakurazakaMember(
-            name = Name("葵", "原田", "あおい", "はらだ"),
-            dateOfBirth = LocalDate.of(2000, 5, 7),
-            becomingMember = BecomingSakuraMember.FIRST
-        )
-        aoiHarada.graduate()
-        sakurazakaMemberRepository.persist(aoiHarada)
-
-        sakurazakaMemberRepository.persist(
-            SakurazakaMember(
-                name = Name("麗奈", "小田倉", "おだくら", "れいな"),
-                dateOfBirth = LocalDate.of(2004, 7, 25),
-                becomingMember = BecomingSakuraMember.THIRD
-            )
-        )
-
-        // 日向坂
-        hinatazakaMemberRepository.persist(
-            // 1期
-            HinatazakaMember(
-                name = Name("久美", "佐々木", "くみ", "ささき"),
-                dateOfBirth = LocalDate.of(1996, 1, 22),
-                becomingMember = BecomingHinataMember.FIRST
-            ),
-            HinatazakaMember(
-                name = Name("京子", "斉藤", "きょうこ", "さいとう"),
-                dateOfBirth = LocalDate.of(1997, 9, 5),
-                becomingMember = BecomingHinataMember.FIRST
-            )
-        )
-    }
 }

@@ -7,9 +7,6 @@ import javax.persistence.*
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 class Member(
-    @Id
-    @GeneratedValue
-    val id: Long = 0,
 
     @Embedded
     val name: Name,
@@ -23,7 +20,11 @@ class Member(
         mappedBy = "member",
         cascade = [CascadeType.ALL]
     )
-    var leavingFromGroup: LeavingFromGroup? = null
+    var leavingFromGroup: LeavingFromGroup? = null,
+
+    @Id
+    @GeneratedValue
+    val id: Long = 0
 ) {
     val age get() = dateOfBirth.until(LocalDate.now()).years
 
