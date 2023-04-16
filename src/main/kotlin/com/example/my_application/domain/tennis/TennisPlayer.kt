@@ -5,10 +5,6 @@ import javax.persistence.*
 
 @Entity
 class TennisPlayer(
-    @Id
-    @GeneratedValue
-    val id: Long = 0,
-
     @Column(nullable = false)
     val firstName: String,
 
@@ -19,5 +15,9 @@ class TennisPlayer(
     val dateOfBirth: LocalDate,
 
     @Enumerated(EnumType.STRING)
-    val country: Country
+    val country: Country,
+
+    @Id
+    @GeneratedValue
+    val id: Long = 0
 )

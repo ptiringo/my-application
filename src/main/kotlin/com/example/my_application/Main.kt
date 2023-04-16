@@ -3,6 +3,7 @@ package com.example.my_application
 import com.example.my_application.domain.horse_racing.*
 import com.example.my_application.domain.sakamichi.*
 import com.example.my_application.domain.sakamichi.Name
+import com.example.my_application.domain.tennis.TennisPlayer
 import com.example.my_application.domain.urban_sociology.Municipality
 import com.example.my_application.domain.urban_sociology.MunicipalityType
 import com.example.my_application.domain.urban_sociology.Prefecture
@@ -11,6 +12,7 @@ import com.example.my_application.infrastructure.horse_racing.*
 import com.example.my_application.infrastructure.sakamichi.HinatazakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.NogizakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.SakurazakaMemberRepository
+import com.example.my_application.infrastructure.tennis.TennisPlayerRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
 import io.quarkus.runtime.Quarkus
@@ -19,6 +21,7 @@ import io.quarkus.runtime.annotations.QuarkusMain
 import java.time.LocalDate
 import javax.inject.Inject
 import javax.transaction.Transactional
+import com.example.my_application.domain.tennis.Country as TennisCountry
 
 @QuarkusMain
 class Main {
@@ -62,11 +65,14 @@ class MainApplication : QuarkusApplication {
     @Inject
     lateinit var hinatazakaMemberRepository: HinatazakaMemberRepository
 
+    @Inject
+    lateinit var tennisPlayerRepository: TennisPlayerRepository
+
     @Transactional
     override fun run(args: Array<String>): Int {
         horseRacing()
         sakamichi()
-        
+        tennis()
         urbanSociology()
         return 0
     }
@@ -184,7 +190,12 @@ class MainApplication : QuarkusApplication {
     }
 
     private fun tennis() {
-
+        tennisPlayerRepository.persist(
+            TennisPlayer(
+                "Daniil", "Medvedev",
+                LocalDate.of(1996, 2, 11), TennisCountry.Russia
+            )
+        )
     }
 
     private fun urbanSociology() {
