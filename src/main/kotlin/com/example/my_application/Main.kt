@@ -4,6 +4,9 @@ import com.example.my_application.domain.horse_racing.*
 import com.example.my_application.domain.sakamichi.*
 import com.example.my_application.domain.sakamichi.Name
 import com.example.my_application.domain.tennis.TennisPlayer
+import com.example.my_application.domain.tennis.TennisSurface
+import com.example.my_application.domain.tennis.Tournament
+import com.example.my_application.domain.tennis.TournamentCategory
 import com.example.my_application.domain.urban_sociology.Municipality
 import com.example.my_application.domain.urban_sociology.MunicipalityType
 import com.example.my_application.domain.urban_sociology.Prefecture
@@ -13,6 +16,7 @@ import com.example.my_application.infrastructure.sakamichi.HinatazakaMemberRepos
 import com.example.my_application.infrastructure.sakamichi.NogizakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.SakurazakaMemberRepository
 import com.example.my_application.infrastructure.tennis.TennisPlayerRepository
+import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
 import io.quarkus.runtime.Quarkus
@@ -67,6 +71,9 @@ class MainApplication : QuarkusApplication {
 
     @Inject
     lateinit var tennisPlayerRepository: TennisPlayerRepository
+
+    @Inject
+    lateinit var tournamentRepository: TournamentRepository
 
     @Transactional
     override fun run(args: Array<String>): Int {
@@ -190,6 +197,14 @@ class MainApplication : QuarkusApplication {
     }
 
     private fun tennis() {
+        tournamentRepository.persist(
+            Tournament(
+                "Monte-Carlo",
+                TournamentCategory.ATP_TOUR_MASTERS_1000,
+                TennisSurface.CLAY
+            )
+        )
+
         tennisPlayerRepository.persist(
             TennisPlayer(
                 "Daniil", "Medvedev",
