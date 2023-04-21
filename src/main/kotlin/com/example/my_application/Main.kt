@@ -172,7 +172,20 @@ class MainApplication : QuarkusApplication {
         aoiHarada.graduate()
         sakurazakaMemberRepository.persist(aoiHarada)
 
+        val hikariEndo = SakurazakaMember(
+            Name("光莉", "遠藤", "ひかり", "えんどう"),
+            LocalDate.of(1999, 4, 17),
+            BecomingSakuraMember.NEW_SECOND
+        )
+        hikariEndo.takeLeaveOfAbsence(LocalDate.of(2022, 9, 6))
+        hikariEndo.comeBack(LocalDate.of(2022, 12, 8))
+        hikariEndo.takeLeaveOfAbsence(LocalDate.of(2023, 4, 19))
+
         sakurazakaMemberRepository.persist(
+            // 2期
+            hikariEndo,
+
+            // 3期
             SakurazakaMember(
                 Name("麗奈", "小田倉", "おだくら", "れいな"),
                 LocalDate.of(2004, 7, 25),

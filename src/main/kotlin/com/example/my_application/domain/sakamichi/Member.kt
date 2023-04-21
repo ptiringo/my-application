@@ -22,14 +22,31 @@ class Member(
     )
     var leavingFromGroup: LeavingFromGroup? = null,
 
+    @OneToMany(
+        fetch = FetchType.EAGER,
+        mappedBy = "leaveOfAbsenceId.member",
+        cascade = [CascadeType.ALL]
+    )
+    @OrderBy("startAt")
+    var leaveOfAbsences: MutableList<LeaveOfAbsence> = arrayListOf(),
+
     @Id
     @GeneratedValue
     val id: Long = 0
 ) {
     val age get() = dateOfBirth.until(LocalDate.now()).years
 
+    /** 卒業 */
     fun graduate() {
         this.leavingFromGroup = LeavingFromGroup(member = this, type = LeavingType.GRADUATION)
+    }
+
+    fun takeLeaveOfAbsence(startAt: LocalDate) {
+        this.leaveOfAbsences.add(LeaveOfAbsence(member = this, startAt = startAt))
+    }
+
+    fun comeBack(endAt: LocalDate) {
+        this.leaveOfAbsences.last().endAt = endAt
     }
 }
 
