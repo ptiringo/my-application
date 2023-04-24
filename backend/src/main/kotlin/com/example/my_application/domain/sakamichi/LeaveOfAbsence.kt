@@ -21,7 +21,7 @@ class LeaveOfAbsence(
 }
 
 @Embeddable
-class LeaveOfAbsenceId(
+data class LeaveOfAbsenceId(
 
     @ManyToOne(optional = false)
     val member: Member,
