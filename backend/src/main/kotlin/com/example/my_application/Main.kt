@@ -11,6 +11,7 @@ import com.example.my_application.domain.urban_sociology.Municipality
 import com.example.my_application.domain.urban_sociology.MunicipalityType
 import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
+import com.example.my_application.domain.urban_sociology.ikebukuro.IkebukuroIncident
 import com.example.my_application.infrastructure.horse_racing.*
 import com.example.my_application.infrastructure.sakamichi.HinatazakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.NogizakaMemberRepository
@@ -19,6 +20,7 @@ import com.example.my_application.infrastructure.tennis.TennisPlayerRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
+import com.example.my_application.infrastructure.urban_sociology.ikebukuro.IkebukuroIncidentRepository
 import io.quarkus.runtime.Quarkus
 import io.quarkus.runtime.QuarkusApplication
 import io.quarkus.runtime.annotations.QuarkusMain
@@ -74,6 +76,9 @@ class MainApplication : QuarkusApplication {
 
     @Inject
     lateinit var tournamentRepository: TournamentRepository
+
+    @Inject
+    lateinit var ikebukuroIncidentRepository: IkebukuroIncidentRepository
 
     @Transactional
     override fun run(args: Array<String>): Int {
@@ -164,13 +169,21 @@ class MainApplication : QuarkusApplication {
         )
 
         // 櫻坂
+        val yukaSugai = SakurazakaMember(
+            Name("友香", "菅井", "ゆうか", "すがい"),
+            LocalDate.of(1995, 11, 29),
+            BecomingSakuraMember.FIRST
+        )
+        yukaSugai.graduate()
+
         val aoiHarada = SakurazakaMember(
             Name("葵", "原田", "あおい", "はらだ"),
             LocalDate.of(2000, 5, 7),
             BecomingSakuraMember.FIRST
         )
         aoiHarada.graduate()
-        sakurazakaMemberRepository.persist(aoiHarada)
+
+        sakurazakaMemberRepository.persist(yukaSugai, aoiHarada)
 
         val hikariEndo = SakurazakaMember(
             Name("光莉", "遠藤", "ひかり", "えんどう"),
@@ -205,6 +218,12 @@ class MainApplication : QuarkusApplication {
                 Name("京子", "斉藤", "きょうこ", "さいとう"),
                 LocalDate.of(1997, 9, 5),
                 BecomingHinataMember.FIRST
+            ),
+            // 2期
+            HinatazakaMember(
+                Name("菜緒", "小坂", "なお", "こさか"),
+                LocalDate.of(2002, 9, 7),
+                BecomingHinataMember.SECOND
             )
         )
     }
@@ -232,6 +251,10 @@ class MainApplication : QuarkusApplication {
 
         val tama = Municipality("多摩", tokyo, MunicipalityType.SHI)
         municipalityRepository.persist(tama)
+
+        ikebukuroIncidentRepository.persist(
+            IkebukuroIncident("東池袋自動車暴走死傷事故", LocalDate.of(2019, 4, 19))
+        )
     }
 
 }

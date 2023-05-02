@@ -8,12 +8,14 @@ import javax.persistence.Id
 
 @Entity
 class IkebukuroIncident(
+
+    @Column(nullable = false)
+    val title: String,
+
+    @Column(nullable = false)
+    val occurredOn: LocalDate,
+
     @Id
     @GeneratedValue
     val id: Long = 0,
-
-    @Column(nullable = false)
-    val summary: String,
-
-    val occurredOn: LocalDate
 )
