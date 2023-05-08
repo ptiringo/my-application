@@ -79,14 +79,19 @@ class MainApplication : QuarkusApplication {
 
     @Inject
     lateinit var ikebukuroIncidentRepository: IkebukuroIncidentRepository
+    
+    override fun run(args: Array<String>): Int {
+        insertData()
+        Quarkus.waitForExit();
+        return 0
+    }
 
     @Transactional
-    override fun run(args: Array<String>): Int {
+    fun insertData() {
         horseRacing()
         sakamichi()
         tennis()
         urbanSociology()
-        return 0
     }
 
     private fun horseRacing() {

@@ -1,6 +1,5 @@
 package com.example.my_application.domain.sakamichi
 
-import org.hibernate.annotations.Comment
 import java.time.LocalDate
 import javax.persistence.*
 
@@ -53,22 +52,18 @@ class Member(
 @Embeddable
 class Name(
     /** 名前 */
-    @Comment("名前")
     @Column(nullable = false)
     val firstName: String,
 
     /** 名字 */
-    @Comment("名字")
     @Column(nullable = false)
     val familyName: String,
 
     /** 名前（かな） */
-    @Comment("名前（かな）")
     @Column(nullable = false)
     val firstNameKana: String,
 
     /** 名字（かな） */
-    @Comment("名字（かな）")
     @Column(nullable = false)
     val familyNameKana: String
 )

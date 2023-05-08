@@ -1,13 +1,12 @@
 package com.example.my_application.domain.urban_sociology
 
-import org.hibernate.annotations.Comment
 import javax.persistence.*
 import javax.persistence.FetchType.EAGER
 
 /** 市区町村 */
 @Entity
 class Municipality(
-    @Comment("市区町村名")
+
     @Column(nullable = false)
     val name: String,
 
