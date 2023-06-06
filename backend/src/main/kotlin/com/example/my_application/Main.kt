@@ -16,6 +16,7 @@ import com.example.my_application.infrastructure.horse_racing.*
 import com.example.my_application.infrastructure.sakamichi.HinatazakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.NogizakaMemberRepository
 import com.example.my_application.infrastructure.sakamichi.SakurazakaMemberRepository
+import com.example.my_application.infrastructure.sakamichi.SingleRepository
 import com.example.my_application.infrastructure.tennis.TennisPlayerRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
@@ -72,6 +73,9 @@ class MainApplication : QuarkusApplication {
     lateinit var hinatazakaMemberRepository: HinatazakaMemberRepository
 
     @Inject
+    lateinit var singleRepository: SingleRepository
+
+    @Inject
     lateinit var tennisPlayerRepository: TennisPlayerRepository
 
     @Inject
@@ -79,7 +83,7 @@ class MainApplication : QuarkusApplication {
 
     @Inject
     lateinit var ikebukuroIncidentRepository: IkebukuroIncidentRepository
-    
+
     override fun run(args: Array<String>): Int {
         insertData()
         Quarkus.waitForExit();
@@ -121,24 +125,22 @@ class MainApplication : QuarkusApplication {
 
     private fun sakamichi() {
         // 乃木坂
-        val asukaSaito = NogizakaMember(
-            Name("飛鳥", "齋藤", "あすか", "さいとう"),
-            LocalDate.of(1998, 8, 10),
-            BecomingNogizakaMember.FIRST
-        )
-        asukaSaito.graduate()
-
-        val nanaseNishino = NogizakaMember(
-            Name("七瀬", "西野", "ななせ", "にしの"),
-            LocalDate.of(1994, 5, 25),
-            BecomingNogizakaMember.FIRST
-        )
-        nanaseNishino.graduate()
-
         nogizakaMemberRepository.persist(
             // 1期
-            asukaSaito,
-            nanaseNishino,
+            NogizakaMember(
+                Name("飛鳥", "齋藤", "あすか", "さいとう"),
+                LocalDate.of(1998, 8, 10),
+                BecomingNogizakaMember.FIRST
+            ).apply {
+                graduate()
+            },
+            NogizakaMember(
+                Name("七瀬", "西野", "ななせ", "にしの"),
+                LocalDate.of(1994, 5, 25),
+                BecomingNogizakaMember.FIRST
+            ).apply {
+                graduate()
+            },
             // 3期
             NogizakaMember(
                 Name("葉月", "向井", "はづき", "むかい"),
@@ -174,34 +176,34 @@ class MainApplication : QuarkusApplication {
         )
 
         // 櫻坂
-        val yukaSugai = SakurazakaMember(
-            Name("友香", "菅井", "ゆうか", "すがい"),
-            LocalDate.of(1995, 11, 29),
-            BecomingSakuraMember.FIRST
+        sakurazakaMemberRepository.persist(
+            SakurazakaMember(
+                Name("友香", "菅井", "ゆうか", "すがい"),
+                LocalDate.of(1995, 11, 29),
+                BecomingSakuraMember.FIRST
+            ).apply {
+                graduate()
+            },
+            SakurazakaMember(
+                Name("葵", "原田", "あおい", "はらだ"),
+                LocalDate.of(2000, 5, 7),
+                BecomingSakuraMember.FIRST
+            ).apply {
+                graduate()
+            }
         )
-        yukaSugai.graduate()
-
-        val aoiHarada = SakurazakaMember(
-            Name("葵", "原田", "あおい", "はらだ"),
-            LocalDate.of(2000, 5, 7),
-            BecomingSakuraMember.FIRST
-        )
-        aoiHarada.graduate()
-
-        sakurazakaMemberRepository.persist(yukaSugai, aoiHarada)
-
-        val hikariEndo = SakurazakaMember(
-            Name("光莉", "遠藤", "ひかり", "えんどう"),
-            LocalDate.of(1999, 4, 17),
-            BecomingSakuraMember.NEW_SECOND
-        )
-        hikariEndo.takeLeaveOfAbsence(LocalDate.of(2022, 9, 6))
-        hikariEndo.comeBack(LocalDate.of(2022, 12, 8))
-        hikariEndo.takeLeaveOfAbsence(LocalDate.of(2023, 4, 19))
 
         sakurazakaMemberRepository.persist(
             // 2期
-            hikariEndo,
+            SakurazakaMember(
+                Name("光莉", "遠藤", "ひかり", "えんどう"),
+                LocalDate.of(1999, 4, 17),
+                BecomingSakuraMember.NEW_SECOND
+            ).apply {
+                takeLeaveOfAbsence(LocalDate.of(2021, 9, 6))
+                comeBack(LocalDate.of(2021, 12, 8))
+                takeLeaveOfAbsence(LocalDate.of(2023, 4, 19))
+            },
 
             // 3期
             SakurazakaMember(
@@ -210,6 +212,8 @@ class MainApplication : QuarkusApplication {
                 BecomingSakuraMember.THIRD
             )
         )
+
+        singleRepository.persist(Single(Group.Sakurazaka46, 6, "Start over!"))
 
         // 日向坂
         hinatazakaMemberRepository.persist(
