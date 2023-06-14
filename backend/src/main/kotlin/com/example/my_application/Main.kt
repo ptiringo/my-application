@@ -190,7 +190,12 @@ class MainApplication : QuarkusApplication {
                 BecomingSakuraMember.FIRST
             ).apply {
                 graduate()
-            }
+            },
+            SakurazakaMember(
+                Name("冬優花", "齋藤", "ふゆか", "さいとう"),
+                LocalDate.of(1998, 2, 15),
+                BecomingSakuraMember.FIRST
+            ),
         )
 
         sakurazakaMemberRepository.persist(
@@ -209,6 +214,11 @@ class MainApplication : QuarkusApplication {
             SakurazakaMember(
                 Name("麗奈", "小田倉", "おだくら", "れいな"),
                 LocalDate.of(2004, 7, 25),
+                BecomingSakuraMember.THIRD
+            ),
+            SakurazakaMember(
+                Name("美羽", "村山", "みう", "むらやま"),
+                LocalDate.of(2005, 2, 15),
                 BecomingSakuraMember.THIRD
             )
         )
