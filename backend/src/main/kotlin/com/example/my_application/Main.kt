@@ -240,6 +240,11 @@ class MainApplication : QuarkusApplication {
         hinatazakaMemberRepository.persist(
             // 1期
             HinatazakaMember(
+                Name("史帆", "加藤", "しほ", "かとう"),
+                LocalDate.of(1998, 2, 22),
+                BecomingHinataMember.FIRST
+            ),
+            HinatazakaMember(
                 Name("久美", "佐々木", "くみ", "ささき"),
                 LocalDate.of(1996, 1, 22),
                 BecomingHinataMember.FIRST
@@ -253,6 +258,11 @@ class MainApplication : QuarkusApplication {
             HinatazakaMember(
                 Name("菜緒", "小坂", "なお", "こさか"),
                 LocalDate.of(2002, 9, 7),
+                BecomingHinataMember.SECOND
+            ),
+            HinatazakaMember(
+                Name("鈴花", "富田", "すずか", "とみた"),
+                LocalDate.of(2001, 1, 18),
                 BecomingHinataMember.SECOND
             ),
             HinatazakaMember(
@@ -276,6 +286,10 @@ class MainApplication : QuarkusApplication {
             TennisPlayer(
                 "Daniil", "Medvedev",
                 LocalDate.of(1996, 2, 11), TennisCountry.Russia
+            ),
+            TennisPlayer(
+                "圭", "錦織",
+                LocalDate.of(1989, 12, 29), TennisCountry.Japan
             )
         )
     }
