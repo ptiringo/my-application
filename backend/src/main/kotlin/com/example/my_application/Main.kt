@@ -119,6 +119,7 @@ class MainApplication : QuarkusApplication {
         )
 
         racehorseRepository.persist(
+            Racehorse("キタサンブラック", dateOfBirth = LocalDate.of(2012, 3, 10)),
             Racehorse("ファストフォース", dateOfBirth = LocalDate.of(2016, 5, 9))
         )
     }
@@ -145,6 +146,11 @@ class MainApplication : QuarkusApplication {
             NogizakaMember(
                 Name("葉月", "向井", "はづき", "むかい"),
                 LocalDate.of(1999, 8, 23),
+                BecomingNogizakaMember.THIRD
+            ),
+            NogizakaMember(
+                Name("祐希", "与田", "ゆうき", "よだ"),
+                LocalDate.of(2000, 5, 5),
                 BecomingNogizakaMember.THIRD
             ),
             // 4期
@@ -217,6 +223,11 @@ class MainApplication : QuarkusApplication {
                 BecomingSakuraMember.THIRD
             ),
             SakurazakaMember(
+                Name("凪紗", "小島", "なぎさ", "こじま"),
+                LocalDate.of(2005, 7, 7),
+                BecomingSakuraMember.THIRD
+            ),
+            SakurazakaMember(
                 Name("美羽", "村山", "みう", "むらやま"),
                 LocalDate.of(2005, 2, 15),
                 BecomingSakuraMember.THIRD
@@ -243,7 +254,12 @@ class MainApplication : QuarkusApplication {
                 Name("菜緒", "小坂", "なお", "こさか"),
                 LocalDate.of(2002, 9, 7),
                 BecomingHinataMember.SECOND
-            )
+            ),
+            HinatazakaMember(
+                Name("好花", "松田", "このか", "まつだ"),
+                LocalDate.of(1999, 4, 27),
+                BecomingHinataMember.SECOND
+            ),
         )
     }
 
