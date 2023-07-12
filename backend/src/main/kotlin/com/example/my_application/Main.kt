@@ -270,6 +270,12 @@ class MainApplication : QuarkusApplication {
                 LocalDate.of(1999, 4, 27),
                 BecomingHinataMember.SECOND
             ),
+            // 4期
+            HinatazakaMember(
+                Name("莉奈", "渡辺", "りな", "わたなべ"),
+                LocalDate.of(2009, 2, 7),
+                BecomingHinataMember.FOURTH
+            ),
         )
     }
 
