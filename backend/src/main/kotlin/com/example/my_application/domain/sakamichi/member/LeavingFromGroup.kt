@@ -1,4 +1,4 @@
-package com.example.my_application.domain.sakamichi
+package com.example.my_application.domain.sakamichi.member
 
 import java.io.Serializable
 import javax.persistence.*

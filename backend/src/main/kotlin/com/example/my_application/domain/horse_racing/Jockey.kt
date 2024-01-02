@@ -1,6 +1,6 @@
 package com.example.my_application.domain.horse_racing
 
-import com.example.my_application.domain.sakamichi.Name
+import com.example.my_application.domain.sakamichi.member.Name
 import org.hibernate.annotations.Comment
 import javax.persistence.*
 

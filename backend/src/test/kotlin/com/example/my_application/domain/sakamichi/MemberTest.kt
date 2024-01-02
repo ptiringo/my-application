@@ -1,5 +1,8 @@
 package com.example.my_application.domain.sakamichi
 
+import com.example.my_application.domain.sakamichi.member.BecomingNogizakaMember
+import com.example.my_application.domain.sakamichi.member.Name
+import com.example.my_application.domain.sakamichi.member.NogizakaMember
 import io.mockk.every
 import io.mockk.mockkStatic
 import org.assertj.core.api.Assertions.assertThat

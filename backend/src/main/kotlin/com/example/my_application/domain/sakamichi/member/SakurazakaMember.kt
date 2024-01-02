@@ -1,7 +1,10 @@
-package com.example.my_application.domain.sakamichi
+package com.example.my_application.domain.sakamichi.member
 
 import java.time.LocalDate
-import javax.persistence.*
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 
 @Entity
 class SakurazakaMember(
