@@ -1,9 +1,12 @@
 package com.example.my_application.initial_data.sakamichi
 
+import com.example.my_application.domain.sakamichi.group.Group
 import com.example.my_application.domain.sakamichi.member.BecomingHinataMember
 import com.example.my_application.domain.sakamichi.member.HinatazakaMember
 import com.example.my_application.domain.sakamichi.member.Name
 import java.time.LocalDate
+
+val HINATAZAKA46 = Group(name = "日向坂46")
 
 /** 1期生 */
 val HINATAZAKA_MEMBERS_1st = listOf(

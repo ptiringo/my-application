@@ -36,6 +36,12 @@ val SAKURAZAKA_MEMBERS_1st: List<SakurazakaMember> = listOf(
     ),
 )
 
+val HABU_MIZUHO = SakurazakaMember(
+    Name("瑞穂", "土生", "みづほ", "はぶ"),
+    LocalDate.of(1997, 7, 7),
+    BecomingSakuraMember.FIRST
+)
+
 /** 2期生 */
 val SAKURAZAKA_MEMBERS_2nd: List<SakurazakaMember> = listOf(
     SakurazakaMember(

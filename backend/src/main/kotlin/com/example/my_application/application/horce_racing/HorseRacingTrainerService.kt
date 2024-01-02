@@ -10,7 +10,7 @@ import javax.transaction.Transactional
 class HorseRacingTrainerService {
 
     @Inject
-    private lateinit var trainerRepository: TrainerRepository
+    lateinit var trainerRepository: TrainerRepository
 
     @Transactional
     fun registerTrainer(trainer: Trainer) {

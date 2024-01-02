@@ -1,10 +1,8 @@
 package com.example.my_application
 
 import com.example.my_application.application.horce_racing.HorseRacingTrainerService
-import com.example.my_application.application.sakamichi.SakamichiGroupService
-import com.example.my_application.application.sakamichi.SakamichiMemberService
+import com.example.my_application.application.sakamichi.SakamichiApplicationService
 import com.example.my_application.domain.horse_racing.*
-import com.example.my_application.domain.sakamichi.Single
 import com.example.my_application.domain.sakamichi.member.Name
 import com.example.my_application.domain.tennis.TennisPlayer
 import com.example.my_application.domain.tennis.TennisSurface
@@ -16,7 +14,7 @@ import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
 import com.example.my_application.domain.urban_sociology.ikebukuro.IkebukuroIncident
 import com.example.my_application.infrastructure.horse_racing.*
-import com.example.my_application.infrastructure.sakamichi.SingleRepository
+import com.example.my_application.infrastructure.sakamichi.single.SingleRepository
 import com.example.my_application.infrastructure.tennis.TennisPlayerRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
@@ -81,10 +79,7 @@ class MainApplication : QuarkusApplication {
     lateinit var horseRacingTrainerService: HorseRacingTrainerService
 
     @Inject
-    lateinit var sakamichiGroupService: SakamichiGroupService
-
-    @Inject
-    lateinit var sakamichiMemberService: SakamichiMemberService
+    lateinit var sakamichiApplicationService: SakamichiApplicationService
 
     override fun run(args: Array<String>): Int {
         insertData()
@@ -130,29 +125,33 @@ class MainApplication : QuarkusApplication {
 
     private fun sakamichi() {
         // 乃木坂
-        sakamichiMemberService.registerNogizakaMembers(NOGIZAKA_MEMBERS_1st)
-        sakamichiMemberService.registerNogizakaMembers(NOGIZAKA_MEMBERS_3rd)
-        sakamichiMemberService.registerNogizakaMembers(listOf(KUBO_SHIORI))
-        sakamichiMemberService.registerNogizakaMembers(listOf(KANAGAWA_SAYA))
-        sakamichiMemberService.registerNogizakaMembers(NOGIZAKA_MEMBERS_5th)
+        sakamichiApplicationService.registerNogizakaMembers(NOGIZAKA_MEMBERS_1st)
+        sakamichiApplicationService.registerNogizakaMembers(NOGIZAKA_MEMBERS_3rd)
+        sakamichiApplicationService.registerNogizakaMembers(KUBO_SHIORI)
+        sakamichiApplicationService.registerNogizakaMembers(KANAGAWA_SAYA)
+        sakamichiApplicationService.registerNogizakaMembers(NOGIZAKA_MEMBERS_5th)
 
         // 櫻坂
-        sakamichiGroupService.createNewGroup(SAKURAZAKA46)
-        sakamichiMemberService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_1st)
-        sakamichiMemberService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_2nd)
-        sakamichiMemberService.registerSakurazakaMembers(listOf(TAMURA_HONO))
-        sakamichiMemberService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_3rd)
-        sakamichiMemberService.registerSakurazakaMembers(listOf(MURAYAMA_MIU))
+        val sakurazaka46 = sakamichiApplicationService.createNewGroup(groupName = SAKURAZAKA46.name)
+        sakamichiApplicationService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_1st)
+        sakamichiApplicationService.registerSakurazakaMembers(HABU_MIZUHO)
+        sakamichiApplicationService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_2nd)
+        sakamichiApplicationService.registerSakurazakaMembers(TAMURA_HONO)
+        sakamichiApplicationService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_3rd)
+        sakamichiApplicationService.registerSakurazakaMembers(MURAYAMA_MIU)
 
-        singleRepository.persist(Single(6, "Start over!"))
+        sakamichiApplicationService.releaseNewSingle(groupId = sakurazaka46.id, title = "Start over!")
 
         // 日向坂
-        sakamichiMemberService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_1st)
-        sakamichiMemberService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_2nd)
-        sakamichiMemberService.registerHinatazakaMembers(listOf(NIBU_AKARI))
-        sakamichiMemberService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_3rd)
-        sakamichiMemberService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_4th)
-        sakamichiMemberService.registerHinatazakaMembers(KONISHI_KANAMI, SHIMIZU_RIO)
+        val hinatazaka46 = sakamichiApplicationService.createNewGroup(groupName = HINATAZAKA46.name)
+        sakamichiApplicationService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_1st)
+        sakamichiApplicationService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_2nd)
+        sakamichiApplicationService.registerHinatazakaMembers(NIBU_AKARI)
+        sakamichiApplicationService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_3rd)
+        sakamichiApplicationService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_4th)
+        sakamichiApplicationService.registerHinatazakaMembers(KONISHI_KANAMI, SHIMIZU_RIO)
+
+        sakamichiApplicationService.releaseNewSingle(groupId = hinatazaka46.id, title = "One Choice")
     }
 
     private fun tennis() {
