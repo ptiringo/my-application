@@ -1,17 +1,20 @@
 package com.example.my_application.domain.sakamichi.member
 
+import com.example.my_application.domain.sakamichi.group.Generation
 import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-class Member(
-
+final class Member(
     @Embedded
     val name: Name,
 
     @Column(nullable = false)
     val dateOfBirth: LocalDate,
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    val generation: Generation,
 
     @OneToOne(
         optional = true,
@@ -19,7 +22,7 @@ class Member(
         mappedBy = "member",
         cascade = [CascadeType.ALL]
     )
-    var leavingFromGroup: LeavingFromGroup? = null,
+    var leavingFromGroup: LeavingFromGroup?,
 
     @OneToMany(
         fetch = FetchType.EAGER,
@@ -27,12 +30,24 @@ class Member(
         cascade = [CascadeType.ALL]
     )
     @OrderBy("startAt")
-    var leaveOfAbsences: MutableList<LeaveOfAbsence> = arrayListOf(),
+    val hiatuses: MutableList<Hiatus>,
 
     @Id
     @GeneratedValue
     val id: Long = 0
 ) {
+    init {
+        this.generation.members.add(this)
+    }
+
+    constructor(name: Name, dateOfBirth: LocalDate, generation: Generation) : this(
+        name = name,
+        dateOfBirth = dateOfBirth,
+        generation = generation,
+        leavingFromGroup = null,
+        hiatuses = arrayListOf()
+    )
+
     val age get() = dateOfBirth.until(LocalDate.now()).years
 
     /** 卒業 */
@@ -41,11 +56,11 @@ class Member(
     }
 
     fun takeLeaveOfAbsence(startAt: LocalDate) {
-        this.leaveOfAbsences.add(LeaveOfAbsence(member = this, startAt = startAt))
+        this.hiatuses.add(Hiatus(member = this, startAt = startAt))
     }
 
     fun comeBack(endAt: LocalDate) {
-        this.leaveOfAbsences.last().endAt = endAt
+        this.hiatuses.last().endAt = endAt
     }
 }
 

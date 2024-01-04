@@ -2,9 +2,9 @@ package com.example.my_application
 
 import com.example.my_application.application.horce_racing.HorseRacingTrainerService
 import com.example.my_application.application.sakamichi.SakamichiApplicationService
+import com.example.my_application.application.tennis.TennisApplicationService
 import com.example.my_application.domain.horse_racing.*
 import com.example.my_application.domain.sakamichi.member.Name
-import com.example.my_application.domain.tennis.TennisPlayer
 import com.example.my_application.domain.tennis.TennisSurface
 import com.example.my_application.domain.tennis.Tournament
 import com.example.my_application.domain.tennis.TournamentCategory
@@ -14,21 +14,22 @@ import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
 import com.example.my_application.domain.urban_sociology.ikebukuro.IkebukuroIncident
 import com.example.my_application.infrastructure.horse_racing.*
-import com.example.my_application.infrastructure.sakamichi.single.SingleRepository
-import com.example.my_application.infrastructure.tennis.TennisPlayerRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
 import com.example.my_application.infrastructure.urban_sociology.ikebukuro.IkebukuroIncidentRepository
 import com.example.my_application.initial_data.horce_racing.KATO_KAZUHIRO
 import com.example.my_application.initial_data.sakamichi.*
+import com.example.my_application.initial_data.tennis.DANIIL_MEDVEDEV
+import com.example.my_application.initial_data.tennis.KEI_NISHIKORI
+import com.example.my_application.initial_data.tennis.NOVAK_DJOKOVIC
+import com.example.my_application.initial_data.tennis.RAFAEL_NADAL
 import io.quarkus.runtime.Quarkus
 import io.quarkus.runtime.QuarkusApplication
 import io.quarkus.runtime.annotations.QuarkusMain
 import java.time.LocalDate
 import javax.inject.Inject
 import javax.transaction.Transactional
-import com.example.my_application.domain.tennis.Country as TennisCountry
 
 @QuarkusMain
 class Main {
@@ -64,13 +65,10 @@ class MainApplication : QuarkusApplication {
     lateinit var municipalityRepository: MunicipalityRepository
 
     @Inject
-    lateinit var singleRepository: SingleRepository
-
-    @Inject
-    lateinit var tennisPlayerRepository: TennisPlayerRepository
-
-    @Inject
     lateinit var tournamentRepository: TournamentRepository
+
+    @Inject
+    lateinit var tennisApplicationService: TennisApplicationService
 
     @Inject
     lateinit var ikebukuroIncidentRepository: IkebukuroIncidentRepository
@@ -125,31 +123,33 @@ class MainApplication : QuarkusApplication {
 
     private fun sakamichi() {
         // 乃木坂
-        sakamichiApplicationService.registerNogizakaMembers(NOGIZAKA_MEMBERS_1st)
-        sakamichiApplicationService.registerNogizakaMembers(NOGIZAKA_MEMBERS_3rd)
-        sakamichiApplicationService.registerNogizakaMembers(KUBO_SHIORI)
-        sakamichiApplicationService.registerNogizakaMembers(KANAGAWA_SAYA)
-        sakamichiApplicationService.registerNogizakaMembers(NOGIZAKA_MEMBERS_5th)
+        val nogizaka46 = sakamichiApplicationService.createNewGroup(NOGIZAKA46)
+        val nogizakaMembersGen2 =
+            sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2.copy(groupId = nogizaka46.id))
+        val nogizakaMembersGen3 =
+            sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3.copy(groupId = nogizaka46.id))
+        val nigizakaMembersGen4 =
+            sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4.copy(groupId = nogizaka46.id))
+        val nogizakaMembersGen5 =
+            sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN5.copy(groupId = nogizaka46.id))
 
         // 櫻坂
-        val sakurazaka46 = sakamichiApplicationService.createNewGroup(groupName = SAKURAZAKA46.name)
-        sakamichiApplicationService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_1st)
-        sakamichiApplicationService.registerSakurazakaMembers(HABU_MIZUHO)
-        sakamichiApplicationService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_2nd)
-        sakamichiApplicationService.registerSakurazakaMembers(TAMURA_HONO)
-        sakamichiApplicationService.registerSakurazakaMembers(SAKURAZAKA_MEMBERS_3rd)
-        sakamichiApplicationService.registerSakurazakaMembers(MURAYAMA_MIU)
+        val sakurazaka46 = sakamichiApplicationService.createNewGroup(SAKURAZAKA46)
+        val sakurazakaMembersGen2 =
+            sakamichiApplicationService.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2.copy(groupId = sakurazaka46.id))
+        val sakurazakaMembersGen3 =
+            sakamichiApplicationService.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3.copy(groupId = sakurazaka46.id))
 
         sakamichiApplicationService.releaseNewSingle(groupId = sakurazaka46.id, title = "Start over!")
 
         // 日向坂
-        val hinatazaka46 = sakamichiApplicationService.createNewGroup(groupName = HINATAZAKA46.name)
-        sakamichiApplicationService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_1st)
-        sakamichiApplicationService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_2nd)
-        sakamichiApplicationService.registerHinatazakaMembers(NIBU_AKARI)
-        sakamichiApplicationService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_3rd)
-        sakamichiApplicationService.registerHinatazakaMembers(HINATAZAKA_MEMBERS_4th)
-        sakamichiApplicationService.registerHinatazakaMembers(KONISHI_KANAMI, SHIMIZU_RIO)
+        val hinatazaka46 = sakamichiApplicationService.createNewGroup(HINATAZAKA46)
+        val hinatazakaMembersGen2 =
+            sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN2.copy(groupId = hinatazaka46.id))
+        val hinatazakaMembersGen3 =
+            sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN3.copy(groupId = hinatazaka46.id))
+        val hinatazakaMembersGen4 =
+            sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN4.copy(groupId = hinatazaka46.id))
 
         sakamichiApplicationService.releaseNewSingle(groupId = hinatazaka46.id, title = "One Choice")
     }
@@ -163,16 +163,10 @@ class MainApplication : QuarkusApplication {
             )
         )
 
-        tennisPlayerRepository.persist(
-            TennisPlayer(
-                "Daniil", "Medvedev",
-                LocalDate.of(1996, 2, 11), TennisCountry.Russia
-            ),
-            TennisPlayer(
-                "圭", "錦織",
-                LocalDate.of(1989, 12, 29), TennisCountry.Japan
-            )
-        )
+        tennisApplicationService.registerAsPro(RAFAEL_NADAL)
+        tennisApplicationService.registerAsPro(NOVAK_DJOKOVIC)
+        tennisApplicationService.registerAsPro(DANIIL_MEDVEDEV)
+        tennisApplicationService.registerAsPro(KEI_NISHIKORI)
     }
 
     private fun urbanSociology() {

@@ -1,10 +1,11 @@
-package com.example.my_application.domain.tennis
+package com.example.my_application.domain.tennis.player
 
+import com.example.my_application.domain.tennis.Country
 import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-class TennisPlayer(
+class Player(
     @Column(nullable = false)
     val firstName: String,
 

@@ -1,10 +1,8 @@
 package com.example.my_application.domain.sakamichi.group
 
 import com.example.my_application.domain.sakamichi.single.Single
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Table
+import java.time.LocalDate
+import javax.persistence.*
 
 @Entity
 @Table(name = "sakamichi_group")
@@ -13,6 +11,12 @@ class Group(
 
     @Id @GeneratedValue
     val id: Long = 0,
+
+    @Column(nullable = false)
+    val formationDate: LocalDate,
+
+    @OneToMany(mappedBy = "group", cascade = [CascadeType.PERSIST])
+    val generation: MutableList<Generation> = arrayListOf(),
 ) {
     fun releaseNewSingle(title: String): Single {
         return Single(title = title, group = this)

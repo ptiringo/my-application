@@ -6,22 +6,13 @@ import javax.persistence.*
 
 /** 活動休止 */
 @Entity
-class LeaveOfAbsence(
+class Hiatus(
     @EmbeddedId
-    val leaveOfAbsenceId: LeaveOfAbsenceId,
-
-    var endAt: LocalDate? = null
-) {
-    constructor(member: Member, startAt: LocalDate, endAt: LocalDate? = null) : this(
-        LeaveOfAbsenceId(
-            member,
-            startAt
-        ), endAt
-    )
-}
+    val hiatusId: HiatusId
+)
 
 @Embeddable
-data class LeaveOfAbsenceId(
+data class HiatusId(
 
     @ManyToOne(optional = false)
     val member: Member,
