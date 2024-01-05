@@ -31,21 +31,37 @@ val NOGIZAKA46 =
                 firstNameKana = "えりか",
                 familyNameKana = "いくた",
                 dateOfBirth = LocalDate.of(1997, 1, 22)
+            ),
+            NewMember(
+                firstName = "麻衣",
+                familyName = "白石",
+                firstNameKana = "まい",
+                familyNameKana = "しらいし",
+                dateOfBirth = LocalDate.of(1992, 8, 20)
             )
         )
     )
 
 
 /** 2期生 */
-val NOGIZAKA46_MEMBERS_GEN2 =
+val NOGIZAKA46_MEMBERS_GEN2 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = 0,
         joinDate = LocalDate.of(2013, 3, 28),
-        newMembers = listOf()
+        newMembers = listOf(
+            NewMember(
+                firstName = "相楽",
+                familyName = "伊織",
+                firstNameKana = "さがら",
+                familyNameKana = "いおり",
+                dateOfBirth = LocalDate.of(1997, 11, 26)
+            )
+        )
     )
+}
 
 /** 3期生 */
-val NOGIZAKA46_MEMBERS_GEN3 =
+val NOGIZAKA46_MEMBERS_GEN3 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = 0,
         joinDate = LocalDate.of(2016, 9, 4),
@@ -70,13 +86,21 @@ val NOGIZAKA46_MEMBERS_GEN3 =
                 firstNameKana = "しおり",
                 familyNameKana = "くぼ",
                 dateOfBirth = LocalDate.of(2001, 7, 14)
+            ),
+            NewMember(
+                firstName = "蓮加",
+                familyName = "岩本",
+                firstNameKana = "れんか",
+                familyNameKana = "いわもと",
+                dateOfBirth = LocalDate.of(2004, 2, 2)
             )
         )
     )
+}
 
 
 /** 4期生 */
-val NOGIZAKA46_MEMBERS_GEN4 =
+val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = 0,
         joinDate = LocalDate.of(2013, 3, 28),
@@ -104,9 +128,10 @@ val NOGIZAKA46_MEMBERS_GEN4 =
             )
         )
     )
+}
 
 /** 5期生 */
-val NOGIZAKA46_MEMBERS_GEN5 =
+val NOGIZAKA46_MEMBERS_GEN5 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = 0,
         joinDate = LocalDate.of(2013, 3, 28),
@@ -155,3 +180,4 @@ val NOGIZAKA46_MEMBERS_GEN5 =
             )
         )
     )
+}

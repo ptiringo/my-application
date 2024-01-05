@@ -39,12 +39,19 @@ val HINATAZAKA46 =
                 firstNameKana = "ねる",
                 familyNameKana = "ながはま",
                 dateOfBirth = LocalDate.of(1998, 9, 4)
+            ),
+            NewMember(
+                firstName = "眞緒",
+                familyName = "井口",
+                firstNameKana = "まお",
+                familyNameKana = "いぐち",
+                dateOfBirth = LocalDate.of(1995, 11, 10)
             )
         )
     )
 
 /** 2期生 */
-val HINATAZAKA46_MEMBERS_GEN2 =
+val HINATAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = 0,
         joinDate = LocalDate.of(2017, 8, 15),
@@ -79,9 +86,10 @@ val HINATAZAKA46_MEMBERS_GEN2 =
             )
         )
     )
+}
 
 /** 3期生 */
-val HINATAZAKA46_MEMBERS_GEN3 =
+val HINATAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = 0,
         joinDate = LocalDate.of(2018, 8, 19),
@@ -95,9 +103,10 @@ val HINATAZAKA46_MEMBERS_GEN3 =
             ),
         )
     )
+}
 
 /** 4期生 */
-val HINATAZAKA46_MEMBERS_GEN4 =
+val HINATAZAKA46_MEMBERS_GEN4 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = 0,
         joinDate = LocalDate.of(2022, 9, 21),
@@ -125,3 +134,4 @@ val HINATAZAKA46_MEMBERS_GEN4 =
             )
         )
     )
+}

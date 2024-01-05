@@ -58,7 +58,7 @@ val SAKURAZAKA46 =
 
 
 /** 2期生 */
-val SAKURAZAKA46_MEMBERS_GEN2 =
+val SAKURAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = 0,
         joinDate = LocalDate.of(2018, 8, 19),
@@ -79,11 +79,12 @@ val SAKURAZAKA46_MEMBERS_GEN2 =
             )
         )
     )
+}
 
 /** 3期生 */
-val SAKURAZAKA46_MEMBERS_GEN3 =
+val SAKURAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2023, 1, 6),
         newMembers = listOf(
             NewMember(
@@ -109,3 +110,4 @@ val SAKURAZAKA46_MEMBERS_GEN3 =
             )
         )
     )
+}
