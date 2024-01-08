@@ -1,4 +1,4 @@
-package com.example.my_application.domain.horse_racing
+package com.example.my_application.domain.horse_racing.racehorse
 
 import java.time.LocalDate
 import javax.persistence.Column

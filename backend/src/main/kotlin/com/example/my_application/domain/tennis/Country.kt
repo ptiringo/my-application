@@ -1,5 +1,5 @@
 package com.example.my_application.domain.tennis
 
 enum class Country {
-    Japan, Russia, Spain, Serbia
+    Japan, Russia, Spain, Serbia, Australia, Bulgaria
 }

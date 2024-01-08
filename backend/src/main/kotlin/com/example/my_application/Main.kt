@@ -20,14 +20,9 @@ import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
 import com.example.my_application.infrastructure.urban_sociology.ikebukuro.IkebukuroIncidentRepository
-import com.example.my_application.initial_data.horce_racing.ANDO_KATSUMI
-import com.example.my_application.initial_data.horce_racing.CHRISTOPHE_LEMAIRE
-import com.example.my_application.initial_data.horce_racing.KATO_KAZUHIRO
+import com.example.my_application.initial_data.horce_racing.*
 import com.example.my_application.initial_data.sakamichi.*
-import com.example.my_application.initial_data.tennis.DANIIL_MEDVEDEV
-import com.example.my_application.initial_data.tennis.KEI_NISHIKORI
-import com.example.my_application.initial_data.tennis.NOVAK_DJOKOVIC
-import com.example.my_application.initial_data.tennis.RAFAEL_NADAL
+import com.example.my_application.initial_data.tennis.*
 import io.quarkus.runtime.Quarkus
 import io.quarkus.runtime.QuarkusApplication
 import io.quarkus.runtime.annotations.QuarkusMain
@@ -95,6 +90,10 @@ class MainApplication : QuarkusApplication {
     }
 
     private fun horseRacing() {
+        horseRacingApplicationService.registerRacehorse(KITASAN_BLACK)
+        horseRacingApplicationService.registerRacehorse(FIRST_FORCE)
+        horseRacingApplicationService.registerRacehorse(MELODY_LANE)
+
         horseRacingApplicationService.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacingApplicationService.registerJockey(ANDO_KATSUMI)
 
@@ -111,11 +110,6 @@ class MainApplication : QuarkusApplication {
         raceRepository.persist(
             Race("ドバイシーマクラシック", Grade.G1, meydan, TrackSurface.TURF, 2410),
             Race("オールエイジドステークス", Grade.G1, randwick, TrackSurface.TURF, 1400)
-        )
-
-        racehorseRepository.persist(
-            Racehorse("キタサンブラック", dateOfBirth = LocalDate.of(2012, 3, 10)),
-            Racehorse("ファストフォース", dateOfBirth = LocalDate.of(2016, 5, 9))
         )
 
         horseRacingApplicationService.registerTrainer(KATO_KAZUHIRO)
@@ -167,6 +161,8 @@ class MainApplication : QuarkusApplication {
         tennisApplicationService.registerAsPro(NOVAK_DJOKOVIC)
         tennisApplicationService.registerAsPro(DANIIL_MEDVEDEV)
         tennisApplicationService.registerAsPro(KEI_NISHIKORI)
+        tennisApplicationService.registerAsPro(ALEX_DE_MINAUR)
+        tennisApplicationService.registerAsPro(GRIGOR_DIMITROV)
     }
 
     private fun urbanSociology() {

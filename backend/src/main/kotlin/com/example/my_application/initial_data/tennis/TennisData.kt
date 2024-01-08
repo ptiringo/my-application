@@ -31,3 +31,17 @@ val KEI_NISHIKORI = RegisterAsProCommand(
     dateOfBirth = LocalDate.of(1989, 12, 29),
     country = Country.Japan
 )
+
+val ALEX_DE_MINAUR = RegisterAsProCommand(
+    firstName = "De Minaur",
+    familyName = "Alex",
+    dateOfBirth = LocalDate.of(1999, 2, 17),
+    country = Country.Australia
+)
+
+val GRIGOR_DIMITROV = RegisterAsProCommand(
+    firstName = "Grigor",
+    familyName = "Dimitrov",
+    dateOfBirth = LocalDate.of(1991, 5, 16),
+    country = Country.Bulgaria
+)

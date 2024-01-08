@@ -53,7 +53,7 @@ val HINATAZAKA46 =
 /** 2期生 */
 val HINATAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2017, 8, 15),
         newMembers = listOf(
             NewMember(
@@ -91,7 +91,7 @@ val HINATAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
 /** 3期生 */
 val HINATAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2018, 8, 19),
         newMembers = listOf(
             NewMember(
@@ -108,7 +108,7 @@ val HINATAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
 /** 4期生 */
 val HINATAZAKA46_MEMBERS_GEN4 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2022, 9, 21),
         newMembers = listOf(
             NewMember(

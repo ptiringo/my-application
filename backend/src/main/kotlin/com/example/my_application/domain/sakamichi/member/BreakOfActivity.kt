@@ -6,13 +6,19 @@ import javax.persistence.*
 
 /** 活動休止 */
 @Entity
-class Hiatus(
+class BreakOfActivity(
+    member: Member,
+    startAt: LocalDate
+) {
     @EmbeddedId
-    val hiatusId: HiatusId
-)
+    val breakOfActivityId: BreakOfActivityId = BreakOfActivityId(member = member, startAt = startAt)
+
+    @OneToOne
+    var returnToActivity: ReturnToActivity? = null
+}
 
 @Embeddable
-data class HiatusId(
+data class BreakOfActivityId(
 
     @ManyToOne(optional = false)
     val member: Member,

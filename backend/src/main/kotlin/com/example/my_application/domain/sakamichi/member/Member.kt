@@ -22,15 +22,15 @@ final class Member(
         mappedBy = "member",
         cascade = [CascadeType.ALL]
     )
-    var leavingFromGroup: LeavingFromGroup?,
+    var leavingFromGroup: LeavingFromGroup? = null,
 
     @OneToMany(
         fetch = FetchType.EAGER,
-        mappedBy = "leaveOfAbsenceId.member",
+        mappedBy = "breakOfActivityId.member",
         cascade = [CascadeType.ALL]
     )
     @OrderBy("startAt")
-    val hiatuses: MutableList<Hiatus>,
+    val breakOfActivities: MutableList<BreakOfActivity> = arrayListOf(),
 
     @Id
     @GeneratedValue
@@ -45,7 +45,7 @@ final class Member(
         dateOfBirth = dateOfBirth,
         generation = generation,
         leavingFromGroup = null,
-        hiatuses = arrayListOf()
+        breakOfActivities = arrayListOf()
     )
 
     val age get() = dateOfBirth.until(LocalDate.now()).years
@@ -55,12 +55,18 @@ final class Member(
         this.leavingFromGroup = LeavingFromGroup(member = this, type = LeavingType.GRADUATION)
     }
 
-    fun takeLeaveOfAbsence(startAt: LocalDate) {
-        this.hiatuses.add(Hiatus(member = this, startAt = startAt))
+    fun startBreakOfActivity(startAt: LocalDate): BreakOfActivity {
+        val breakOfActivity = BreakOfActivity(member = this, startAt = startAt)
+        this.breakOfActivities.add(breakOfActivity)
+        return breakOfActivity
     }
 
     fun comeBack(endAt: LocalDate) {
-        this.hiatuses.last().endAt = endAt
+        val latestBreakOfActivity = this.breakOfActivities.last()
+        latestBreakOfActivity.returnToActivity = ReturnToActivity(
+            breakOfActivity = latestBreakOfActivity,
+            resumptionDate = endAt
+        )
     }
 }
 

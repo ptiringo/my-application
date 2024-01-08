@@ -60,7 +60,7 @@ val SAKURAZAKA46 =
 /** 2期生 */
 val SAKURAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2018, 8, 19),
         newMembers = listOf(
             NewMember(

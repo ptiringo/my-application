@@ -46,7 +46,7 @@ val NOGIZAKA46 =
 /** 2期生 */
 val NOGIZAKA46_MEMBERS_GEN2 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2013, 3, 28),
         newMembers = listOf(
             NewMember(
@@ -63,7 +63,7 @@ val NOGIZAKA46_MEMBERS_GEN2 = { groupId: Long ->
 /** 3期生 */
 val NOGIZAKA46_MEMBERS_GEN3 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2016, 9, 4),
         newMembers = listOf(
             NewMember(
@@ -102,7 +102,7 @@ val NOGIZAKA46_MEMBERS_GEN3 = { groupId: Long ->
 /** 4期生 */
 val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2013, 3, 28),
         newMembers = listOf(
             NewMember(
@@ -133,7 +133,7 @@ val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
 /** 5期生 */
 val NOGIZAKA46_MEMBERS_GEN5 = { groupId: Long ->
     JoinNewMembersCommand(
-        groupId = 0,
+        groupId = groupId,
         joinDate = LocalDate.of(2013, 3, 28),
         newMembers = listOf(
             NewMember(
@@ -177,6 +177,13 @@ val NOGIZAKA46_MEMBERS_GEN5 = { groupId: Long ->
                 firstNameKana = "あるの",
                 familyNameKana = "なかにし",
                 dateOfBirth = LocalDate.of(2003, 3, 17)
+            ),
+            NewMember(
+                firstName = "美空",
+                familyName = "一ノ瀬",
+                firstNameKana = "みく",
+                familyNameKana = "いちのせ",
+                dateOfBirth = LocalDate.of(2003, 5, 24)
             )
         )
     )

@@ -1,5 +1,6 @@
 package com.example.my_application.domain.horse_racing
 
+import com.example.my_application.domain.horse_racing.racehorse.Racehorse
 import io.mockk.every
 import io.mockk.mockkStatic
 import org.assertj.core.api.Assertions.assertThat
