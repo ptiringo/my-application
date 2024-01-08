@@ -1,4 +1,4 @@
-package com.example.my_application.domain.horse_racing
+package com.example.my_application.domain.horse_racing.jockey
 
 import org.hibernate.annotations.Comment
 import javax.persistence.*

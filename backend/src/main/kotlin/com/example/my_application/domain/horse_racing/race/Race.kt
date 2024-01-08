@@ -1,5 +1,7 @@
-package com.example.my_application.domain.horse_racing
+package com.example.my_application.domain.horse_racing.race
 
+import com.example.my_application.domain.horse_racing.TrackSurface
+import com.example.my_application.domain.horse_racing.racecourse.Racecourse
 import javax.persistence.*
 
 @Entity

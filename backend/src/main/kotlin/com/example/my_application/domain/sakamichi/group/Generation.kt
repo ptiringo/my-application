@@ -20,6 +20,8 @@ class Generation(
     @GeneratedValue
     val id: Long = 0
 ) {
+    constructor(group: Group, joinDate: LocalDate) : this(group = group, joinDate = joinDate, id = 0)
+
     init {
         this.group.generation.add(this)
     }

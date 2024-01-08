@@ -1,11 +1,12 @@
 package com.example.my_application.application.horce_racing
 
-import com.example.my_application.domain.horse_racing.Jockey
-import com.example.my_application.domain.horse_racing.Name
-import com.example.my_application.domain.horse_racing.racehorse.Racehorse
+import com.example.my_application.domain.horse_racing.horse.Horse
+import com.example.my_application.domain.horse_racing.horse.Racehorse
+import com.example.my_application.domain.horse_racing.jockey.Jockey
+import com.example.my_application.domain.horse_racing.jockey.Name
 import com.example.my_application.domain.horse_racing.trainer.Trainer
+import com.example.my_application.infrastructure.horse_racing.HorseRepository
 import com.example.my_application.infrastructure.horse_racing.JockeyRepository
-import com.example.my_application.infrastructure.horse_racing.RacehorseRepository
 import com.example.my_application.infrastructure.horse_racing.trainer.TrainerRepository
 import javax.enterprise.context.ApplicationScoped
 import javax.inject.Inject
@@ -15,7 +16,7 @@ import javax.transaction.Transactional
 class HorseRacingApplicationService {
 
     @Inject
-    lateinit var racehorseRepository: RacehorseRepository
+    lateinit var horseRepository: HorseRepository
 
     @Inject
     lateinit var jockeyRepository: JockeyRepository
@@ -24,13 +25,14 @@ class HorseRacingApplicationService {
     lateinit var trainerRepository: TrainerRepository
 
     @Transactional
-    fun registerRacehorse(command: RegisterRacehorseCommand): Racehorse {
-        val racehorse = Racehorse(
+    fun registerRacehorse(command: RegisterRacehorseCommand): Horse {
+        val horse = Horse(
             name = command.name,
             dateOfBirth = command.dateOfBirth
         )
-        racehorseRepository.persist(racehorse)
-        return racehorse
+        Racehorse(horse)
+        horseRepository.persist(horse)
+        return horse
     }
 
     @Transactional

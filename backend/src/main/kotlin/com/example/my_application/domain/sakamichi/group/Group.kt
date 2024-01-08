@@ -18,6 +18,8 @@ class Group(
     @OneToMany(mappedBy = "group", cascade = [CascadeType.PERSIST])
     val generation: MutableList<Generation> = arrayListOf(),
 ) {
+    constructor(name: String, formationDate: LocalDate) : this(name = name, formationDate = formationDate, id = 0)
+
     fun releaseNewSingle(title: String): Single {
         return Single(title = title, group = this)
     }

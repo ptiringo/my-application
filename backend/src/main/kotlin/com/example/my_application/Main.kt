@@ -3,7 +3,11 @@ package com.example.my_application
 import com.example.my_application.application.horce_racing.HorseRacingApplicationService
 import com.example.my_application.application.sakamichi.SakamichiApplicationService
 import com.example.my_application.application.tennis.TennisApplicationService
-import com.example.my_application.domain.horse_racing.*
+import com.example.my_application.domain.horse_racing.Country
+import com.example.my_application.domain.horse_racing.TrackSurface
+import com.example.my_application.domain.horse_racing.race.Grade
+import com.example.my_application.domain.horse_racing.race.Race
+import com.example.my_application.domain.horse_racing.racecourse.Racecourse
 import com.example.my_application.domain.tennis.TennisSurface
 import com.example.my_application.domain.tennis.Tournament
 import com.example.my_application.domain.tennis.TournamentCategory
@@ -13,9 +17,9 @@ import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
 import com.example.my_application.domain.urban_sociology.ikebukuro.IkebukuroIncident
 import com.example.my_application.infrastructure.horse_racing.CountryRepository
+import com.example.my_application.infrastructure.horse_racing.HorseRepository
 import com.example.my_application.infrastructure.horse_racing.RaceRepository
 import com.example.my_application.infrastructure.horse_racing.RacecourseRepository
-import com.example.my_application.infrastructure.horse_racing.RacehorseRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
@@ -52,7 +56,7 @@ class MainApplication : QuarkusApplication {
     lateinit var racecourseRepository: RacecourseRepository
 
     @Inject
-    lateinit var racehorseRepository: RacehorseRepository
+    lateinit var horseRepository: HorseRepository
 
     @Inject
     lateinit var prefectureRepository: PrefectureRepository

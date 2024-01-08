@@ -1,17 +1,17 @@
 package com.example.my_application.domain.horse_racing
 
-import com.example.my_application.domain.horse_racing.racehorse.Racehorse
+import com.example.my_application.domain.horse_racing.horse.Horse
 import io.mockk.every
 import io.mockk.mockkStatic
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
-class RacehorseTest {
+class HorseTest {
 
     @Test
     fun getAge() {
-        val horse = Racehorse(name = "テスト", dateOfBirth = LocalDate.of(2005, 3, 10))
+        val horse = Horse(name = "テスト", dateOfBirth = LocalDate.of(2005, 3, 10))
 
         mockkStatic(LocalDate::class)
 
