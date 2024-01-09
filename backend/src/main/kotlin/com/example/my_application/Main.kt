@@ -17,7 +17,6 @@ import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
 import com.example.my_application.domain.urban_sociology.ikebukuro.IkebukuroIncident
 import com.example.my_application.infrastructure.horse_racing.CountryRepository
-import com.example.my_application.infrastructure.horse_racing.HorseRepository
 import com.example.my_application.infrastructure.horse_racing.RaceRepository
 import com.example.my_application.infrastructure.horse_racing.RacecourseRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
@@ -54,9 +53,6 @@ class MainApplication : QuarkusApplication {
 
     @Inject
     lateinit var racecourseRepository: RacecourseRepository
-
-    @Inject
-    lateinit var horseRepository: HorseRepository
 
     @Inject
     lateinit var prefectureRepository: PrefectureRepository
@@ -97,6 +93,7 @@ class MainApplication : QuarkusApplication {
         horseRacingApplicationService.registerRacehorse(KITASAN_BLACK)
         horseRacingApplicationService.registerRacehorse(FIRST_FORCE)
         horseRacingApplicationService.registerRacehorse(MELODY_LANE)
+        horseRacingApplicationService.registerRacehorse(EQUINOX)
 
         horseRacingApplicationService.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacingApplicationService.registerJockey(ANDO_KATSUMI)

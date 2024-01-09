@@ -17,3 +17,8 @@ val MELODY_LANE = RegisterRacehorseCommand(
     name = "メロディーレーン",
     dateOfBirth = LocalDate.of(2016, 2, 12)
 )
+
+val EQUINOX = RegisterRacehorseCommand(
+    name = "イクイノックス",
+    dateOfBirth = LocalDate.of(2019, 3, 23)
+)
