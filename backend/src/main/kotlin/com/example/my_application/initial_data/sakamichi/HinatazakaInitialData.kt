@@ -46,7 +46,14 @@ val HINATAZAKA46 =
                 firstNameKana = "まお",
                 familyNameKana = "いぐち",
                 dateOfBirth = LocalDate.of(1995, 11, 10)
-            )
+            ),
+            NewMember(
+                firstName = "紗理菜",
+                familyName = "潮",
+                firstNameKana = "さりな",
+                familyNameKana = "うしお",
+                dateOfBirth = LocalDate.of(1997, 12, 26)
+            ),
         )
     )
 
@@ -131,6 +138,13 @@ val HINATAZAKA46_MEMBERS_GEN4 = { groupId: Long ->
                 firstNameKana = "りお",
                 familyNameKana = "しみず",
                 dateOfBirth = LocalDate.of(2005, 1, 15)
+            ),
+            NewMember(
+                firstName = "陽子",
+                familyName = "正源司",
+                firstNameKana = "ようこ",
+                familyNameKana = "しょうげんじ",
+                dateOfBirth = LocalDate.of(2007, 2, 14)
             )
         )
     )

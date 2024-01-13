@@ -119,32 +119,23 @@ class MainApplication : QuarkusApplication {
     private fun sakamichi() {
         // 乃木坂
         val nogizaka46 = sakamichiApplicationService.createNewGroup(NOGIZAKA46)
-        val nogizakaMembersGen2 =
-            sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
-        val nogizakaMembersGen3 =
-            sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
-        val nigizakaMembersGen4 =
-            sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4(nogizaka46.id))
-        val nogizakaMembersGen5 =
-            sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN5(nogizaka46.id))
+        sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
+        sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
+        sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4(nogizaka46.id))
+        sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN5(nogizaka46.id))
 
         // 櫻坂
         val sakurazaka46 = sakamichiApplicationService.createNewGroup(SAKURAZAKA46)
-        val sakurazakaMembersGen2 =
-            sakamichiApplicationService.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
-        val sakurazakaMembersGen3 =
-            sakamichiApplicationService.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3(sakurazaka46.id))
+        sakamichiApplicationService.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
+        sakamichiApplicationService.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3(sakurazaka46.id))
 
         sakamichiApplicationService.releaseNewSingle(groupId = sakurazaka46.id, title = "Start over!")
 
         // 日向坂
         val hinatazaka46 = sakamichiApplicationService.createNewGroup(HINATAZAKA46)
-        val hinatazakaMembersGen2 =
-            sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN2(hinatazaka46.id))
-        val hinatazakaMembersGen3 =
-            sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN3(hinatazaka46.id))
-        val hinatazakaMembersGen4 =
-            sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN4(hinatazaka46.id))
+        sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN2(hinatazaka46.id))
+        sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN3(hinatazaka46.id))
+        sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN4(hinatazaka46.id))
 
         sakamichiApplicationService.releaseNewSingle(groupId = hinatazaka46.id, title = "One Choice")
     }
