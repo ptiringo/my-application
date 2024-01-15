@@ -73,7 +73,7 @@ class MainApplication : QuarkusApplication {
     lateinit var horseRacingApplicationService: HorseRacingApplicationService
 
     @Inject
-    lateinit var sakamichiApplicationService: SakamichiApplicationService
+    lateinit var sakamichi: SakamichiApplicationService
 
     override fun run(args: Array<String>): Int {
         insertData()
@@ -81,7 +81,6 @@ class MainApplication : QuarkusApplication {
         return 0
     }
 
-    @Transactional
     fun insertData() {
         horseRacing()
         sakamichi()
@@ -89,7 +88,8 @@ class MainApplication : QuarkusApplication {
         urbanSociology()
     }
 
-    private fun horseRacing() {
+    @Transactional
+    fun horseRacing() {
         horseRacingApplicationService.registerRacehorse(KITASAN_BLACK)
         horseRacingApplicationService.registerRacehorse(FIRST_FORCE)
         horseRacingApplicationService.registerRacehorse(MELODY_LANE)
@@ -118,29 +118,44 @@ class MainApplication : QuarkusApplication {
 
     private fun sakamichi() {
         // 乃木坂
-        val nogizaka46 = sakamichiApplicationService.createNewGroup(NOGIZAKA46)
-        sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
-        sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
-        sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4(nogizaka46.id))
-        sakamichiApplicationService.joinNewMembers(NOGIZAKA46_MEMBERS_GEN5(nogizaka46.id))
+        val (nogizaka46, _) = sakamichi.createNewGroup(NOGIZAKA46)
+        sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
+        sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
+        val nogi4thMembers = sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4(nogizaka46.id))
+        val kanagawaSaya = nogi4thMembers.members.single { it.name.familyName == "金川" && it.name.firstName == "紗耶" }
+
+        sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN5(nogizaka46.id))
+
+        LocalDate.of(2023, 10, 31).let {
+            sakamichi.startBreakOfActivity(memberId = kanagawaSaya.id, startAt = it)
+        }
+
+        LocalDate.of(2024, 1, 10).let {
+            sakamichi.comeBack(memberId = kanagawaSaya.id, endAt = it)
+        }
 
         // 櫻坂
-        val sakurazaka46 = sakamichiApplicationService.createNewGroup(SAKURAZAKA46)
-        sakamichiApplicationService.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
-        sakamichiApplicationService.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3(sakurazaka46.id))
+        val (sakurazaka46, _) = sakamichi.createNewGroup(SAKURAZAKA46)
+        sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
+        sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3(sakurazaka46.id))
 
-        sakamichiApplicationService.releaseNewSingle(groupId = sakurazaka46.id, title = "Start over!")
+        sakamichi.releaseNewSingle(groupId = sakurazaka46.id, title = "Start over!")
 
         // 日向坂
-        val hinatazaka46 = sakamichiApplicationService.createNewGroup(HINATAZAKA46)
-        sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN2(hinatazaka46.id))
-        sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN3(hinatazaka46.id))
-        sakamichiApplicationService.joinNewMembers(HINATAZAKA46_MEMBERS_GEN4(hinatazaka46.id))
+        val (hinatazaka46, hinata1stMembers) = sakamichi.createNewGroup(HINATAZAKA46)
+        val saitoKyoko = hinata1stMembers.single { it.name.familyName == "齊藤" && it.name.firstName == "京子" }
 
-        sakamichiApplicationService.releaseNewSingle(groupId = hinatazaka46.id, title = "One Choice")
+        sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN2(hinatazaka46.id))
+        sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN3(hinatazaka46.id))
+        sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN4(hinatazaka46.id))
+
+        sakamichi.releaseNewSingle(groupId = hinatazaka46.id, title = "One Choice")
+
+        sakamichi.graduate(memberId = saitoKyoko.id, leavedDate = LocalDate.of(2024, 4, 5))
     }
 
-    private fun tennis() {
+    @Transactional
+    fun tennis() {
         tournamentRepository.persist(
             Tournament(
                 "Monte-Carlo",
@@ -157,7 +172,8 @@ class MainApplication : QuarkusApplication {
         tennisApplicationService.registerAsPro(GRIGOR_DIMITROV)
     }
 
-    private fun urbanSociology() {
+    @Transactional
+    fun urbanSociology() {
         val tokyo = Prefecture("東京", PrefectureType.TO)
         prefectureRepository.persist(tokyo)
 

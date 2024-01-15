@@ -2,30 +2,33 @@ package com.example.my_application.application.sakamichi
 
 import com.example.my_application.domain.sakamichi.group.Generation
 import com.example.my_application.domain.sakamichi.group.Group
+import com.example.my_application.domain.sakamichi.member.BreakOfActivity
 import com.example.my_application.domain.sakamichi.member.Member
 import com.example.my_application.domain.sakamichi.member.Name
+import com.example.my_application.domain.sakamichi.member.ReturnToActivity
 import com.example.my_application.domain.sakamichi.single.Single
 import com.example.my_application.infrastructure.sakamichi.group.GroupRepository
 import com.example.my_application.infrastructure.sakamichi.member.MemberRepository
 import com.example.my_application.infrastructure.sakamichi.single.SingleRepository
+import java.time.LocalDate
 import javax.enterprise.context.ApplicationScoped
 import javax.inject.Inject
 import javax.transaction.Transactional
 
+@Transactional
 @ApplicationScoped
 class SakamichiApplicationService {
 
     @Inject
-    lateinit var groupRepository: GroupRepository
+    private lateinit var groupRepository: GroupRepository
 
     @Inject
-    lateinit var memberRepository: MemberRepository
+    private lateinit var memberRepository: MemberRepository
 
     @Inject
-    lateinit var singleRepository: SingleRepository
+    private lateinit var singleRepository: SingleRepository
 
-    @Transactional
-    fun createNewGroup(createNewGroupCommand: CreateNewGroupCommand): Group {
+    fun createNewGroup(createNewGroupCommand: CreateNewGroupCommand): Pair<Group, List<Member>> {
         val group = Group(
             name = createNewGroupCommand.groupName,
             formationDate = createNewGroupCommand.formationDate
@@ -36,7 +39,7 @@ class SakamichiApplicationService {
             joinDate = group.formationDate
         )
 
-        createNewGroupCommand.initialMembers.map {
+        val members = createNewGroupCommand.initialMembers.map {
             Member(
                 name = Name(
                     firstName = it.firstName,
@@ -48,11 +51,13 @@ class SakamichiApplicationService {
                 generation = initialGeneration
             )
         }
+
         groupRepository.persist(group)
-        return group
+        groupRepository.flush()
+
+        return group to members
     }
 
-    @Transactional
     fun joinNewMembers(joinNewMembersCommand: JoinNewMembersCommand): Generation {
         val group = groupRepository.findById(joinNewMembersCommand.groupId)!!
 
@@ -74,15 +79,32 @@ class SakamichiApplicationService {
             )
         }
 
+        groupRepository.flush()
         return generation
     }
 
-    @Transactional
     fun releaseNewSingle(groupId: Long, title: String): Single {
         val single = groupRepository.findById(groupId)!!.releaseNewSingle(title)
         singleRepository.persist(single)
         return single
     }
 
+    /** 活動休止 */
+    fun startBreakOfActivity(memberId: Long, startAt: LocalDate): BreakOfActivity {
+        val member = memberRepository.findById(memberId)!!
+        return member.startBreakOfActivity(startAt)
+    }
+
+    /** 活動再開 */
+    fun comeBack(memberId: Long, endAt: LocalDate): ReturnToActivity {
+        val member = memberRepository.findById(memberId)!!
+        return member.comeBack(endAt)
+    }
+
+    /** 卒業 */
+    fun graduate(memberId: Long, leavedDate: LocalDate) {
+        val member = memberRepository.findById(memberId)!!
+        member.graduate(leavedDate)
+    }
 
 }
