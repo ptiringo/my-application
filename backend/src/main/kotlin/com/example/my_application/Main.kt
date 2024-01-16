@@ -94,6 +94,7 @@ class MainApplication : QuarkusApplication {
         horseRacingApplicationService.registerRacehorse(FIRST_FORCE)
         horseRacingApplicationService.registerRacehorse(MELODY_LANE)
         horseRacingApplicationService.registerRacehorse(EQUINOX)
+        horseRacingApplicationService.registerRacehorse(YAMANIN_OURS)
 
         horseRacingApplicationService.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacingApplicationService.registerJockey(ANDO_KATSUMI)
@@ -118,11 +119,18 @@ class MainApplication : QuarkusApplication {
 
     private fun sakamichi() {
         // 乃木坂
-        val (nogizaka46, _) = sakamichi.createNewGroup(NOGIZAKA46)
+        val (nogizaka46, nogi1stMembers) = sakamichi.createNewGroup(NOGIZAKA46)
+        val nishinoNanase = nogi1stMembers.single { it.name.familyName == "西野" && it.name.firstName == "七瀬" }
+
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
+
         val nogi4thMembers = sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4(nogizaka46.id))
         val kanagawaSaya = nogi4thMembers.members.single { it.name.familyName == "金川" && it.name.firstName == "紗耶" }
+
+        sakamichi.graduate(memberId = nishinoNanase.id, leavedDate = LocalDate.of(2019, 2, 24))
+
+        sakamichi.releaseNewSingle(SHIAWASE_NO_HOGOSHOKU(nogizaka46.id))
 
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN5(nogizaka46.id))
 
@@ -139,7 +147,8 @@ class MainApplication : QuarkusApplication {
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3(sakurazaka46.id))
 
-        sakamichi.releaseNewSingle(groupId = sakurazaka46.id, title = "Start over!")
+        sakamichi.releaseNewSingle(START_OVER(sakurazaka46.id))
+        sakamichi.releaseNewSingle(IKUTSU_NO_KORONI_MODORITAINOKA(sakurazaka46.id))
 
         // 日向坂
         val (hinatazaka46, hinata1stMembers) = sakamichi.createNewGroup(HINATAZAKA46)
@@ -149,7 +158,7 @@ class MainApplication : QuarkusApplication {
         sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN3(hinatazaka46.id))
         sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN4(hinatazaka46.id))
 
-        sakamichi.releaseNewSingle(groupId = hinatazaka46.id, title = "One Choice")
+        sakamichi.releaseNewSingle(ONE_CHOICE(hinatazaka46.id))
 
         sakamichi.graduate(memberId = saitoKyoko.id, leavedDate = LocalDate.of(2024, 4, 5))
     }
@@ -170,6 +179,7 @@ class MainApplication : QuarkusApplication {
         tennisApplicationService.registerAsPro(KEI_NISHIKORI)
         tennisApplicationService.registerAsPro(ALEX_DE_MINAUR)
         tennisApplicationService.registerAsPro(GRIGOR_DIMITROV)
+        tennisApplicationService.registerAsPro(ANDREY_RUBLEV)
     }
 
     @Transactional

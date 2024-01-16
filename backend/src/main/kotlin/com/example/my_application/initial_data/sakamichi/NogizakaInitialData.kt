@@ -3,6 +3,7 @@ package com.example.my_application.initial_data.sakamichi
 import com.example.my_application.application.sakamichi.CreateNewGroupCommand
 import com.example.my_application.application.sakamichi.JoinNewMembersCommand
 import com.example.my_application.application.sakamichi.NewMember
+import com.example.my_application.application.sakamichi.ReleaseNewSingleCommand
 import java.time.LocalDate
 
 /** 乃木坂46 */
@@ -103,7 +104,7 @@ val NOGIZAKA46_MEMBERS_GEN3 = { groupId: Long ->
 val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = groupId,
-        joinDate = LocalDate.of(2013, 3, 28),
+        joinDate = LocalDate.of(2018, 11, 29),
         newMembers = listOf(
             NewMember(
                 firstName = "紗耶",
@@ -111,13 +112,6 @@ val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
                 firstNameKana = "さや",
                 familyNameKana = "かながわ",
                 dateOfBirth = LocalDate.of(2001, 10, 31)
-            ),
-            NewMember(
-                firstName = "奈於",
-                familyName = "弓木",
-                firstNameKana = "なお",
-                familyNameKana = "ゆみき",
-                dateOfBirth = LocalDate.of(1999, 2, 3)
             ),
             NewMember(
                 firstName = "沙耶香",
@@ -132,7 +126,21 @@ val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
                 firstNameKana = "さくら",
                 familyNameKana = "えんどう",
                 dateOfBirth = LocalDate.of(2001, 10, 3)
-            )
+            ),
+            NewMember(
+                firstName = "奈於",
+                familyName = "弓木",
+                firstNameKana = "なお",
+                familyNameKana = "ゆみき",
+                dateOfBirth = LocalDate.of(1999, 2, 3)
+            ),
+            NewMember(
+                firstName = "明香",
+                familyName = "黒見",
+                firstNameKana = "はるか",
+                familyNameKana = "くろみ",
+                dateOfBirth = LocalDate.of(2004, 1, 19)
+            ),
         )
     )
 }
@@ -141,7 +149,7 @@ val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
 val NOGIZAKA46_MEMBERS_GEN5 = { groupId: Long ->
     JoinNewMembersCommand(
         groupId = groupId,
-        joinDate = LocalDate.of(2013, 3, 28),
+        joinDate = LocalDate.of(2022, 2, 1),
         newMembers = listOf(
             NewMember(
                 firstName = "彩",
@@ -200,5 +208,14 @@ val NOGIZAKA46_MEMBERS_GEN5 = { groupId: Long ->
                 dateOfBirth = LocalDate.of(2005, 7, 29)
             )
         )
+    )
+}
+
+/** しあわせの保護色 */
+val SHIAWASE_NO_HOGOSHOKU = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        title = "しあわせの保護色",
+        releaseDate = LocalDate.of(2020, 3, 25)
     )
 }

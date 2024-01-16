@@ -83,8 +83,12 @@ class SakamichiApplicationService {
         return generation
     }
 
-    fun releaseNewSingle(groupId: Long, title: String): Single {
-        val single = groupRepository.findById(groupId)!!.releaseNewSingle(title)
+    fun releaseNewSingle(command: ReleaseNewSingleCommand): Single {
+        val single = Single(
+            title = command.title,
+            group = groupRepository.findById(command.groupId)!!,
+            releaseDate = command.releaseDate
+        )
         singleRepository.persist(single)
         return single
     }

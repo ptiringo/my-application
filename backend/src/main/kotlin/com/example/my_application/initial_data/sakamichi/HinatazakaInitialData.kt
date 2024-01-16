@@ -3,6 +3,7 @@ package com.example.my_application.initial_data.sakamichi
 import com.example.my_application.application.sakamichi.CreateNewGroupCommand
 import com.example.my_application.application.sakamichi.JoinNewMembersCommand
 import com.example.my_application.application.sakamichi.NewMember
+import com.example.my_application.application.sakamichi.ReleaseNewSingleCommand
 import java.time.LocalDate
 
 
@@ -54,6 +55,13 @@ val HINATAZAKA46 =
                 familyNameKana = "うしお",
                 dateOfBirth = LocalDate.of(1997, 12, 26)
             ),
+            NewMember(
+                firstName = "愛奈",
+                familyName = "高瀬",
+                firstNameKana = "まな",
+                familyNameKana = "たかせ",
+                dateOfBirth = LocalDate.of(1998, 9, 20)
+            ),
         )
     )
 
@@ -97,6 +105,13 @@ val HINATAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
                 firstNameKana = "みく",
                 familyNameKana = "金村",
                 dateOfBirth = LocalDate.of(2002, 9, 10)
+            ),
+            NewMember(
+                firstName = "陽菜",
+                familyName = "河田",
+                firstNameKana = "ひな",
+                familyNameKana = "かわた",
+                dateOfBirth = LocalDate.of(2001, 7, 23)
             )
         )
     )
@@ -154,5 +169,13 @@ val HINATAZAKA46_MEMBERS_GEN4 = { groupId: Long ->
                 dateOfBirth = LocalDate.of(2007, 2, 14)
             )
         )
+    )
+}
+
+val ONE_CHOICE = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        title = "One Choice",
+        releaseDate = LocalDate.of(2023, 4, 19)
     )
 }

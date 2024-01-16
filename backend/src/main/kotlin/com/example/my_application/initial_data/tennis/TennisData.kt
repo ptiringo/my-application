@@ -45,3 +45,10 @@ val GRIGOR_DIMITROV = RegisterAsProCommand(
     dateOfBirth = LocalDate.of(1991, 5, 16),
     country = Country.Bulgaria
 )
+
+val ANDREY_RUBLEV = RegisterAsProCommand(
+    firstName = "Andrey",
+    familyName = "Rublev",
+    dateOfBirth = LocalDate.of(1997, 10, 20),
+    country = Country.Russia
+)

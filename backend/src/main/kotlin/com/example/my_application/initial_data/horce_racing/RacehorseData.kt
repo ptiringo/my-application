@@ -22,3 +22,8 @@ val EQUINOX = RegisterRacehorseCommand(
     name = "イクイノックス",
     dateOfBirth = LocalDate.of(2019, 3, 23)
 )
+
+val YAMANIN_OURS = RegisterRacehorseCommand(
+    name = "ヤマニンウルス",
+    dateOfBirth = LocalDate.of(2020, 5, 21)
+)

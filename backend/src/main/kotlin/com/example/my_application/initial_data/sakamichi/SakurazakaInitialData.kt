@@ -3,6 +3,7 @@ package com.example.my_application.initial_data.sakamichi
 import com.example.my_application.application.sakamichi.CreateNewGroupCommand
 import com.example.my_application.application.sakamichi.JoinNewMembersCommand
 import com.example.my_application.application.sakamichi.NewMember
+import com.example.my_application.application.sakamichi.ReleaseNewSingleCommand
 import java.time.LocalDate
 
 /** 櫻坂46 */
@@ -109,5 +110,21 @@ val SAKURAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
                 dateOfBirth = LocalDate.of(2005, 7, 7)
             )
         )
+    )
+}
+
+val START_OVER = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        title = "Start over!",
+        releaseDate = LocalDate.of(2021, 4, 14)
+    )
+}
+
+val IKUTSU_NO_KORONI_MODORITAINOKA = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        title = "何歳の頃に戻りたいのか",
+        releaseDate = LocalDate.of(2024, 2, 21)
     )
 }
