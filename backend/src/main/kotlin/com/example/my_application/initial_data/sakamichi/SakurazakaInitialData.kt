@@ -77,6 +77,13 @@ val SAKURAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
                 firstNameKana = "ほの",
                 familyNameKana = "たむら",
                 dateOfBirth = LocalDate.of(1998, 10, 21)
+            ),
+            NewMember(
+                firstName = "茉里乃",
+                familyName = "幸阪",
+                firstNameKana = "まりの",
+                familyNameKana = "こうさか",
+                dateOfBirth = LocalDate.of(2022, 12, 19)
             )
         )
     )
@@ -108,6 +115,20 @@ val SAKURAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
                 firstNameKana = "なぎさ",
                 familyNameKana = "こじま",
                 dateOfBirth = LocalDate.of(2005, 7, 7)
+            ),
+            NewMember(
+                firstName = "愛季",
+                familyName = "谷口",
+                firstNameKana = "あいり",
+                familyNameKana = "たにぐち",
+                dateOfBirth = LocalDate.of(2005, 4, 12)
+            ),
+            NewMember(
+                firstName = "美青",
+                familyName = "的野",
+                firstNameKana = "みお",
+                familyNameKana = "まとの",
+                dateOfBirth = LocalDate.of(2006, 11, 8)
             )
         )
     )

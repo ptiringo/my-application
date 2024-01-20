@@ -1,10 +1,12 @@
 package com.example.my_application.application.horce_racing
 
+import com.example.my_application.domain.horse_racing.horce_owner.HorseOwner
 import com.example.my_application.domain.horse_racing.horse.Horse
 import com.example.my_application.domain.horse_racing.horse.Racehorse
 import com.example.my_application.domain.horse_racing.jockey.Jockey
 import com.example.my_application.domain.horse_racing.jockey.Name
 import com.example.my_application.domain.horse_racing.trainer.Trainer
+import com.example.my_application.infrastructure.horse_racing.HorseOwnerRepository
 import com.example.my_application.infrastructure.horse_racing.HorseRepository
 import com.example.my_application.infrastructure.horse_racing.JockeyRepository
 import com.example.my_application.infrastructure.horse_racing.trainer.TrainerRepository
@@ -23,6 +25,9 @@ class HorseRacingApplicationService {
 
     @Inject
     lateinit var trainerRepository: TrainerRepository
+
+    @Inject
+    lateinit var horseOwnerRepository: HorseOwnerRepository
 
     @Transactional
     fun registerRacehorse(command: RegisterRacehorseCommand): Horse {
@@ -54,5 +59,12 @@ class HorseRacingApplicationService {
     @Transactional
     fun registerTrainer(trainer: Trainer) {
         trainerRepository.persist(trainer)
+    }
+
+    @Transactional
+    fun registerHorseOwner(command: RegisterHorseOwnerCommand): HorseOwner {
+        val horseOwner = HorseOwner(name = command.name)
+        horseOwnerRepository.persist(horseOwner)
+        return horseOwner
     }
 }

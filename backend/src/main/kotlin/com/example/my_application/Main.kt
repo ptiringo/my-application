@@ -70,7 +70,7 @@ class MainApplication : QuarkusApplication {
     lateinit var ikebukuroIncidentRepository: IkebukuroIncidentRepository
 
     @Inject
-    lateinit var horseRacingApplicationService: HorseRacingApplicationService
+    lateinit var horseRacing: HorseRacingApplicationService
 
     @Inject
     lateinit var sakamichi: SakamichiApplicationService
@@ -90,14 +90,14 @@ class MainApplication : QuarkusApplication {
 
     @Transactional
     fun horseRacing() {
-        horseRacingApplicationService.registerRacehorse(KITASAN_BLACK)
-        horseRacingApplicationService.registerRacehorse(FIRST_FORCE)
-        horseRacingApplicationService.registerRacehorse(MELODY_LANE)
-        horseRacingApplicationService.registerRacehorse(EQUINOX)
-        horseRacingApplicationService.registerRacehorse(YAMANIN_OURS)
+        horseRacing.registerRacehorse(KITASAN_BLACK)
+        horseRacing.registerRacehorse(FIRST_FORCE)
+        horseRacing.registerRacehorse(MELODY_LANE)
+        horseRacing.registerRacehorse(EQUINOX)
+        horseRacing.registerRacehorse(YAMANIN_OURS)
 
-        horseRacingApplicationService.registerJockey(CHRISTOPHE_LEMAIRE)
-        horseRacingApplicationService.registerJockey(ANDO_KATSUMI)
+        horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
+        horseRacing.registerJockey(ANDO_KATSUMI)
 
         val japan = Country(name = "日本")
         val unitedArabEmirates = Country(name = "アラブ首長国連邦")
@@ -114,7 +114,9 @@ class MainApplication : QuarkusApplication {
             Race("オールエイジドステークス", Grade.G1, randwick, TrackSurface.TURF, 1400)
         )
 
-        horseRacingApplicationService.registerTrainer(KATO_KAZUHIRO)
+        horseRacing.registerTrainer(KATO_KAZUHIRO)
+
+        horseRacing.registerHorseOwner(KUMETA_MASAAKI)
     }
 
     private fun sakamichi() {
@@ -143,12 +145,16 @@ class MainApplication : QuarkusApplication {
         }
 
         // 櫻坂
-        val (sakurazaka46, _) = sakamichi.createNewGroup(SAKURAZAKA46)
+        val (sakurazaka46, sakura1stMembers) = sakamichi.createNewGroup(SAKURAZAKA46)
+        val kobayashiYui = sakura1stMembers.single { it.name.familyName == "小林" && it.name.firstName == "由依" }
+
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3(sakurazaka46.id))
 
         sakamichi.releaseNewSingle(START_OVER(sakurazaka46.id))
         sakamichi.releaseNewSingle(IKUTSU_NO_KORONI_MODORITAINOKA(sakurazaka46.id))
+
+        sakamichi.graduate(kobayashiYui.id, LocalDate.of(2024, 2, 1))
 
         // 日向坂
         val (hinatazaka46, hinata1stMembers) = sakamichi.createNewGroup(HINATAZAKA46)
