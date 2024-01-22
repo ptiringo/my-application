@@ -1,5 +1,5 @@
 package com.example.my_application.application.horce_racing
 
-class RegisterHorseOwnerCommand(
+data class RegisterHorseOwnerCommand(
     val name: String
 )

@@ -4,9 +4,6 @@ import com.example.my_application.application.horce_racing.HorseRacingApplicatio
 import com.example.my_application.application.sakamichi.SakamichiApplicationService
 import com.example.my_application.application.tennis.TennisApplicationService
 import com.example.my_application.domain.horse_racing.Country
-import com.example.my_application.domain.horse_racing.TrackSurface
-import com.example.my_application.domain.horse_racing.race.Grade
-import com.example.my_application.domain.horse_racing.race.Race
 import com.example.my_application.domain.horse_racing.racecourse.Racecourse
 import com.example.my_application.domain.tennis.TennisSurface
 import com.example.my_application.domain.tennis.Tournament
@@ -90,6 +87,7 @@ class MainApplication : QuarkusApplication {
 
     @Transactional
     fun horseRacing() {
+        horseRacing.registerRacehorse(LOGIC)
         horseRacing.registerRacehorse(KITASAN_BLACK)
         horseRacing.registerRacehorse(FIRST_FORCE)
         horseRacing.registerRacehorse(MELODY_LANE)
@@ -109,10 +107,8 @@ class MainApplication : QuarkusApplication {
         val sapporo = Racecourse("札幌", japan)
         racecourseRepository.persist(meydan, randwick, sapporo)
 
-        raceRepository.persist(
-            Race("ドバイシーマクラシック", Grade.G1, meydan, TrackSurface.TURF, 2410),
-            Race("オールエイジドステークス", Grade.G1, randwick, TrackSurface.TURF, 1400)
-        )
+        horseRacing.registerRace(DUBAI_SHEEMA_CLASSIC(meydan.id))
+        horseRacing.registerRace(ALL_AGED_STAKES(randwick.id))
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
 
@@ -186,6 +182,7 @@ class MainApplication : QuarkusApplication {
         tennisApplicationService.registerAsPro(ALEX_DE_MINAUR)
         tennisApplicationService.registerAsPro(GRIGOR_DIMITROV)
         tennisApplicationService.registerAsPro(ANDREY_RUBLEV)
+        tennisApplicationService.registerAsPro(CARLOS_ALCARAZ)
     }
 
     @Transactional

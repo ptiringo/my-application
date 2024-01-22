@@ -5,10 +5,9 @@ import com.example.my_application.domain.horse_racing.horse.Horse
 import com.example.my_application.domain.horse_racing.horse.Racehorse
 import com.example.my_application.domain.horse_racing.jockey.Jockey
 import com.example.my_application.domain.horse_racing.jockey.Name
+import com.example.my_application.domain.horse_racing.race.Race
 import com.example.my_application.domain.horse_racing.trainer.Trainer
-import com.example.my_application.infrastructure.horse_racing.HorseOwnerRepository
-import com.example.my_application.infrastructure.horse_racing.HorseRepository
-import com.example.my_application.infrastructure.horse_racing.JockeyRepository
+import com.example.my_application.infrastructure.horse_racing.*
 import com.example.my_application.infrastructure.horse_racing.trainer.TrainerRepository
 import javax.enterprise.context.ApplicationScoped
 import javax.inject.Inject
@@ -18,16 +17,22 @@ import javax.transaction.Transactional
 class HorseRacingApplicationService {
 
     @Inject
-    lateinit var horseRepository: HorseRepository
+    private lateinit var horseRepository: HorseRepository
 
     @Inject
-    lateinit var jockeyRepository: JockeyRepository
+    private lateinit var jockeyRepository: JockeyRepository
 
     @Inject
-    lateinit var trainerRepository: TrainerRepository
+    private lateinit var trainerRepository: TrainerRepository
 
     @Inject
-    lateinit var horseOwnerRepository: HorseOwnerRepository
+    private lateinit var horseOwnerRepository: HorseOwnerRepository
+
+    @Inject
+    private lateinit var raceRepository: RaceRepository
+
+    @Inject
+    private lateinit var racecourseRepository: RacecourseRepository
 
     @Transactional
     fun registerRacehorse(command: RegisterRacehorseCommand): Horse {
@@ -66,5 +71,19 @@ class HorseRacingApplicationService {
         val horseOwner = HorseOwner(name = command.name)
         horseOwnerRepository.persist(horseOwner)
         return horseOwner
+    }
+
+    @Transactional
+    fun registerRace(command: RegisterRaceCommand): Race {
+        val racecourse = racecourseRepository.findById(command.racecourseId)!!
+        val race = Race(
+            name = command.name,
+            grade = command.grade,
+            racecourse = racecourse,
+            trackSurface = command.truckSurface,
+            distance = command.distance,
+        )
+        raceRepository.persist(race)
+        return race
     }
 }

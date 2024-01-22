@@ -1,6 +1,6 @@
 package com.example.my_application.application.horce_racing
 
-class RegisterJockeyCommand(
+data class RegisterJockeyCommand(
     val firstNameKana: String,
     val familyNameKana: String,
     val firstNameKanji: String? = null,
