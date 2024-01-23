@@ -142,6 +142,7 @@ class MainApplication : QuarkusApplication {
 
         // 櫻坂
         val (sakurazaka46, sakura1stMembers) = sakamichi.createNewGroup(SAKURAZAKA46)
+        val habuMizuho = sakura1stMembers.single { it.name.familyName == "土生" && it.name.firstName == "瑞穂" }
         val kobayashiYui = sakura1stMembers.single { it.name.familyName == "小林" && it.name.firstName == "由依" }
 
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
@@ -150,6 +151,7 @@ class MainApplication : QuarkusApplication {
         sakamichi.releaseNewSingle(START_OVER(sakurazaka46.id))
         sakamichi.releaseNewSingle(IKUTSU_NO_KORONI_MODORITAINOKA(sakurazaka46.id))
 
+        sakamichi.graduate(habuMizuho.id, LocalDate.of(2023, 11, 25))
         sakamichi.graduate(kobayashiYui.id, LocalDate.of(2024, 2, 1))
 
         // 日向坂
