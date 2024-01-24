@@ -3,8 +3,6 @@ package com.example.my_application
 import com.example.my_application.application.horce_racing.HorseRacingApplicationService
 import com.example.my_application.application.sakamichi.SakamichiApplicationService
 import com.example.my_application.application.tennis.TennisApplicationService
-import com.example.my_application.domain.horse_racing.Country
-import com.example.my_application.domain.horse_racing.racecourse.Racecourse
 import com.example.my_application.domain.tennis.TennisSurface
 import com.example.my_application.domain.tennis.Tournament
 import com.example.my_application.domain.tennis.TournamentCategory
@@ -13,9 +11,6 @@ import com.example.my_application.domain.urban_sociology.MunicipalityType
 import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
 import com.example.my_application.domain.urban_sociology.ikebukuro.IkebukuroIncident
-import com.example.my_application.infrastructure.horse_racing.CountryRepository
-import com.example.my_application.infrastructure.horse_racing.RaceRepository
-import com.example.my_application.infrastructure.horse_racing.RacecourseRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
@@ -43,15 +38,6 @@ class Main {
 class MainApplication : QuarkusApplication {
 
     @Inject
-    lateinit var countryRepository: CountryRepository
-
-    @Inject
-    lateinit var raceRepository: RaceRepository
-
-    @Inject
-    lateinit var racecourseRepository: RacecourseRepository
-
-    @Inject
     lateinit var prefectureRepository: PrefectureRepository
 
     @Inject
@@ -61,7 +47,7 @@ class MainApplication : QuarkusApplication {
     lateinit var tournamentRepository: TournamentRepository
 
     @Inject
-    lateinit var tennisApplicationService: TennisApplicationService
+    lateinit var tennis: TennisApplicationService
 
     @Inject
     lateinit var ikebukuroIncidentRepository: IkebukuroIncidentRepository
@@ -85,7 +71,6 @@ class MainApplication : QuarkusApplication {
         urbanSociology()
     }
 
-    @Transactional
     fun horseRacing() {
         horseRacing.registerRacehorse(LOGIC)
         horseRacing.registerRacehorse(KITASAN_BLACK)
@@ -97,18 +82,14 @@ class MainApplication : QuarkusApplication {
         horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacing.registerJockey(ANDO_KATSUMI)
 
-        val japan = Country(name = "日本")
-        val unitedArabEmirates = Country(name = "アラブ首長国連邦")
-        val australia = Country(name = "オーストラリア")
-        countryRepository.persist(japan, unitedArabEmirates, australia)
-
-        val meydan = Racecourse("メイダン", unitedArabEmirates)
-        val randwick = Racecourse("ランドウィック", australia)
-        val sapporo = Racecourse("札幌", japan)
-        racecourseRepository.persist(meydan, randwick, sapporo)
+        val meydan = horseRacing.registerRacecourse(MEYDAN)
+        val randwick = horseRacing.registerRacecourse(RANDWICK)
+        horseRacing.registerRacecourse(SAPPORO)
+        val tokyo = horseRacing.registerRacecourse(TOKYO)
 
         horseRacing.registerRace(DUBAI_SHEEMA_CLASSIC(meydan.id))
         horseRacing.registerRace(ALL_AGED_STAKES(randwick.id))
+        horseRacing.registerRace(JAPAN_CUP(tokyo.id))
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
 
@@ -177,14 +158,15 @@ class MainApplication : QuarkusApplication {
             )
         )
 
-        tennisApplicationService.registerAsPro(RAFAEL_NADAL)
-        tennisApplicationService.registerAsPro(NOVAK_DJOKOVIC)
-        tennisApplicationService.registerAsPro(DANIIL_MEDVEDEV)
-        tennisApplicationService.registerAsPro(KEI_NISHIKORI)
-        tennisApplicationService.registerAsPro(ALEX_DE_MINAUR)
-        tennisApplicationService.registerAsPro(GRIGOR_DIMITROV)
-        tennisApplicationService.registerAsPro(ANDREY_RUBLEV)
-        tennisApplicationService.registerAsPro(CARLOS_ALCARAZ)
+        tennis.registerAsPro(RAFAEL_NADAL)
+        tennis.registerAsPro(NOVAK_DJOKOVIC)
+        tennis.registerAsPro(DANIIL_MEDVEDEV)
+        tennis.registerAsPro(KEI_NISHIKORI)
+        tennis.registerAsPro(ALEX_DE_MINAUR)
+        tennis.registerAsPro(GRIGOR_DIMITROV)
+        tennis.registerAsPro(ANDREY_RUBLEV)
+        tennis.registerAsPro(CARLOS_ALCARAZ)
+        tennis.registerAsPro(ALEXANDER_ZVEREV)
     }
 
     @Transactional

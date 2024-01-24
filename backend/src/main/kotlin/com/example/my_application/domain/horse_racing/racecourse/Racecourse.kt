@@ -8,7 +8,7 @@ class Racecourse(
     @Column(nullable = false)
     val name: String,
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @Enumerated(EnumType.STRING)
     val country: Country,
 
     @Id

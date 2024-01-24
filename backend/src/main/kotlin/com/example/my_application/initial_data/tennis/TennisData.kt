@@ -59,3 +59,10 @@ val CARLOS_ALCARAZ = RegisterAsProCommand(
     dateOfBirth = LocalDate.of(2003, 5, 5),
     country = Country.Spain
 )
+
+val ALEXANDER_ZVEREV = RegisterAsProCommand(
+    firstName = "Alexander",
+    familyName = "Zverev",
+    dateOfBirth = LocalDate.of(1997, 4, 20),
+    country = Country.Germany
+)

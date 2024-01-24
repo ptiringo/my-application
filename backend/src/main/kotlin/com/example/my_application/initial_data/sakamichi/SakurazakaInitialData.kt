@@ -83,7 +83,21 @@ val SAKURAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
                 familyName = "幸阪",
                 firstNameKana = "まりの",
                 familyNameKana = "こうさか",
-                dateOfBirth = LocalDate.of(2022, 12, 19)
+                dateOfBirth = LocalDate.of(2002, 12, 19)
+            ),
+            NewMember(
+                firstName = "梨名",
+                familyName = "井上",
+                firstNameKana = "りな",
+                familyNameKana = "いのうえ",
+                dateOfBirth = LocalDate.of(2001, 1, 29)
+            ),
+            NewMember(
+                firstName = "唯衣",
+                familyName = "武元",
+                firstNameKana = "ゆい",
+                familyNameKana = "たけもと",
+                dateOfBirth = LocalDate.of(2002, 3, 23)
             )
         )
     )

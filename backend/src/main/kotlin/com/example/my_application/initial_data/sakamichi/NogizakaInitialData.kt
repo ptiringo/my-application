@@ -77,6 +77,13 @@ val NOGIZAKA46_MEMBERS_GEN2 = { groupId: Long ->
                 firstNameKana = "さがら",
                 familyNameKana = "いおり",
                 dateOfBirth = LocalDate.of(1997, 11, 26)
+            ),
+            NewMember(
+                firstName = "純奈",
+                familyName = "伊藤",
+                firstNameKana = "じゅんな",
+                familyNameKana = "いとう",
+                dateOfBirth = LocalDate.of(1998, 11, 30)
             )
         )
     )

@@ -6,6 +6,7 @@ import com.example.my_application.domain.horse_racing.horse.Racehorse
 import com.example.my_application.domain.horse_racing.jockey.Jockey
 import com.example.my_application.domain.horse_racing.jockey.Name
 import com.example.my_application.domain.horse_racing.race.Race
+import com.example.my_application.domain.horse_racing.racecourse.Racecourse
 import com.example.my_application.domain.horse_racing.trainer.Trainer
 import com.example.my_application.infrastructure.horse_racing.*
 import com.example.my_application.infrastructure.horse_racing.trainer.TrainerRepository
@@ -71,6 +72,16 @@ class HorseRacingApplicationService {
         val horseOwner = HorseOwner(name = command.name)
         horseOwnerRepository.persist(horseOwner)
         return horseOwner
+    }
+
+    @Transactional
+    fun registerRacecourse(command: RegisterRacecourseCommand): Racecourse {
+        val racecourse = Racecourse(
+            name = command.name,
+            country = command.country,
+        )
+        racecourseRepository.persist(racecourse)
+        return racecourse
     }
 
     @Transactional
