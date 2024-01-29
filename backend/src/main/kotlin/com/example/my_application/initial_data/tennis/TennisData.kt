@@ -1,8 +1,25 @@
 package com.example.my_application.initial_data.tennis
 
 import com.example.my_application.application.tennis.RegisterAsProCommand
+import com.example.my_application.application.tennis.RegisterTournamentCommand
 import com.example.my_application.domain.tennis.Country
+import com.example.my_application.domain.tennis.TennisSurface
+import com.example.my_application.domain.tennis.TournamentCategory
 import java.time.LocalDate
+
+val MONTE_CARLO = RegisterTournamentCommand(
+    name = "Monte-Carlo Masters",
+    location = "Monte-Carlo",
+    tournamentCategory = TournamentCategory.ATP_TOUR_MASTERS_1000,
+    tennisSurface = TennisSurface.CLAY
+)
+
+val AUSTRALIAN_OPEN = RegisterTournamentCommand(
+    name = "Australian Open",
+    location = "Melbourne",
+    tournamentCategory = TournamentCategory.GRAND_SLAM,
+    tennisSurface = TennisSurface.HARD
+)
 
 val RAFAEL_NADAL = RegisterAsProCommand(
     firstName = "Rafael",
@@ -65,4 +82,11 @@ val ALEXANDER_ZVEREV = RegisterAsProCommand(
     familyName = "Zverev",
     dateOfBirth = LocalDate.of(1997, 4, 20),
     country = Country.Germany
+)
+
+val SAKAMOTO_REI = RegisterAsProCommand(
+    firstName = "坂本",
+    familyName = "怜",
+    dateOfBirth = LocalDate.of(2006, 6, 24),
+    country = Country.Japan
 )

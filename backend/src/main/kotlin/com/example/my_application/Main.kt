@@ -3,9 +3,6 @@ package com.example.my_application
 import com.example.my_application.application.horce_racing.HorseRacingApplicationService
 import com.example.my_application.application.sakamichi.SakamichiApplicationService
 import com.example.my_application.application.tennis.TennisApplicationService
-import com.example.my_application.domain.tennis.TennisSurface
-import com.example.my_application.domain.tennis.Tournament
-import com.example.my_application.domain.tennis.TournamentCategory
 import com.example.my_application.domain.urban_sociology.Municipality
 import com.example.my_application.domain.urban_sociology.MunicipalityType
 import com.example.my_application.domain.urban_sociology.Prefecture
@@ -71,6 +68,7 @@ class MainApplication : QuarkusApplication {
         urbanSociology()
     }
 
+    @Transactional
     fun horseRacing() {
         horseRacing.registerRacehorse(LOGIC)
         horseRacing.registerRacehorse(KITASAN_BLACK)
@@ -81,6 +79,7 @@ class MainApplication : QuarkusApplication {
 
         horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacing.registerJockey(ANDO_KATSUMI)
+        horseRacing.registerJockey(LUKE_MORRIS)
 
         val meydan = horseRacing.registerRacecourse(MEYDAN)
         val randwick = horseRacing.registerRacecourse(RANDWICK)
@@ -92,6 +91,7 @@ class MainApplication : QuarkusApplication {
         horseRacing.registerRace(JAPAN_CUP(tokyo.id))
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
+        horseRacing.registerTrainer(SUGIYAMA_HARUKI)
 
         horseRacing.registerHorseOwner(KUMETA_MASAAKI)
     }
@@ -130,6 +130,7 @@ class MainApplication : QuarkusApplication {
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3(sakurazaka46.id))
 
         sakamichi.releaseNewSingle(START_OVER(sakurazaka46.id))
+        sakamichi.releaseNewSingle(SHOUNIN_YOKKYU(sakurazaka46.id))
         sakamichi.releaseNewSingle(IKUTSU_NO_KORONI_MODORITAINOKA(sakurazaka46.id))
 
         sakamichi.graduate(habuMizuho.id, LocalDate.of(2023, 11, 25))
@@ -148,15 +149,9 @@ class MainApplication : QuarkusApplication {
         sakamichi.graduate(memberId = saitoKyoko.id, leavedDate = LocalDate.of(2024, 4, 5))
     }
 
-    @Transactional
-    fun tennis() {
-        tournamentRepository.persist(
-            Tournament(
-                "Monte-Carlo",
-                TournamentCategory.ATP_TOUR_MASTERS_1000,
-                TennisSurface.CLAY
-            )
-        )
+    private fun tennis() {
+        tennis.registerTournament(MONTE_CARLO)
+        tennis.registerTournament(AUSTRALIAN_OPEN)
 
         tennis.registerAsPro(RAFAEL_NADAL)
         tennis.registerAsPro(NOVAK_DJOKOVIC)
@@ -167,6 +162,7 @@ class MainApplication : QuarkusApplication {
         tennis.registerAsPro(ANDREY_RUBLEV)
         tennis.registerAsPro(CARLOS_ALCARAZ)
         tennis.registerAsPro(ALEXANDER_ZVEREV)
+        tennis.registerAsPro(SAKAMOTO_REI)
     }
 
     @Transactional

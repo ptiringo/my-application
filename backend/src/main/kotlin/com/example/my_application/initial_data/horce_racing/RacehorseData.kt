@@ -32,3 +32,8 @@ val LOGIC = RegisterRacehorseCommand(
     name = "ロジック",
     dateOfBirth = LocalDate.of(2003, 3, 17)
 )
+
+val LUGAL = RegisterRacehorseCommand(
+    name = "ルガル",
+    dateOfBirth = LocalDate.of(2020, 3, 7)
+)

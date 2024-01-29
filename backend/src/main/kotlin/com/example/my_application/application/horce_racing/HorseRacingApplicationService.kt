@@ -63,8 +63,13 @@ class HorseRacingApplicationService {
     }
 
     @Transactional
-    fun registerTrainer(trainer: Trainer) {
+    fun registerTrainer(command: RegisterTrainerCommand): Trainer {
+        val trainer = Trainer(
+            firstName = command.firstName,
+            familyName = command.familyName,
+        )
         trainerRepository.persist(trainer)
+        return trainer
     }
 
     @Transactional

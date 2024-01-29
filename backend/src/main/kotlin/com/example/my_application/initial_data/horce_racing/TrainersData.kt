@@ -1,5 +1,6 @@
 package com.example.my_application.initial_data.horce_racing
 
-import com.example.my_application.domain.horse_racing.trainer.Trainer
+import com.example.my_application.application.horce_racing.RegisterTrainerCommand
 
-val KATO_KAZUHIRO = Trainer(firstName = "和宏", familyName = "加藤")
+val KATO_KAZUHIRO = RegisterTrainerCommand(firstName = "和宏", familyName = "加藤")
+val SUGIYAMA_HARUKI = RegisterTrainerCommand(firstName = "春樹", familyName = "杉山")

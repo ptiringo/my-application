@@ -4,6 +4,7 @@ import com.example.my_application.domain.sakamichi.group.Group
 import java.time.LocalDate
 import javax.persistence.*
 
+/** シングル */
 @Entity
 class Single(
 
@@ -18,3 +19,4 @@ class Single(
     @Id @GeneratedValue
     val id: Long = 0,
 )
+

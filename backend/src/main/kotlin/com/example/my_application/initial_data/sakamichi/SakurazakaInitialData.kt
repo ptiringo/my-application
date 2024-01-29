@@ -152,7 +152,15 @@ val START_OVER = { groupId: Long ->
     ReleaseNewSingleCommand(
         groupId = groupId,
         title = "Start over!",
-        releaseDate = LocalDate.of(2021, 4, 14)
+        releaseDate = LocalDate.of(2023, 6, 28)
+    )
+}
+
+val SHOUNIN_YOKKYU = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        title = "承認欲求",
+        releaseDate = LocalDate.of(2023, 10, 18)
     )
 }
 

@@ -28,5 +28,8 @@ class LeavingFromGroup(
 /** 脱退の種類 */
 enum class LeavingType {
     /** 卒業 */
-    GRADUATION
+    GRADUATION,
+
+    /** 活動辞退 */
+    WITHDRAWAL_FROM_ACTIVITY
 }

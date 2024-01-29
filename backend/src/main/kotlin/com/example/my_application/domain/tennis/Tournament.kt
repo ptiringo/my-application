@@ -2,9 +2,15 @@ package com.example.my_application.domain.tennis
 
 import javax.persistence.*
 
+/** 大会 */
 @Entity
 class Tournament(
 
+    /** 大会名 */
+    @Column(nullable = false)
+    val name: String,
+
+    /** 開催地 */
     @Column(nullable = false)
     val location: String,
 
