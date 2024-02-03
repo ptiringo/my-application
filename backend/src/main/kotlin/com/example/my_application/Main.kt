@@ -8,7 +8,6 @@ import com.example.my_application.domain.urban_sociology.MunicipalityType
 import com.example.my_application.domain.urban_sociology.Prefecture
 import com.example.my_application.domain.urban_sociology.PrefectureType
 import com.example.my_application.domain.urban_sociology.ikebukuro.IkebukuroIncident
-import com.example.my_application.infrastructure.tennis.TournamentRepository
 import com.example.my_application.infrastructure.urban_sociology.MunicipalityRepository
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
 import com.example.my_application.infrastructure.urban_sociology.ikebukuro.IkebukuroIncidentRepository
@@ -39,9 +38,6 @@ class MainApplication : QuarkusApplication {
 
     @Inject
     lateinit var municipalityRepository: MunicipalityRepository
-
-    @Inject
-    lateinit var tournamentRepository: TournamentRepository
 
     @Inject
     lateinit var tennis: TennisApplicationService
@@ -85,6 +81,7 @@ class MainApplication : QuarkusApplication {
         val randwick = horseRacing.registerRacecourse(RANDWICK)
         horseRacing.registerRacecourse(SAPPORO)
         val tokyo = horseRacing.registerRacecourse(TOKYO)
+        horseRacing.registerRacecourse(KYOTO)
 
         horseRacing.registerRace(DUBAI_SHEEMA_CLASSIC(meydan.id))
         horseRacing.registerRace(ALL_AGED_STAKES(randwick.id))
@@ -163,6 +160,8 @@ class MainApplication : QuarkusApplication {
         tennis.registerAsPro(CARLOS_ALCARAZ)
         tennis.registerAsPro(ALEXANDER_ZVEREV)
         tennis.registerAsPro(SAKAMOTO_REI)
+        tennis.registerAsPro(STEFANOS_TSITSIPAS)
+        tennis.registerAsPro(ROGER_FEDERER)
     }
 
     @Transactional

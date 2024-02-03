@@ -1,7 +1,7 @@
 package com.example.my_application.application.tennis
 
-import com.example.my_application.domain.tennis.Tournament
 import com.example.my_application.domain.tennis.player.Player
+import com.example.my_application.domain.tennis.tournament.Tournament
 import com.example.my_application.infrastructure.tennis.PlayerRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
 import javax.enterprise.context.ApplicationScoped

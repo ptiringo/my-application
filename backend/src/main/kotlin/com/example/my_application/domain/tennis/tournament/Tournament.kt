@@ -1,5 +1,6 @@
-package com.example.my_application.domain.tennis
+package com.example.my_application.domain.tennis.tournament
 
+import com.example.my_application.domain.tennis.held_tournament.HeldTournament
 import javax.persistence.*
 
 /** 大会 */
@@ -19,6 +20,9 @@ class Tournament(
 
     @Enumerated(EnumType.STRING)
     val tennisSurface: TennisSurface,
+
+    @OneToMany(mappedBy = "tournament", cascade = [], fetch = FetchType.LAZY)
+    val heldTournaments: MutableSet<HeldTournament> = mutableSetOf(),
 
     @Id
     @GeneratedValue

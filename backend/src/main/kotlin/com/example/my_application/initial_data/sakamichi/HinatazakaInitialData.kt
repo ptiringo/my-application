@@ -62,6 +62,13 @@ val HINATAZAKA46 =
                 familyNameKana = "たかせ",
                 dateOfBirth = LocalDate.of(1998, 9, 20)
             ),
+            NewMember(
+                firstName = "美玲",
+                familyName = "佐々木",
+                firstNameKana = "みれい",
+                familyNameKana = "ささき",
+                dateOfBirth = LocalDate.of(1999, 12, 17)
+            ),
         )
     )
 

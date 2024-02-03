@@ -22,3 +22,8 @@ val TOKYO = RegisterRacecourseCommand(
     name = "東京",
     country = Country.Japan
 )
+
+val KYOTO = RegisterRacecourseCommand(
+    name = "京都",
+    country = Country.Japan
+)

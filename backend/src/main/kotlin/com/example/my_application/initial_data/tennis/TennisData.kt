@@ -3,8 +3,8 @@ package com.example.my_application.initial_data.tennis
 import com.example.my_application.application.tennis.RegisterAsProCommand
 import com.example.my_application.application.tennis.RegisterTournamentCommand
 import com.example.my_application.domain.tennis.Country
-import com.example.my_application.domain.tennis.TennisSurface
-import com.example.my_application.domain.tennis.TournamentCategory
+import com.example.my_application.domain.tennis.tournament.TennisSurface
+import com.example.my_application.domain.tennis.tournament.TournamentCategory
 import java.time.LocalDate
 
 val MONTE_CARLO = RegisterTournamentCommand(
@@ -89,4 +89,18 @@ val SAKAMOTO_REI = RegisterAsProCommand(
     familyName = "怜",
     dateOfBirth = LocalDate.of(2006, 6, 24),
     country = Country.Japan
+)
+
+val STEFANOS_TSITSIPAS = RegisterAsProCommand(
+    firstName = "Stefanos",
+    familyName = "Tsitsipas",
+    dateOfBirth = LocalDate.of(1998, 8, 12),
+    country = Country.Greece
+)
+
+val ROGER_FEDERER = RegisterAsProCommand(
+    firstName = "Roger",
+    familyName = "Federer",
+    dateOfBirth = LocalDate.of(1981, 8, 8),
+    country = Country.Switzerland
 )

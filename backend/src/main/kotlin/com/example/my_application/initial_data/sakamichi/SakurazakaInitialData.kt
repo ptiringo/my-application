@@ -53,6 +53,20 @@ val SAKURAZAKA46 =
                 firstNameKana = "ねる",
                 familyNameKana = "ながはま",
                 dateOfBirth = LocalDate.of(1998, 9, 4)
+            ),
+            NewMember(
+                firstName = "友梨奈",
+                familyName = "平手",
+                firstNameKana = "ゆりな",
+                familyNameKana = "ひらて",
+                dateOfBirth = LocalDate.of(2001, 6, 25)
+            ),
+            NewMember(
+                firstName = "莉菜",
+                familyName = "上村",
+                firstNameKana = "りな",
+                familyNameKana = "うえむら",
+                dateOfBirth = LocalDate.of(1997, 1, 4)
             )
         )
     )
