@@ -37,3 +37,8 @@ val LUGAL = RegisterRacehorseCommand(
     name = "ルガル",
     dateOfBirth = LocalDate.of(2020, 3, 7)
 )
+
+val COMMAND_LINE = RegisterRacehorseCommand(
+    name = "コマンドライン",
+    dateOfBirth = LocalDate.of(2019, 2, 20)
+)

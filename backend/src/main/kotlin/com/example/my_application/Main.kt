@@ -72,6 +72,8 @@ class MainApplication : QuarkusApplication {
         horseRacing.registerRacehorse(MELODY_LANE)
         horseRacing.registerRacehorse(EQUINOX)
         horseRacing.registerRacehorse(YAMANIN_OURS)
+        horseRacing.registerRacehorse(LUGAL)
+        horseRacing.registerRacehorse(COMMAND_LINE)
 
         horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacing.registerJockey(ANDO_KATSUMI)
