@@ -83,11 +83,12 @@ class MainApplication : QuarkusApplication {
         val randwick = horseRacing.registerRacecourse(RANDWICK)
         horseRacing.registerRacecourse(SAPPORO)
         val tokyo = horseRacing.registerRacecourse(TOKYO)
-        horseRacing.registerRacecourse(KYOTO)
+        val kyoto = horseRacing.registerRacecourse(KYOTO)
 
         horseRacing.registerRace(DUBAI_SHEEMA_CLASSIC(meydan.id))
         horseRacing.registerRace(ALL_AGED_STAKES(randwick.id))
         horseRacing.registerRace(JAPAN_CUP(tokyo.id))
+        horseRacing.registerRace(KYOTO_KINEN(kyoto.id))
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
         horseRacing.registerTrainer(SUGIYAMA_HARUKI)
@@ -109,6 +110,7 @@ class MainApplication : QuarkusApplication {
         sakamichi.graduate(memberId = nishinoNanase.id, leavedDate = LocalDate.of(2019, 2, 24))
 
         sakamichi.releaseNewSingle(SHIAWASE_NO_HOGOSHOKU(nogizaka46.id))
+        sakamichi.releaseNewSingle(SING_OUT(nogizaka46.id))
 
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN5(nogizaka46.id))
 

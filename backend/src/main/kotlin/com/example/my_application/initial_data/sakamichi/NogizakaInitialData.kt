@@ -268,3 +268,11 @@ val SHIAWASE_NO_HOGOSHOKU = { groupId: Long ->
         releaseDate = LocalDate.of(2020, 3, 25)
     )
 }
+
+val SING_OUT = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        title = "Sing Out!",
+        releaseDate = LocalDate.of(2019, 5, 29)
+    )
+}
