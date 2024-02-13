@@ -7,7 +7,7 @@ import javax.persistence.*
 /** メンバー */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-final class Member(
+class Member(
 
     /** 名前 */
     @Embedded
@@ -115,5 +115,8 @@ class Name(
 
     /** 名字（かな） */
     @Column(nullable = false)
-    val familyNameKana: String
+    val familyNameKana: String,
+
+    /** ミドルネーム */
+    val middleName: String? = null
 )

@@ -8,4 +8,5 @@ data class NewMember(
     val firstNameKana: String,
     val familyNameKana: String,
     val dateOfBirth: LocalDate,
+    val middleName: String? = null,
 )

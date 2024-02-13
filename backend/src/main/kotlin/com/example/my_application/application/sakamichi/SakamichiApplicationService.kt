@@ -45,7 +45,8 @@ class SakamichiApplicationService {
                     firstName = it.firstName,
                     familyName = it.familyName,
                     firstNameKana = it.firstNameKana,
-                    familyNameKana = it.familyNameKana
+                    familyNameKana = it.familyNameKana,
+                    middleName = it.middleName,
                 ),
                 dateOfBirth = it.dateOfBirth,
                 generation = initialGeneration
@@ -72,7 +73,8 @@ class SakamichiApplicationService {
                     firstName = it.firstName,
                     familyName = it.familyName,
                     firstNameKana = it.firstNameKana,
-                    familyNameKana = it.familyNameKana
+                    familyNameKana = it.familyNameKana,
+                    middleName = it.middleName,
                 ),
                 dateOfBirth = it.dateOfBirth,
                 generation = generation
