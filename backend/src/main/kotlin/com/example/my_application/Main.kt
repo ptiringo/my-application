@@ -64,7 +64,6 @@ class MainApplication : QuarkusApplication {
         urbanSociology()
     }
 
-    @Transactional
     fun horseRacing() {
         horseRacing.registerRacehorse(LOGIC)
         horseRacing.registerRacehorse(KITASAN_BLACK)
@@ -98,14 +97,15 @@ class MainApplication : QuarkusApplication {
 
     private fun sakamichi() {
         // 乃木坂
-        val (nogizaka46, nogi1stMembers) = sakamichi.createNewGroup(NOGIZAKA46)
+        val (nogizaka46, nogi1stGen) = sakamichi.createNewGroup(NOGIZAKA46)
+        val nogi1stMembers = nogi1stGen.members
         val nishinoNanase = nogi1stMembers.single { it.name.familyName == "西野" && it.name.firstName == "七瀬" }
 
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
 
-        val nogi4thMembers = sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4(nogizaka46.id))
-        val kanagawaSaya = nogi4thMembers.members.single { it.name.familyName == "金川" && it.name.firstName == "紗耶" }
+        val nogi4thGen = sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4(nogizaka46.id))
+        val kanagawaSaya = nogi4thGen.members.single { it.name.familyName == "金川" && it.name.firstName == "紗耶" }
 
         sakamichi.graduate(memberId = nishinoNanase.id, leavedDate = LocalDate.of(2019, 2, 24))
 
@@ -123,7 +123,8 @@ class MainApplication : QuarkusApplication {
         }
 
         // 櫻坂
-        val (sakurazaka46, sakura1stMembers) = sakamichi.createNewGroup(SAKURAZAKA46)
+        val (sakurazaka46, sakura1stGen) = sakamichi.createNewGroup(SAKURAZAKA46)
+        val sakura1stMembers = sakura1stGen.members
         val habuMizuho = sakura1stMembers.single { it.name.familyName == "土生" && it.name.firstName == "瑞穂" }
         val kobayashiYui = sakura1stMembers.single { it.name.familyName == "小林" && it.name.firstName == "由依" }
 
@@ -138,14 +139,18 @@ class MainApplication : QuarkusApplication {
         sakamichi.graduate(kobayashiYui.id, LocalDate.of(2024, 2, 1))
 
         // 日向坂
-        val (hinatazaka46, hinata1stMembers) = sakamichi.createNewGroup(HINATAZAKA46)
+        val (hinatazaka46, hinata1stGen) = sakamichi.createNewGroup(HINATAZAKA46)
+        val hinata1stMembers = hinata1stGen.members
         val saitoKyoko = hinata1stMembers.single { it.name.familyName == "齊藤" && it.name.firstName == "京子" }
 
         sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN2(hinatazaka46.id))
         sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN3(hinatazaka46.id))
-        sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN4(hinatazaka46.id))
+        val hinata4thGen = sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN4(hinatazaka46.id))
+        val kishiHonoka = hinata4thGen.members.single { it.name.familyName == "岸" && it.name.firstName == "帆夏" }
 
         sakamichi.releaseNewSingle(ONE_CHOICE(hinatazaka46.id))
+
+        sakamichi.withdrawFromActivity(kishiHonoka.id, LocalDate.of(2023, 12, 7))
 
         sakamichi.graduate(memberId = saitoKyoko.id, leavedDate = LocalDate.of(2024, 4, 5))
     }

@@ -74,6 +74,15 @@ class Member(
         )
     }
 
+    /** 活動辞退 */
+    fun withdrawFromActivity(leavedDate: LocalDate) {
+        this.leavingFromGroup = LeavingFromGroup(
+            member = this,
+            type = LeavingType.WITHDRAWAL_FROM_ACTIVITY,
+            leavedDate = leavedDate
+        )
+    }
+
     /** 活動休止 */
     fun startBreakOfActivity(startAt: LocalDate): BreakOfActivity {
         check(!this.hasBeenBreakOfActivity || this.isCurrentlyBreakOfActivity) {

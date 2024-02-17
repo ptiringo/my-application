@@ -28,7 +28,7 @@ class SakamichiApplicationService {
     @Inject
     private lateinit var singleRepository: SingleRepository
 
-    fun createNewGroup(createNewGroupCommand: CreateNewGroupCommand): Pair<Group, List<Member>> {
+    fun createNewGroup(createNewGroupCommand: CreateNewGroupCommand): Pair<Group, Generation> {
         val group = Group(
             name = createNewGroupCommand.groupName,
             formationDate = createNewGroupCommand.formationDate
@@ -39,7 +39,7 @@ class SakamichiApplicationService {
             joinDate = group.formationDate
         )
 
-        val members = createNewGroupCommand.initialMembers.map {
+        createNewGroupCommand.initialMembers.map {
             Member(
                 name = Name(
                     firstName = it.firstName,
@@ -56,7 +56,7 @@ class SakamichiApplicationService {
         groupRepository.persist(group)
         groupRepository.flush()
 
-        return group to members
+        return group to initialGeneration
     }
 
     fun joinNewMembers(joinNewMembersCommand: JoinNewMembersCommand): Generation {
@@ -111,6 +111,12 @@ class SakamichiApplicationService {
     fun graduate(memberId: Long, leavedDate: LocalDate) {
         val member = memberRepository.findById(memberId)!!
         member.graduate(leavedDate)
+    }
+
+    /** 活動辞退 */
+    fun withdrawFromActivity(memberId: Long, leavedDate: LocalDate) {
+        val member = memberRepository.findById(memberId)!!
+        member.withdrawFromActivity(leavedDate)
     }
 
 }
