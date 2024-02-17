@@ -171,6 +171,7 @@ class MainApplication : QuarkusApplication {
         tennis.registerAsPro(SAKAMOTO_REI)
         tennis.registerAsPro(STEFANOS_TSITSIPAS)
         tennis.registerAsPro(ROGER_FEDERER)
+        tennis.registerAsPro(MILOS_RAONIC)
     }
 
     @Transactional
