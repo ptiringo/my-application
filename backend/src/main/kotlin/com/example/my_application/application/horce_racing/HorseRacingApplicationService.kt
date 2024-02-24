@@ -11,30 +11,17 @@ import com.example.my_application.domain.horse_racing.trainer.Trainer
 import com.example.my_application.infrastructure.horse_racing.*
 import com.example.my_application.infrastructure.horse_racing.trainer.TrainerRepository
 import javax.enterprise.context.ApplicationScoped
-import javax.inject.Inject
 import javax.transaction.Transactional
 
 @ApplicationScoped
-class HorseRacingApplicationService {
-
-    @Inject
-    private lateinit var horseRepository: HorseRepository
-
-    @Inject
-    private lateinit var jockeyRepository: JockeyRepository
-
-    @Inject
-    private lateinit var trainerRepository: TrainerRepository
-
-    @Inject
-    private lateinit var horseOwnerRepository: HorseOwnerRepository
-
-    @Inject
-    private lateinit var raceRepository: RaceRepository
-
-    @Inject
-    private lateinit var racecourseRepository: RacecourseRepository
-
+class HorseRacingApplicationService(
+    private val horseRepository: HorseRepository,
+    private val jockeyRepository: JockeyRepository,
+    private val trainerRepository: TrainerRepository,
+    private val horseOwnerRepository: HorseOwnerRepository,
+    private val raceRepository: RaceRepository,
+    private val racecourseRepository: RacecourseRepository
+) {
     @Transactional
     fun registerRacehorse(command: RegisterRacehorseCommand): Horse {
         val horse = Horse(

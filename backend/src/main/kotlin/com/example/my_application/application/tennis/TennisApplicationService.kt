@@ -5,19 +5,14 @@ import com.example.my_application.domain.tennis.tournament.Tournament
 import com.example.my_application.infrastructure.tennis.PlayerRepository
 import com.example.my_application.infrastructure.tennis.TournamentRepository
 import javax.enterprise.context.ApplicationScoped
-import javax.inject.Inject
 import javax.transaction.Transactional
 
 @Transactional
 @ApplicationScoped
-class TennisApplicationService {
-
-    @Inject
-    lateinit var playerRepository: PlayerRepository
-
-    @Inject
-    lateinit var tournamentRepository: TournamentRepository
-
+class TennisApplicationService(
+    private val playerRepository: PlayerRepository,
+    private val tournamentRepository: TournamentRepository
+) {
     fun registerAsPro(command: RegisterAsProCommand): Player {
         val player = Player(
             firstName = command.firstName,

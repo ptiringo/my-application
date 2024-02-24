@@ -1,9 +1,7 @@
 package com.example.my_application.domain.sakamichi.song
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.OneToOne
+import com.example.my_application.domain.sakamichi.release_package.PackageSong
+import javax.persistence.*
 
 /** 曲 */
 @Entity
@@ -13,6 +11,9 @@ class Song(
 
     @OneToOne
     val formation: Formation,
+
+    @ManyToMany
+    val packageSongs: List<PackageSong> = emptyList(),
 
     @Id
     @GeneratedValue

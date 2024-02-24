@@ -12,22 +12,15 @@ import com.example.my_application.infrastructure.sakamichi.member.MemberReposito
 import com.example.my_application.infrastructure.sakamichi.single.SingleRepository
 import java.time.LocalDate
 import javax.enterprise.context.ApplicationScoped
-import javax.inject.Inject
 import javax.transaction.Transactional
 
 @Transactional
 @ApplicationScoped
-class SakamichiApplicationService {
-
-    @Inject
-    private lateinit var groupRepository: GroupRepository
-
-    @Inject
-    private lateinit var memberRepository: MemberRepository
-
-    @Inject
-    private lateinit var singleRepository: SingleRepository
-
+class SakamichiApplicationService(
+    private val groupRepository: GroupRepository,
+    private val memberRepository: MemberRepository,
+    private val singleRepository: SingleRepository
+) {
     fun createNewGroup(createNewGroupCommand: CreateNewGroupCommand): Pair<Group, Generation> {
         val group = Group(
             name = createNewGroupCommand.groupName,
@@ -85,6 +78,7 @@ class SakamichiApplicationService {
         return generation
     }
 
+    /** シングルリリース */
     fun releaseNewSingle(command: ReleaseNewSingleCommand): Single {
         val single = Single(
             title = command.title,

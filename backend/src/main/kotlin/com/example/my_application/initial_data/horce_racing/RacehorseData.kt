@@ -42,3 +42,8 @@ val COMMAND_LINE = RegisterRacehorseCommand(
     name = "コマンドライン",
     dateOfBirth = LocalDate.of(2019, 2, 20)
 )
+
+val PEPTIDE_NILE = RegisterRacehorseCommand(
+    name = "ペプチドナイル",
+    dateOfBirth = LocalDate.of(2018, 4, 24)
+)

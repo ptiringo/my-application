@@ -67,6 +67,13 @@ val NOGIZAKA46 =
                 firstNameKana = "かな",
                 familyNameKana = "なかだ",
                 dateOfBirth = LocalDate.of(1994, 8, 6)
+            ),
+            NewMember(
+                firstName = "麻衣",
+                familyName = "深川",
+                firstNameKana = "まい",
+                familyNameKana = "ふかがわ",
+                dateOfBirth = LocalDate.of(1991, 3, 29)
             )
         )
     )

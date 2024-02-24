@@ -111,3 +111,10 @@ val MILOS_RAONIC = RegisterAsProCommand(
     dateOfBirth = LocalDate.of(1990, 12, 27),
     country = Country.Canada
 )
+
+val NICOLAS_JARRY = RegisterAsProCommand(
+    firstName = "Nicolas",
+    familyName = "Jarry",
+    dateOfBirth = LocalDate.of(1995, 10, 11),
+    country = Country.Chile
+)

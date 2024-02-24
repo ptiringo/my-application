@@ -18,7 +18,6 @@ import io.quarkus.runtime.Quarkus
 import io.quarkus.runtime.QuarkusApplication
 import io.quarkus.runtime.annotations.QuarkusMain
 import java.time.LocalDate
-import javax.inject.Inject
 import javax.transaction.Transactional
 
 @QuarkusMain
@@ -31,25 +30,14 @@ class Main {
     }
 }
 
-class MainApplication : QuarkusApplication {
-
-    @Inject
-    lateinit var prefectureRepository: PrefectureRepository
-
-    @Inject
-    lateinit var municipalityRepository: MunicipalityRepository
-
-    @Inject
-    lateinit var tennis: TennisApplicationService
-
-    @Inject
-    lateinit var ikebukuroIncidentRepository: IkebukuroIncidentRepository
-
-    @Inject
-    lateinit var horseRacing: HorseRacingApplicationService
-
-    @Inject
-    lateinit var sakamichi: SakamichiApplicationService
+class MainApplication(
+    private val horseRacing: HorseRacingApplicationService,
+    private val sakamichi: SakamichiApplicationService,
+    private val tennis: TennisApplicationService,
+    private val prefectureRepository: PrefectureRepository,
+    private val municipalityRepository: MunicipalityRepository,
+    private val ikebukuroIncidentRepository: IkebukuroIncidentRepository
+) : QuarkusApplication {
 
     override fun run(args: Array<String>): Int {
         insertData()
@@ -73,6 +61,7 @@ class MainApplication : QuarkusApplication {
         horseRacing.registerRacehorse(YAMANIN_OURS)
         horseRacing.registerRacehorse(LUGAL)
         horseRacing.registerRacehorse(COMMAND_LINE)
+        horseRacing.registerRacehorse(PEPTIDE_NILE)
 
         horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacing.registerJockey(ANDO_KATSUMI)
@@ -172,6 +161,7 @@ class MainApplication : QuarkusApplication {
         tennis.registerAsPro(STEFANOS_TSITSIPAS)
         tennis.registerAsPro(ROGER_FEDERER)
         tennis.registerAsPro(MILOS_RAONIC)
+        tennis.registerAsPro(NICOLAS_JARRY)
     }
 
     @Transactional
