@@ -74,6 +74,27 @@ val NOGIZAKA46 =
                 firstNameKana = "まい",
                 familyNameKana = "ふかがわ",
                 dateOfBirth = LocalDate.of(1991, 3, 29)
+            ),
+            NewMember(
+                firstName = "日芽香",
+                familyName = "中元",
+                firstNameKana = "ひめか",
+                familyNameKana = "なかもと",
+                dateOfBirth = LocalDate.of(1996, 4, 13)
+            ),
+            NewMember(
+                firstName = "佑美",
+                familyName = "若月",
+                firstNameKana = "ゆみ",
+                familyNameKana = "わかつき",
+                dateOfBirth = LocalDate.of(1994, 6, 27)
+            ),
+            NewMember(
+                firstName = "里奈",
+                familyName = "生駒",
+                firstNameKana = "りな",
+                familyNameKana = "いこま",
+                dateOfBirth = LocalDate.of(1995, 12, 29)
             )
         )
     )
@@ -296,19 +317,22 @@ val NOGIZAKA46_MEMBERS_GEN5 = { groupId: Long ->
     )
 }
 
+val SING_OUT = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        number = 23,
+        title = "Sing Out!",
+        releaseDate = LocalDate.of(2019, 5, 29)
+    )
+}
+
 /** しあわせの保護色 */
 val SHIAWASE_NO_HOGOSHOKU = { groupId: Long ->
     ReleaseNewSingleCommand(
         groupId = groupId,
+        number = 25,
         title = "しあわせの保護色",
         releaseDate = LocalDate.of(2020, 3, 25)
     )
 }
 
-val SING_OUT = { groupId: Long ->
-    ReleaseNewSingleCommand(
-        groupId = groupId,
-        title = "Sing Out!",
-        releaseDate = LocalDate.of(2019, 5, 29)
-    )
-}

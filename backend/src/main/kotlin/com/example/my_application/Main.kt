@@ -62,6 +62,7 @@ class MainApplication(
         horseRacing.registerRacehorse(LUGAL)
         horseRacing.registerRacehorse(COMMAND_LINE)
         horseRacing.registerRacehorse(PEPTIDE_NILE)
+        horseRacing.registerRacehorse(ELUSIVE_PANTHER)
 
         horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacing.registerJockey(ANDO_KATSUMI)
@@ -72,11 +73,14 @@ class MainApplication(
         horseRacing.registerRacecourse(SAPPORO)
         val tokyo = horseRacing.registerRacecourse(TOKYO)
         val kyoto = horseRacing.registerRacecourse(KYOTO)
+        val kingAbdulaziz = horseRacing.registerRacecourse(KING_ABDULAZIZ)
+        horseRacing.registerRacecourse(EPSOM)
 
         horseRacing.registerRace(DUBAI_SHEEMA_CLASSIC(meydan.id))
         horseRacing.registerRace(ALL_AGED_STAKES(randwick.id))
         horseRacing.registerRace(JAPAN_CUP(tokyo.id))
         horseRacing.registerRace(KYOTO_KINEN(kyoto.id))
+        horseRacing.registerRace(SAUDI_CUP(kingAbdulaziz.id))
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
         horseRacing.registerTrainer(SUGIYAMA_HARUKI)
@@ -116,8 +120,12 @@ class MainApplication(
         val sakura1stMembers = sakura1stGen.members
         val habuMizuho = sakura1stMembers.single { it.name.familyName == "土生" && it.name.firstName == "瑞穂" }
         val kobayashiYui = sakura1stMembers.single { it.name.familyName == "小林" && it.name.firstName == "由依" }
+        val odaNana = sakura1stMembers.single { it.name.familyName == "織田" && it.name.firstName == "奈那" }
 
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
+
+        sakamichi.graduate(odaNana.id, LocalDate.of(2020, 1, 23))
+
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN3(sakurazaka46.id))
 
         sakamichi.releaseNewSingle(START_OVER(sakurazaka46.id))
@@ -162,6 +170,7 @@ class MainApplication(
         tennis.registerAsPro(ROGER_FEDERER)
         tennis.registerAsPro(MILOS_RAONIC)
         tennis.registerAsPro(NICOLAS_JARRY)
+        tennis.registerAsPro(ALEXANDER_BUBLIK)
     }
 
     @Transactional

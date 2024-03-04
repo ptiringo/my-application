@@ -210,6 +210,7 @@ val HINATAZAKA46_MEMBERS_GEN4 = { groupId: Long ->
 val ONE_CHOICE = { groupId: Long ->
     ReleaseNewSingleCommand(
         groupId = groupId,
+        number = 9,
         title = "One Choice",
         releaseDate = LocalDate.of(2023, 4, 19)
     )

@@ -43,3 +43,13 @@ val KYOTO_KINEN = { racecourseId: Long ->
         racecourseId = racecourseId,
     )
 }
+
+val SAUDI_CUP = { racecourseId: Long ->
+    RegisterRaceCommand(
+        name = "サウジカップ",
+        grade = Grade.G1,
+        truckSurface = TrackSurface.DIRT,
+        distance = 1800,
+        racecourseId = racecourseId,
+    )
+}

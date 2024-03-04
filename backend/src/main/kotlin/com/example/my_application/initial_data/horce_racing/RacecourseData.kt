@@ -27,3 +27,13 @@ val KYOTO = RegisterRacecourseCommand(
     name = "京都",
     country = Country.Japan
 )
+
+val KING_ABDULAZIZ = RegisterRacecourseCommand(
+    name = "キングアブドゥルアジーズ",
+    country = Country.SaudiArabia
+)
+
+val EPSOM = RegisterRacecourseCommand(
+    name = "エプソム",
+    country = Country.UnitedKingdom
+)

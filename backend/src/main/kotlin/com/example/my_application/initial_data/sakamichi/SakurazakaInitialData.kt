@@ -74,6 +74,13 @@ val SAKURAZAKA46 =
                 firstNameKana = "なな",
                 familyNameKana = "おだ",
                 dateOfBirth = LocalDate.of(1998, 6, 4)
+            ),
+            NewMember(
+                firstName = "梨香",
+                familyName = "尾関",
+                firstNameKana = "りか",
+                familyNameKana = "おぜき",
+                dateOfBirth = LocalDate.of(1997, 10, 7)
             )
         )
     )
@@ -193,6 +200,7 @@ val SAKURAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
 val START_OVER = { groupId: Long ->
     ReleaseNewSingleCommand(
         groupId = groupId,
+        number = 6,
         title = "Start over!",
         releaseDate = LocalDate.of(2023, 6, 28)
     )
@@ -201,6 +209,7 @@ val START_OVER = { groupId: Long ->
 val SHOUNIN_YOKKYU = { groupId: Long ->
     ReleaseNewSingleCommand(
         groupId = groupId,
+        number = 7,
         title = "承認欲求",
         releaseDate = LocalDate.of(2023, 10, 18)
     )
@@ -209,6 +218,7 @@ val SHOUNIN_YOKKYU = { groupId: Long ->
 val IKUTSU_NO_KORONI_MODORITAINOKA = { groupId: Long ->
     ReleaseNewSingleCommand(
         groupId = groupId,
+        number = 8,
         title = "何歳の頃に戻りたいのか",
         releaseDate = LocalDate.of(2024, 2, 21)
     )

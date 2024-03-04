@@ -4,6 +4,7 @@ import java.time.LocalDate
 
 data class ReleaseNewSingleCommand(
     val groupId: Long,
+    val number: Int,
     val title: String,
     val releaseDate: LocalDate,
 )

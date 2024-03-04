@@ -81,6 +81,7 @@ class SakamichiApplicationService(
     /** シングルリリース */
     fun releaseNewSingle(command: ReleaseNewSingleCommand): Single {
         val single = Single(
+            number = command.number,
             title = command.title,
             group = groupRepository.findById(command.groupId)!!,
             releaseDate = command.releaseDate

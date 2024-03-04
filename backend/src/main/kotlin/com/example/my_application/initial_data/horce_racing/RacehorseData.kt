@@ -47,3 +47,8 @@ val PEPTIDE_NILE = RegisterRacehorseCommand(
     name = "ペプチドナイル",
     dateOfBirth = LocalDate.of(2018, 4, 24)
 )
+
+val ELUSIVE_PANTHER = RegisterRacehorseCommand(
+    name = "イルーシヴパンサー",
+    dateOfBirth = LocalDate.of(2018, 2, 15)
+)

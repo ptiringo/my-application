@@ -9,6 +9,10 @@ import javax.persistence.*
 @Entity
 class Single(
 
+    /** シングルの通し番号 */
+    val number: Int,
+
+    /** タイトル */
     val title: String,
 
     @ManyToOne(
