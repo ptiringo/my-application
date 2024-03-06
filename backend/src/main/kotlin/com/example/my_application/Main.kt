@@ -67,6 +67,7 @@ class MainApplication(
         horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacing.registerJockey(ANDO_KATSUMI)
         horseRacing.registerJockey(LUKE_MORRIS)
+        horseRacing.registerJockey(BUSHIZAWA_TOMOHARU)
 
         val meydan = horseRacing.registerRacecourse(MEYDAN)
         val randwick = horseRacing.registerRacecourse(RANDWICK)

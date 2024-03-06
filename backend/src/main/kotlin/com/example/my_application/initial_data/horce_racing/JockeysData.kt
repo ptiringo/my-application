@@ -22,3 +22,10 @@ val LUKE_MORRIS = RegisterJockeyCommand(
     firstNameAlphabet = "Luke",
     familyNameAlphabet = "Morris",
 )
+
+val BUSHIZAWA_TOMOHARU = RegisterJockeyCommand(
+    firstNameKana = "ブシザワ",
+    familyNameKana = "トモハル",
+    firstNameKanji = "友治",
+    familyNameKanji = "武志沢",
+)
