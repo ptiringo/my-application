@@ -63,6 +63,7 @@ class MainApplication(
         horseRacing.registerRacehorse(COMMAND_LINE)
         horseRacing.registerRacehorse(PEPTIDE_NILE)
         horseRacing.registerRacehorse(ELUSIVE_PANTHER)
+        horseRacing.registerRacehorse(DANON_PREMIUM)
 
         horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacing.registerJockey(ANDO_KATSUMI)
@@ -85,6 +86,7 @@ class MainApplication(
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
         horseRacing.registerTrainer(SUGIYAMA_HARUKI)
+        horseRacing.registerTrainer(FUKUNAGA_YUICHI)
 
         horseRacing.registerHorseOwner(KUMETA_MASAAKI)
     }

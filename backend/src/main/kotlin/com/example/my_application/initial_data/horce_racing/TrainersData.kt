@@ -4,3 +4,4 @@ import com.example.my_application.application.horce_racing.RegisterTrainerComman
 
 val KATO_KAZUHIRO = RegisterTrainerCommand(firstName = "和宏", familyName = "加藤")
 val SUGIYAMA_HARUKI = RegisterTrainerCommand(firstName = "春樹", familyName = "杉山")
+val FUKUNAGA_YUICHI = RegisterTrainerCommand(firstName = "福永", familyName = "祐一")

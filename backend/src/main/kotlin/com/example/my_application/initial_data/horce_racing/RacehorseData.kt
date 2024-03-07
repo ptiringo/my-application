@@ -52,3 +52,8 @@ val ELUSIVE_PANTHER = RegisterRacehorseCommand(
     name = "イルーシヴパンサー",
     dateOfBirth = LocalDate.of(2018, 2, 15)
 )
+
+val DANON_PREMIUM = RegisterRacehorseCommand(
+    name = "ダノンプレミアム",
+    dateOfBirth = LocalDate.of(2015, 4, 3)
+)
