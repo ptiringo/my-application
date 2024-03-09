@@ -125,3 +125,10 @@ val ALEXANDER_BUBLIK = RegisterAsProCommand(
     dateOfBirth = LocalDate.of(1997, 6, 17),
     country = Country.Kazakhstan
 )
+
+val THANASI_KOKKINAKIS = RegisterAsProCommand(
+    firstName = "Thanasi",
+    familyName = "Kokkinakis",
+    dateOfBirth = LocalDate.of(1996, 4, 10),
+    country = Country.Australia
+)

@@ -174,6 +174,7 @@ class MainApplication(
         tennis.registerAsPro(MILOS_RAONIC)
         tennis.registerAsPro(NICOLAS_JARRY)
         tennis.registerAsPro(ALEXANDER_BUBLIK)
+        tennis.registerAsPro(THANASI_KOKKINAKIS)
     }
 
     @Transactional
