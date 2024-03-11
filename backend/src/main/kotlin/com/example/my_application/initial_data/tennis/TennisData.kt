@@ -132,3 +132,17 @@ val THANASI_KOKKINAKIS = RegisterAsProCommand(
     dateOfBirth = LocalDate.of(1996, 4, 10),
     country = Country.Australia
 )
+
+val JAN_LENNARD_STRUFF = RegisterAsProCommand(
+    firstName = "Jan-Lennard",
+    familyName = "Struff",
+    dateOfBirth = LocalDate.of(1990, 4, 25),
+    country = Country.Germany
+)
+
+val FELIX_AUGER_ALIASSIME = RegisterAsProCommand(
+    firstName = "Felix",
+    familyName = "Auger-Aliassime",
+    dateOfBirth = LocalDate.of(2000, 8, 8),
+    country = Country.Canada
+)
