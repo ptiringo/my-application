@@ -343,3 +343,12 @@ val SHIAWASE_NO_HOGOSHOKU = { groupId: Long ->
     )
 }
 
+/** チャンスは平等 **/
+val CHANCE_HA_BYOUDOU = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        number = 35,
+        title = "チャンスは平等",
+        releaseDate = LocalDate.of(2024, 4, 10)
+    )
+}
