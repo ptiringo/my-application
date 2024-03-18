@@ -7,6 +7,8 @@ import com.example.my_application.domain.tennis.tournament.TennisSurface
 import com.example.my_application.domain.tennis.tournament.TournamentCategory
 import java.time.LocalDate
 
+// Tournament
+
 val MONTE_CARLO = RegisterTournamentCommand(
     name = "Monte-Carlo Masters",
     location = "Monte-Carlo",
@@ -20,6 +22,14 @@ val AUSTRALIAN_OPEN = RegisterTournamentCommand(
     tournamentCategory = TournamentCategory.GRAND_SLAM,
     tennisSurface = TennisSurface.HARD
 )
+
+val BNP_PARIBAS_OPEN = RegisterTournamentCommand(
+    name = "BNP Paribas Open",
+    location = "Indian Wells",
+    tournamentCategory = TournamentCategory.ATP_TOUR_MASTERS_1000,
+    tennisSurface = TennisSurface.HARD
+)
+// Players
 
 val RAFAEL_NADAL = RegisterAsProCommand(
     firstName = "Rafael",
@@ -145,4 +155,18 @@ val FELIX_AUGER_ALIASSIME = RegisterAsProCommand(
     familyName = "Auger-Aliassime",
     dateOfBirth = LocalDate.of(2000, 8, 8),
     country = Country.Canada
+)
+
+val JANNIK_SINNER = RegisterAsProCommand(
+    firstName = "Jannik",
+    familyName = "Sinner",
+    dateOfBirth = LocalDate.of(2001, 8, 16),
+    country = Country.Italy
+)
+
+val TOMMY_PAUL = RegisterAsProCommand(
+    firstName = "Tommy",
+    familyName = "Paul",
+    dateOfBirth = LocalDate.of(1997, 5, 17),
+    country = Country.USA
 )

@@ -158,6 +158,7 @@ class MainApplication(
     private fun tennis() {
         tennis.registerTournament(MONTE_CARLO)
         tennis.registerTournament(AUSTRALIAN_OPEN)
+        tennis.registerTournament(BNP_PARIBAS_OPEN)
 
         tennis.registerAsPro(RAFAEL_NADAL)
         tennis.registerAsPro(NOVAK_DJOKOVIC)
@@ -177,6 +178,8 @@ class MainApplication(
         tennis.registerAsPro(THANASI_KOKKINAKIS)
         tennis.registerAsPro(JAN_LENNARD_STRUFF)
         tennis.registerAsPro(FELIX_AUGER_ALIASSIME)
+        tennis.registerAsPro(JANNIK_SINNER)
+        tennis.registerAsPro(TOMMY_PAUL)
     }
 
     @Transactional
