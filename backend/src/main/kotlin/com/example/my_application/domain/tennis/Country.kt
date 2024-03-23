@@ -14,5 +14,6 @@ enum class Country {
     Chile,
     Kazakhstan,
     Italy,
-    USA
+    USA,
+    Austria
 }

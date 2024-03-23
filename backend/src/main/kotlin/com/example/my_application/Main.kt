@@ -163,6 +163,8 @@ class MainApplication(
         tennis.registerTournament(MONTE_CARLO)
         tennis.registerTournament(AUSTRALIAN_OPEN)
         tennis.registerTournament(BNP_PARIBAS_OPEN)
+        tennis.registerTournament(MIAMI_OPEN)
+        tennis.registerTournament(HOUSTON)
 
         tennis.registerAsPro(RAFAEL_NADAL)
         tennis.registerAsPro(NOVAK_DJOKOVIC)
@@ -185,6 +187,8 @@ class MainApplication(
         tennis.registerAsPro(JANNIK_SINNER)
         tennis.registerAsPro(TOMMY_PAUL)
         tennis.registerAsPro(OSAKA_NAOMI)
+        tennis.registerAsPro(SEBASTIAN_OFNER)
+        tennis.registerAsPro(DOMINIC_THIEM)
     }
 
     @Transactional

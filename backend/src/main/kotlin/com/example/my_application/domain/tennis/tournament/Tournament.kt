@@ -35,7 +35,7 @@ enum class TournamentCategory {
     ATP_TOUR_MASTERS_1000,
     ATP_TOUR_500,
     ATP_TOUR_250,
-    ATP_CHALLENGER_TOUR
+    ATP_CHALLENGER_TOUR,
 }
 
 enum class TennisSurface {

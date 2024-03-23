@@ -150,3 +150,17 @@ val OSAKA_NAOMI = RegisterAsProCommand(
     dateOfBirth = LocalDate.of(1997, 10, 16),
     country = Country.Japan
 )
+
+val SEBASTIAN_OFNER = RegisterAsProCommand(
+    firstName = "Sebastian",
+    familyName = "Ofner",
+    dateOfBirth = LocalDate.of(1996, 5, 12),
+    country = Country.Austria
+)
+
+val DOMINIC_THIEM = RegisterAsProCommand(
+    firstName = "Dominic",
+    familyName = "Thiem",
+    dateOfBirth = LocalDate.of(1993, 9, 3),
+    country = Country.Austria
+)

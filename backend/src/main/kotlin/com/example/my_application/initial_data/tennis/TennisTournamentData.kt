@@ -24,3 +24,17 @@ val BNP_PARIBAS_OPEN = RegisterTournamentCommand(
     tournamentCategory = TournamentCategory.ATP_TOUR_MASTERS_1000,
     tennisSurface = TennisSurface.HARD
 )
+
+val MIAMI_OPEN = RegisterTournamentCommand(
+    name = "Miami Open presented by Itau",
+    location = "Miami",
+    tournamentCategory = TournamentCategory.ATP_TOUR_MASTERS_1000,
+    tennisSurface = TennisSurface.HARD
+)
+
+val HOUSTON = RegisterTournamentCommand(
+    name = "Fayez Sarofim & Co. U.S. Men's Clay Court Championship",
+    location = "Houston",
+    tournamentCategory = TournamentCategory.ATP_TOUR_250,
+    tennisSurface = TennisSurface.CLAY
+)
