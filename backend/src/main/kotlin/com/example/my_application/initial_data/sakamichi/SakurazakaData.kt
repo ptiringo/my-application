@@ -1,9 +1,6 @@
 package com.example.my_application.initial_data.sakamichi
 
-import com.example.my_application.application.sakamichi.CreateNewGroupCommand
-import com.example.my_application.application.sakamichi.JoinNewMembersCommand
-import com.example.my_application.application.sakamichi.NewMember
-import com.example.my_application.application.sakamichi.ReleaseNewSingleCommand
+import com.example.my_application.application.sakamichi.*
 import java.time.LocalDate
 
 /** 櫻坂46 */
@@ -81,6 +78,13 @@ val SAKURAZAKA46 =
                 firstNameKana = "りか",
                 familyNameKana = "おぜき",
                 dateOfBirth = LocalDate.of(1997, 10, 7)
+            ),
+            NewMember(
+                firstName = "佑唯",
+                familyName = "今泉",
+                firstNameKana = "ゆい",
+                familyNameKana = "いまいずみ",
+                dateOfBirth = LocalDate.of(1998, 9, 30)
             )
         )
     )
@@ -192,10 +196,19 @@ val SAKURAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
                 firstNameKana = "りか",
                 familyNameKana = "いしもり",
                 dateOfBirth = LocalDate.of(2002, 1, 13)
+            ),
+            NewMember(
+                firstName = "理子",
+                familyName = "遠藤",
+                firstNameKana = "りこ",
+                familyNameKana = "えんどう",
+                dateOfBirth = LocalDate.of(2006, 1, 9)
             )
         )
     )
 }
+
+// シングルリリース
 
 val START_OVER = { groupId: Long ->
     ReleaseNewSingleCommand(
@@ -221,5 +234,14 @@ val IKUTSU_NO_KORONI_MODORITAINOKA = { groupId: Long ->
         number = 8,
         title = "何歳の頃に戻りたいのか",
         releaseDate = LocalDate.of(2024, 2, 21)
+    )
+}
+
+// ライブ
+
+val FOURTH_ARENA_TOUR_2024 = { groupId: Long ->
+    HoldLiveCommand(
+        groupId = groupId,
+        title = "4th ARENA TOUR 2024 新・櫻前線 -Go on back?- IN 東京ドーム"
     )
 }

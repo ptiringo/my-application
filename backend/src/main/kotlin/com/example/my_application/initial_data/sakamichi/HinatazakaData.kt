@@ -11,8 +11,24 @@ import java.time.LocalDate
 val HINATAZAKA46 =
     CreateNewGroupCommand(
         groupName = "日向坂46",
-        formationDate = LocalDate.of(2016, 5, 8),
+        formationDate = LocalDate.of(2015, 11, 30),
         initialMembers = listOf(
+            NewMember(
+                firstName = "ねる",
+                familyName = "長濱",
+                firstNameKana = "ねる",
+                familyNameKana = "ながはま",
+                dateOfBirth = LocalDate.of(1998, 9, 4)
+            )
+        )
+    )
+
+/** 1期生 */
+val HINATAZAKA46_MEMBERS_GEN1 = { groupId: Long ->
+    JoinNewMembersCommand(
+        groupId = groupId,
+        joinDate = LocalDate.of(2016, 5, 8),
+        newMembers = listOf(
             NewMember(
                 firstName = "史帆",
                 familyName = "加藤",
@@ -85,6 +101,7 @@ val HINATAZAKA46 =
             ),
         )
     )
+}
 
 /** 2期生 */
 val HINATAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
@@ -164,6 +181,13 @@ val HINATAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
                 firstNameKana = "まりぃ",
                 familyNameKana = "もりもと",
                 dateOfBirth = LocalDate.of(2004, 2, 23)
+            ),
+            NewMember(
+                firstName = "ひなの",
+                familyName = "上村",
+                firstNameKana = "ひなの",
+                familyNameKana = "かみむら",
+                dateOfBirth = LocalDate.of(2004, 4, 12)
             ),
         )
     )

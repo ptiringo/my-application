@@ -83,6 +83,7 @@ class MainApplication(
         horseRacing.registerRace(JAPAN_CUP(tokyo.id))
         horseRacing.registerRace(KYOTO_KINEN(kyoto.id))
         horseRacing.registerRace(SAUDI_CUP(kingAbdulaziz.id))
+        horseRacing.registerRace(DUBAI_GOLDEN_SHAHEEN(meydan.id))
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
         horseRacing.registerTrainer(SUGIYAMA_HARUKI)
@@ -138,8 +139,11 @@ class MainApplication(
         sakamichi.graduate(habuMizuho.id, LocalDate.of(2023, 11, 25))
         sakamichi.graduate(kobayashiYui.id, LocalDate.of(2024, 2, 1))
 
+        sakamichi.holdLive(FOURTH_ARENA_TOUR_2024(sakurazaka46.id))
+
         // 日向坂
-        val (hinatazaka46, hinata1stGen) = sakamichi.createNewGroup(HINATAZAKA46)
+        val (hinatazaka46, _) = sakamichi.createNewGroup(HINATAZAKA46)
+        val hinata1stGen = sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN1(hinatazaka46.id))
         val hinata1stMembers = hinata1stGen.members
         val saitoKyoko = hinata1stMembers.single { it.name.familyName == "齊藤" && it.name.firstName == "京子" }
 
@@ -180,6 +184,7 @@ class MainApplication(
         tennis.registerAsPro(FELIX_AUGER_ALIASSIME)
         tennis.registerAsPro(JANNIK_SINNER)
         tennis.registerAsPro(TOMMY_PAUL)
+        tennis.registerAsPro(OSAKA_NAOMI)
     }
 
     @Transactional

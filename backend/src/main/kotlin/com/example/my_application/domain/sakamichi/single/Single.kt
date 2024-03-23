@@ -15,6 +15,7 @@ class Single(
     /** タイトル */
     val title: String,
 
+    /** グループ */
     @ManyToOne(
         cascade = [],
         fetch = FetchType.LAZY,
@@ -26,6 +27,7 @@ class Single(
     )
     val group: Group,
 
+    /** 発売日 */
     val releaseDate: LocalDate,
 
     @OneToMany(

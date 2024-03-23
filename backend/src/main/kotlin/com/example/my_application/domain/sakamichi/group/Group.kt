@@ -20,7 +20,7 @@ class Group(
 ) {
     constructor(name: String, formationDate: LocalDate) : this(name = name, formationDate = formationDate, id = 0)
 
-    fun releaseNewSingle(title: String, releaseDate: LocalDate): Single {
-        return Single(title = title, group = this, releaseDate = releaseDate)
+    fun releaseNewSingle(number: Int, title: String, releaseDate: LocalDate): Single {
+        return Single(number = number, title = title, group = this, releaseDate = releaseDate)
     }
 }

@@ -53,3 +53,13 @@ val SAUDI_CUP = { racecourseId: Long ->
         racecourseId = racecourseId,
     )
 }
+
+val DUBAI_GOLDEN_SHAHEEN = { racecourseId: Long ->
+    RegisterRaceCommand(
+        name = "ドバイゴールデンシャヒーン",
+        grade = Grade.G1,
+        truckSurface = TrackSurface.DIRT,
+        distance = 1200,
+        racecourseId = racecourseId,
+    )
+}

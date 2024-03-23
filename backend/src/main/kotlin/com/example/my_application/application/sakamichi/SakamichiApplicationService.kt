@@ -2,12 +2,14 @@ package com.example.my_application.application.sakamichi
 
 import com.example.my_application.domain.sakamichi.group.Generation
 import com.example.my_application.domain.sakamichi.group.Group
+import com.example.my_application.domain.sakamichi.live.Live
 import com.example.my_application.domain.sakamichi.member.BreakOfActivity
 import com.example.my_application.domain.sakamichi.member.Member
 import com.example.my_application.domain.sakamichi.member.Name
 import com.example.my_application.domain.sakamichi.member.ReturnToActivity
 import com.example.my_application.domain.sakamichi.single.Single
 import com.example.my_application.infrastructure.sakamichi.group.GroupRepository
+import com.example.my_application.infrastructure.sakamichi.live.LiveRepository
 import com.example.my_application.infrastructure.sakamichi.member.MemberRepository
 import com.example.my_application.infrastructure.sakamichi.single.SingleRepository
 import java.time.LocalDate
@@ -19,8 +21,10 @@ import javax.transaction.Transactional
 class SakamichiApplicationService(
     private val groupRepository: GroupRepository,
     private val memberRepository: MemberRepository,
-    private val singleRepository: SingleRepository
+    private val singleRepository: SingleRepository,
+    private val liveRepository: LiveRepository
 ) {
+    /** グループ結成 */
     fun createNewGroup(createNewGroupCommand: CreateNewGroupCommand): Pair<Group, Generation> {
         val group = Group(
             name = createNewGroupCommand.groupName,
@@ -52,6 +56,7 @@ class SakamichiApplicationService(
         return group to initialGeneration
     }
 
+    /** 新メンバー加入 */
     fun joinNewMembers(joinNewMembersCommand: JoinNewMembersCommand): Generation {
         val group = groupRepository.findById(joinNewMembersCommand.groupId)!!
 
@@ -112,6 +117,14 @@ class SakamichiApplicationService(
     fun withdrawFromActivity(memberId: Long, leavedDate: LocalDate) {
         val member = memberRepository.findById(memberId)!!
         member.withdrawFromActivity(leavedDate)
+    }
+
+    /** ライブ開催 */
+    fun holdLive(command: HoldLiveCommand): Live {
+        val group = groupRepository.findById(command.groupId)!!
+        val live = Live(group = group, title = command.title)
+        liveRepository.persist(live)
+        return live
     }
 
 }

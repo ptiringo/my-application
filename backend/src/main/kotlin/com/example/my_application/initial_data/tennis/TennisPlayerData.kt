@@ -143,3 +143,10 @@ val TOMMY_PAUL = RegisterAsProCommand(
     dateOfBirth = LocalDate.of(1997, 5, 17),
     country = Country.USA
 )
+
+val OSAKA_NAOMI = RegisterAsProCommand(
+    firstName = "Naomi",
+    familyName = "Osaka",
+    dateOfBirth = LocalDate.of(1997, 10, 16),
+    country = Country.Japan
+)
