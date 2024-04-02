@@ -1,7 +1,5 @@
 package com.example.my_application.domain.sakamichi
 
-import com.example.my_application.domain.sakamichi.group.Generation
-import com.example.my_application.domain.sakamichi.group.Group
 import com.example.my_application.domain.sakamichi.member.Member
 import com.example.my_application.domain.sakamichi.member.Name
 import io.mockk.every
@@ -23,10 +21,6 @@ class MemberTest {
             val member = Member(
                 name = Name("テスト", "テスト", "テスト", "テスト"),
                 dateOfBirth = LocalDate.of(2010, 3, 10),
-                generation = Generation(
-                    group = Group(name = "テスト", formationDate = LocalDate.of(2000, 1, 1)),
-                    joinDate = LocalDate.of(2000, 1, 1)
-                )
             )
 
             mockkStatic(LocalDate::class)
@@ -49,10 +43,6 @@ class MemberTest {
             this.member = Member(
                 name = Name("テスト", "テスト", "テスト", "テスト"),
                 dateOfBirth = LocalDate.of(2010, 3, 10),
-                generation = Generation(
-                    group = Group(name = "テスト", formationDate = LocalDate.of(2000, 1, 1)),
-                    joinDate = LocalDate.of(2000, 1, 1)
-                )
             )
         }
 

@@ -253,3 +253,12 @@ val ONE_CHOICE = { groupId: Long ->
         releaseDate = LocalDate.of(2023, 4, 19)
     )
 }
+
+val KIMIHA_HONEYDEW = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        number = 11,
+        title = "君はハニーデュー",
+        releaseDate = LocalDate.of(2024, 5, 8)
+    )
+}

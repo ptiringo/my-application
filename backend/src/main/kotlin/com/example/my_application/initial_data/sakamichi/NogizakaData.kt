@@ -95,7 +95,35 @@ val NOGIZAKA46 =
                 firstNameKana = "りな",
                 familyNameKana = "いこま",
                 dateOfBirth = LocalDate.of(1995, 12, 29)
-            )
+            ),
+            NewMember(
+                firstName = "優里",
+                familyName = "斉藤",
+                firstNameKana = "ゆうり",
+                familyNameKana = "さいとう",
+                dateOfBirth = LocalDate.of(1993, 7, 20)
+            ),
+            NewMember(
+                firstName = "里菜",
+                familyName = "大和",
+                firstNameKana = "りな",
+                familyNameKana = "やまと",
+                dateOfBirth = LocalDate.of(1994, 12, 14)
+            ),
+            NewMember(
+                firstName = "奈々未",
+                familyName = "橋本",
+                firstNameKana = "ななみ",
+                familyNameKana = "はしもと",
+                dateOfBirth = LocalDate.of(1993, 2, 20)
+            ),
+            NewMember(
+                firstName = "一実",
+                familyName = "高山",
+                firstNameKana = "かずみ",
+                familyNameKana = "たかやま",
+                dateOfBirth = LocalDate.of(1994, 2, 8)
+            ),
         )
     )
 
@@ -247,6 +275,20 @@ val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
                 familyNameKana = "まつお",
                 dateOfBirth = LocalDate.of(2004, 1, 3)
             ),
+            NewMember(
+                firstName = "璃果",
+                familyName = "佐藤",
+                firstNameKana = "りか",
+                familyNameKana = "さとう",
+                dateOfBirth = LocalDate.of(2001, 8, 9)
+            ),
+            NewMember(
+                firstName = "あやめ",
+                familyName = "筒井",
+                firstNameKana = "あやめ",
+                familyNameKana = "つつい",
+                dateOfBirth = LocalDate.of(2004, 6, 8)
+            ),
         )
     )
 }
@@ -328,6 +370,15 @@ val NOGIZAKA46_MEMBERS_GEN5 = { groupId: Long ->
                 dateOfBirth = LocalDate.of(2006, 9, 18)
             )
         )
+    )
+}
+
+val BARRETTA = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        number = 7,
+        title = "バレッタ",
+        releaseDate = LocalDate.of(2013, 11, 27)
     )
 }
 

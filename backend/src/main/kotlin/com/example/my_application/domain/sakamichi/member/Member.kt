@@ -7,19 +7,22 @@ import javax.persistence.*
 /** メンバー */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-class Member(
-
+final class Member(
     /** 名前 */
     @Embedded
-    val name: Name,
+    var name: Name,
 
     /** 生年月日 */
     @Column(nullable = false)
-    val dateOfBirth: LocalDate,
+    var dateOfBirth: LocalDate,
+) {
+    @Id
+    @GeneratedValue
+    val id: Long = 0
 
     /** 期 */
     @ManyToOne(fetch = FetchType.EAGER)
-    val generation: Generation,
+    var generation: Generation? = null
 
     /** グループからの脱退 */
     @OneToOne(
@@ -28,7 +31,7 @@ class Member(
         mappedBy = "member",
         cascade = [CascadeType.ALL]
     )
-    var leavingFromGroup: LeavingFromGroup? = null,
+    var leavingFromGroup: LeavingFromGroup? = null
 
     /** 活動休止 */
     @OneToMany(
@@ -37,23 +40,7 @@ class Member(
         cascade = [CascadeType.ALL],
     )
     @OrderBy("started_date")
-    val breakOfActivities: MutableList<BreakOfActivity> = arrayListOf(),
-
-    @Id
-    @GeneratedValue
-    val id: Long = 0
-) {
-    init {
-        this.generation.members.add(this)
-    }
-
-    constructor(name: Name, dateOfBirth: LocalDate, generation: Generation) : this(
-        name = name,
-        dateOfBirth = dateOfBirth,
-        generation = generation,
-        leavingFromGroup = null,
-        breakOfActivities = arrayListOf()
-    )
+    var breakOfActivities: MutableList<BreakOfActivity> = arrayListOf()
 
     /** 年齢 */
     val age get() = dateOfBirth.until(LocalDate.now()).years

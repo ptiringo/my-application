@@ -25,35 +25,28 @@ class SakamichiApplicationService(
     private val liveRepository: LiveRepository
 ) {
     /** グループ結成 */
-    fun createNewGroup(createNewGroupCommand: CreateNewGroupCommand): Pair<Group, Generation> {
+    fun createNewGroup(createNewGroupCommand: CreateNewGroupCommand): Group {
         val group = Group(
             name = createNewGroupCommand.groupName,
-            formationDate = createNewGroupCommand.formationDate
+            formationDate = createNewGroupCommand.formationDate,
+            members = createNewGroupCommand.initialMembers.map {
+                Member(
+                    name = Name(
+                        firstName = it.firstName,
+                        familyName = it.familyName,
+                        firstNameKana = it.firstNameKana,
+                        familyNameKana = it.familyNameKana,
+                        middleName = it.middleName,
+                    ),
+                    dateOfBirth = it.dateOfBirth,
+                )
+            }.toMutableList()
         )
-
-        val initialGeneration = Generation(
-            group = group,
-            joinDate = group.formationDate
-        )
-
-        createNewGroupCommand.initialMembers.map {
-            Member(
-                name = Name(
-                    firstName = it.firstName,
-                    familyName = it.familyName,
-                    firstNameKana = it.firstNameKana,
-                    familyNameKana = it.familyNameKana,
-                    middleName = it.middleName,
-                ),
-                dateOfBirth = it.dateOfBirth,
-                generation = initialGeneration
-            )
-        }
 
         groupRepository.persist(group)
         groupRepository.flush()
 
-        return group to initialGeneration
+        return group
     }
 
     /** 新メンバー加入 */
@@ -62,22 +55,20 @@ class SakamichiApplicationService(
 
         val generation = Generation(
             group = group,
-            joinDate = joinNewMembersCommand.joinDate
+            joinDate = joinNewMembersCommand.joinDate,
+            members = joinNewMembersCommand.newMembers.map {
+                Member(
+                    name = Name(
+                        firstName = it.firstName,
+                        familyName = it.familyName,
+                        firstNameKana = it.firstNameKana,
+                        familyNameKana = it.familyNameKana,
+                        middleName = it.middleName,
+                    ),
+                    dateOfBirth = it.dateOfBirth,
+                )
+            }.toMutableList()
         )
-
-        joinNewMembersCommand.newMembers.map {
-            Member(
-                name = Name(
-                    firstName = it.firstName,
-                    familyName = it.familyName,
-                    firstNameKana = it.firstNameKana,
-                    familyNameKana = it.familyNameKana,
-                    middleName = it.middleName,
-                ),
-                dateOfBirth = it.dateOfBirth,
-                generation = generation
-            )
-        }
 
         groupRepository.flush()
         return generation

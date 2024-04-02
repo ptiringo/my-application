@@ -94,12 +94,15 @@ class MainApplication(
 
     private fun sakamichi() {
         // 乃木坂
-        val (nogizaka46, nogi1stGen) = sakamichi.createNewGroup(NOGIZAKA46)
+        val nogizaka46 = sakamichi.createNewGroup(NOGIZAKA46)
+        val nogi1stGen = nogizaka46.generation.first()
         val nogi1stMembers = nogi1stGen.members
         val nishinoNanase = nogi1stMembers.single { it.name.familyName == "西野" && it.name.firstName == "七瀬" }
 
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
+
+        sakamichi.releaseNewSingle(BARRETTA(nogizaka46.id))
 
         val nogi4thGen = sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN4(nogizaka46.id))
         val kanagawaSaya = nogi4thGen.members.single { it.name.familyName == "金川" && it.name.firstName == "紗耶" }
@@ -119,12 +122,17 @@ class MainApplication(
             sakamichi.comeBack(memberId = kanagawaSaya.id, endAt = it)
         }
 
+        sakamichi.releaseNewSingle(CHANCE_HA_BYOUDOU(nogizaka46.id))
+
         // 櫻坂
-        val (sakurazaka46, sakura1stGen) = sakamichi.createNewGroup(SAKURAZAKA46)
+        val sakurazaka46 = sakamichi.createNewGroup(SAKURAZAKA46)
+        val sakura1stGen = sakurazaka46.generation.first()
         val sakura1stMembers = sakura1stGen.members
         val habuMizuho = sakura1stMembers.single { it.name.familyName == "土生" && it.name.firstName == "瑞穂" }
         val kobayashiYui = sakura1stMembers.single { it.name.familyName == "小林" && it.name.firstName == "由依" }
         val odaNana = sakura1stMembers.single { it.name.familyName == "織田" && it.name.firstName == "奈那" }
+
+        sakamichi.releaseNewSingle(SILENT_MAJORITY(sakurazaka46.id))
 
         sakamichi.joinNewMembers(SAKURAZAKA46_MEMBERS_GEN2(sakurazaka46.id))
 
@@ -142,7 +150,7 @@ class MainApplication(
         sakamichi.holdLive(FOURTH_ARENA_TOUR_2024(sakurazaka46.id))
 
         // 日向坂
-        val (hinatazaka46, _) = sakamichi.createNewGroup(HINATAZAKA46)
+        val hinatazaka46 = sakamichi.createNewGroup(HINATAZAKA46)
         val hinata1stGen = sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN1(hinatazaka46.id))
         val hinata1stMembers = hinata1stGen.members
         val saitoKyoko = hinata1stMembers.single { it.name.familyName == "齊藤" && it.name.firstName == "京子" }
@@ -157,6 +165,8 @@ class MainApplication(
         sakamichi.withdrawFromActivity(kishiHonoka.id, LocalDate.of(2023, 12, 7))
 
         sakamichi.graduate(memberId = saitoKyoko.id, leavedDate = LocalDate.of(2024, 4, 5))
+
+        sakamichi.releaseNewSingle(KIMIHA_HONEYDEW(hinatazaka46.id))
     }
 
     private fun tennis() {

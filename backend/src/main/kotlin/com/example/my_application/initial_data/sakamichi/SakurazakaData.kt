@@ -144,6 +144,13 @@ val SAKURAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
                 firstNameKana = "かりん",
                 familyNameKana = "ふじよし",
                 dateOfBirth = LocalDate.of(2001, 8, 29)
+            ),
+            NewMember(
+                firstName = "玲",
+                familyName = "大園",
+                firstNameKana = "れい",
+                familyNameKana = "おおぞの",
+                dateOfBirth = LocalDate.of(2000, 4, 18)
             )
         )
     )
@@ -203,12 +210,27 @@ val SAKURAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
                 firstNameKana = "りこ",
                 familyNameKana = "えんどう",
                 dateOfBirth = LocalDate.of(2006, 1, 9)
+            ),
+            NewMember(
+                firstName = "優",
+                familyName = "村井",
+                firstNameKana = "ゆう",
+                familyNameKana = "むらい",
+                dateOfBirth = LocalDate.of(2004, 8, 18)
             )
         )
     )
 }
 
 // シングルリリース
+val SILENT_MAJORITY = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        number = 1,
+        title = "サイレントマジョリティー",
+        releaseDate = LocalDate.of(2016, 4, 6)
+    )
+}
 
 val START_OVER = { groupId: Long ->
     ReleaseNewSingleCommand(
