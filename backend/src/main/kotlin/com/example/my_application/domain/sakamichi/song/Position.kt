@@ -13,8 +13,8 @@ class Position(
 
     @ManyToOne(optional = false)
     val formation: Formation,
-
+) {
     @Id
     @GeneratedValue
-    val id: Long = 0,
-)
+    val id: Long = 0
+}

@@ -11,11 +11,11 @@ class Prefecture(
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     val type: PrefectureType,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}
 
 /** 都道府県種類 */
 enum class PrefectureType {

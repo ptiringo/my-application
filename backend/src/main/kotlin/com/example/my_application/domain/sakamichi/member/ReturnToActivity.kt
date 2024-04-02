@@ -13,8 +13,8 @@ class ReturnToActivity(
     /** 活動再開日 */
     @Column(nullable = false)
     val returnedDate: LocalDate,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}

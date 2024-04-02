@@ -13,6 +13,10 @@ class BreakOfActivity(
     /** 活動休止開始日 */
     @Column(nullable = false)
     val startedDate: LocalDate,
+) {
+    @Id
+    @GeneratedValue
+    val id: Long = 0
 
     @OneToOne(
         optional = true,
@@ -20,15 +24,5 @@ class BreakOfActivity(
         mappedBy = "breakOfActivity",
         cascade = [CascadeType.ALL]
     )
-    var returnToActivity: ReturnToActivity? = null,
-
-    @Id
-    @GeneratedValue
-    val id: Long = 0
-) {
-    constructor(member: Member, startedDate: LocalDate) : this(
-        member = member,
-        startedDate = startedDate,
-        returnToActivity = null
-    )
+    var returnToActivity: ReturnToActivity? = null
 }

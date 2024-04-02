@@ -7,14 +7,14 @@ import javax.persistence.*
 class Jockey(
     @Embedded
     val name: Name,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}
 
 @Embeddable
-class Name(
+data class Name(
     /** 名前（かな） */
     @Comment("名前（かな）")
     @Column(nullable = false, length = 30)

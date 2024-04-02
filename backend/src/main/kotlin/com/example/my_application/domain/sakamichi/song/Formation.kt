@@ -10,8 +10,8 @@ class Formation(
 
     @OneToOne(mappedBy = "formation")
     val song: Song,
-
+) {
     @Id
     @GeneratedValue
-    val id: Long = 0,
-)
+    val id: Long = 0
+}

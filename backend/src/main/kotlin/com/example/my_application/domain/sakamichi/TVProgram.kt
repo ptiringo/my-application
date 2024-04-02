@@ -9,8 +9,8 @@ import javax.persistence.Id
 class TVProgram(
     @Column(nullable = false)
     val title: String,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}

@@ -16,10 +16,10 @@ class HeldTournament(
     val tournament: Tournament,
 
     val startDate: LocalDate,
-    
-    val endDate: LocalDate,
 
+    val endDate: LocalDate,
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}

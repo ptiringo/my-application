@@ -9,11 +9,11 @@ class Stallion(
     @MapsId
     @JoinColumn(name = "horse_id", nullable = false)
     val horse: Horse,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-) {
+
     init {
         this.horse.stallion = this
     }

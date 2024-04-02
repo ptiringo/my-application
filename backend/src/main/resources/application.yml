@@ -5,7 +5,9 @@ quarkus:
       url: jdbc:h2:file:./data/db;AUTO_SERVER=TRUE
   hibernate-orm:
     database:
-      generation: drop-and-create
+      generation:
+        ~: drop-and-create
     log:
       sql: true
+      format-sql: false
     physical-naming-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy

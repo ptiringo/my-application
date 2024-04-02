@@ -5,7 +5,7 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-final class Generation(
+class Generation(
     @ManyToOne
     @JoinColumn(name = "group_id")
     val group: Group,

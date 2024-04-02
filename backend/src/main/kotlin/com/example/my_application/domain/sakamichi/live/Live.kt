@@ -18,8 +18,8 @@ class Live(
 
     /** 公演名 */
     val title: String,
-
+) {
     @Id
     @GeneratedValue
-    val id: Long = 0,
-)
+    val id: Long = 0
+}

@@ -14,8 +14,8 @@ class Song(
 
     @ManyToMany
     val packageSongs: List<PackageSong> = emptyList(),
-
+) {
     @Id
     @GeneratedValue
-    val id: Long = 0,
-)
+    val id: Long = 0
+}

@@ -16,11 +16,11 @@ class Municipality(
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     val type: MunicipalityType,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}
 
 enum class MunicipalityType {
     /** 市 */

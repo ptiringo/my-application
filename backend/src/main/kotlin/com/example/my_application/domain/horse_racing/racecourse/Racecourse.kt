@@ -10,8 +10,8 @@ class Racecourse(
 
     @Enumerated(EnumType.STRING)
     val country: Country,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}

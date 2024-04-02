@@ -11,8 +11,8 @@ class HorseOwner(
     /** 氏名 */
     @Column(nullable = false)
     val name: String,
-
+) {
     @Id
     @GeneratedValue
-    val id: Long = 0,
-)
+    val id: Long = 0
+}

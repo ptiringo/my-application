@@ -7,7 +7,7 @@ import javax.persistence.*
 /** メンバー */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-final class Member(
+class Member(
     /** 名前 */
     @Embedded
     var name: Name,

@@ -20,10 +20,10 @@ class LeavingFromGroup(
     /** 脱退日 */
     @Column(nullable = false)
     val leavedDate: LocalDate,
-
+) {
     @Id
     val id: Long = 0
-)
+}
 
 /** 脱退の種類 */
 enum class LeavingType {

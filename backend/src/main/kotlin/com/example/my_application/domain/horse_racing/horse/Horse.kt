@@ -6,9 +6,6 @@ import javax.persistence.*
 /** 馬 */
 @Entity
 class Horse(
-    @Id
-    @GeneratedValue
-    val id: Long = 0,
 
     @Column(nullable = false)
     val name: String,
@@ -26,5 +23,9 @@ class Horse(
     @PrimaryKeyJoinColumn
     var stallion: Stallion? = null
 ) {
+    @Id
+    @GeneratedValue
+    val id: Long = 0
+    
     val age get() = LocalDate.now().year - dateOfBirth.year
 }

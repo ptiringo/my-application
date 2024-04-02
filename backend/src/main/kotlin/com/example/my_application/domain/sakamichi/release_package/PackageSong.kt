@@ -17,7 +17,7 @@ class PackageSong(
         fetch = FetchType.LAZY
     )
     val songs: List<Song> = emptyList(),
-
+) {
     @Id
-    val id: Long = 0,
-)
+    val id: Long = 0
+}

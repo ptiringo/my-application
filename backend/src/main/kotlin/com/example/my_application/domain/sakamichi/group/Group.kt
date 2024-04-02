@@ -7,7 +7,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "sakamichi_group")
-final class Group(
+class Group(
     /** グループ名 */
     name: String,
 

@@ -23,11 +23,11 @@ class Tournament(
 
     @OneToMany(mappedBy = "tournament", cascade = [], fetch = FetchType.LAZY)
     val heldTournaments: MutableSet<HeldTournament> = mutableSetOf(),
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}
 
 enum class TournamentCategory {
     GRAND_SLAM,

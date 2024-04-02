@@ -17,8 +17,8 @@ class Trainer(
     @Comment("名字")
     @Column(nullable = false, length = 30)
     val familyName: String,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}

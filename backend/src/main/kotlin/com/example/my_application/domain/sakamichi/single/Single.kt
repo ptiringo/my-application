@@ -37,8 +37,9 @@ class Single(
         orphanRemoval = true
     )
     val releasePackages: List<ReleasePackage> = emptyList(),
-
-    @Id @GeneratedValue
-    val id: Long = 0,
-)
+) {
+    @Id
+    @GeneratedValue
+    val id: Long = 0
+}
 

@@ -14,8 +14,8 @@ class IkebukuroIncident(
 
     @Column(nullable = false)
     val occurredOn: LocalDate,
-
+) {
     @Id
     @GeneratedValue
-    val id: Long = 0,
-)
+    val id: Long = 0
+}

@@ -14,8 +14,8 @@ class GroupAttributes(
 
     /** グループ名 */
     val groupName: String,
-
+) {
     @Id
     @GeneratedValue
     val id: Long = 0
-)
+}

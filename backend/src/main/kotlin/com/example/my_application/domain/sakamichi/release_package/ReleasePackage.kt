@@ -15,7 +15,7 @@ class ReleasePackage(
         fetch = FetchType.LAZY
     )
     val single: Single,
-
+) {
     @Id
-    val id: Long = 0,
-)
+    val id: Long = 0
+}

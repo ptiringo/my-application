@@ -21,11 +21,11 @@ class Race(
 
     @Column(nullable = false)
     val distance: Int,
-
+) {
     @Id
     @GeneratedValue
-    val id: Long = 0,
-)
+    val id: Long = 0
+}
 
 enum class Grade {
     G1, G2, G3
