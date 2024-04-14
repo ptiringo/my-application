@@ -118,6 +118,8 @@ class MainApplication(
             sakamichi.startBreakOfActivity(memberId = kanagawaSaya.id, startAt = it)
         }
 
+        sakamichi.releaseNewSingle(MONOPOLY(nogizaka46.id))
+
         LocalDate.of(2024, 1, 10).let {
             sakamichi.comeBack(memberId = kanagawaSaya.id, endAt = it)
         }

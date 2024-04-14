@@ -303,6 +303,13 @@ val NOGIZAKA46_MEMBERS_GEN4 = { groupId: Long ->
                 familyNameKana = "つつい",
                 dateOfBirth = LocalDate.of(2004, 6, 8)
             ),
+            NewMember(
+                firstName = "レイ",
+                familyName = "清宮",
+                firstNameKana = "れい",
+                familyNameKana = "せいみや",
+                dateOfBirth = LocalDate.of(2003, 8, 1)
+            ),
         )
     )
 }
@@ -412,6 +419,16 @@ val SHIAWASE_NO_HOGOSHOKU = { groupId: Long ->
         number = 25,
         title = "しあわせの保護色",
         releaseDate = LocalDate.of(2020, 3, 25)
+    )
+}
+
+/** Monopoly **/
+val MONOPOLY = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        number = 35,
+        title = "Monopoly",
+        releaseDate = LocalDate.of(2023, 12, 6)
     )
 }
 
