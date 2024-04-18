@@ -37,3 +37,8 @@ val EPSOM = RegisterRacecourseCommand(
     name = "エプソム",
     country = Country.UnitedKingdom
 )
+
+val NAKAYAMA = RegisterRacecourseCommand(
+    name = "中山",
+    country = Country.Japan
+)

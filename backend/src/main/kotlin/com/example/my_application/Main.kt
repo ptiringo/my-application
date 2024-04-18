@@ -2,6 +2,7 @@ package com.example.my_application
 
 import com.example.my_application.application.horce_racing.HorseRacingApplicationService
 import com.example.my_application.application.sakamichi.SakamichiApplicationService
+import com.example.my_application.application.tennis.HoldTournamentCommand
 import com.example.my_application.application.tennis.TennisApplicationService
 import com.example.my_application.domain.urban_sociology.Municipality
 import com.example.my_application.domain.urban_sociology.MunicipalityType
@@ -52,7 +53,7 @@ class MainApplication(
         urbanSociology()
     }
 
-    fun horseRacing() {
+    private fun horseRacing() {
         horseRacing.registerRacehorse(LOGIC)
         horseRacing.registerRacehorse(KITASAN_BLACK)
         horseRacing.registerRacehorse(FIRST_FORCE)
@@ -77,6 +78,7 @@ class MainApplication(
         val kyoto = horseRacing.registerRacecourse(KYOTO)
         val kingAbdulaziz = horseRacing.registerRacecourse(KING_ABDULAZIZ)
         horseRacing.registerRacecourse(EPSOM)
+        val nakayama = horseRacing.registerRacecourse(NAKAYAMA)
 
         horseRacing.registerRace(DUBAI_SHEEMA_CLASSIC(meydan.id))
         horseRacing.registerRace(ALL_AGED_STAKES(randwick.id))
@@ -84,6 +86,7 @@ class MainApplication(
         horseRacing.registerRace(KYOTO_KINEN(kyoto.id))
         horseRacing.registerRace(SAUDI_CUP(kingAbdulaziz.id))
         horseRacing.registerRace(DUBAI_GOLDEN_SHAHEEN(meydan.id))
+        horseRacing.registerRace(SATSUKI_SHO(nakayama.id))
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
         horseRacing.registerTrainer(SUGIYAMA_HARUKI)
@@ -172,7 +175,7 @@ class MainApplication(
     }
 
     private fun tennis() {
-        tennis.registerTournament(MONTE_CARLO)
+        val monte_carlo = tennis.registerTournament(MONTE_CARLO)
         tennis.registerTournament(AUSTRALIAN_OPEN)
         tennis.registerTournament(BNP_PARIBAS_OPEN)
         tennis.registerTournament(MIAMI_OPEN)
@@ -201,6 +204,15 @@ class MainApplication(
         tennis.registerAsPro(OSAKA_NAOMI)
         tennis.registerAsPro(SEBASTIAN_OFNER)
         tennis.registerAsPro(DOMINIC_THIEM)
+        tennis.registerAsPro(CASPER_RUUD)
+
+        tennis.holdTournament(
+            HoldTournamentCommand(
+                monte_carlo.id,
+                LocalDate.of(2023, 4, 7),
+                LocalDate.of(2023, 4, 14)
+            )
+        )
     }
 
     @Transactional

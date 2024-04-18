@@ -17,6 +17,12 @@ class Player(
 
     @Enumerated(EnumType.STRING)
     val country: Country,
+
+    @Enumerated(EnumType.STRING)
+    val dominantHand: DominantHand,
+
+    @Enumerated(EnumType.STRING)
+    val backhandStyle: BackhandStyle
 ) {
     @Id
     @GeneratedValue
