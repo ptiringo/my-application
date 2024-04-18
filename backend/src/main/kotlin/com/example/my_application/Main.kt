@@ -79,6 +79,7 @@ class MainApplication(
         val kingAbdulaziz = horseRacing.registerRacecourse(KING_ABDULAZIZ)
         horseRacing.registerRacecourse(EPSOM)
         val nakayama = horseRacing.registerRacecourse(NAKAYAMA)
+        horseRacing.registerRacecourse(KANAZAWA)
 
         horseRacing.registerRace(DUBAI_SHEEMA_CLASSIC(meydan.id))
         horseRacing.registerRace(ALL_AGED_STAKES(randwick.id))
