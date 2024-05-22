@@ -221,3 +221,12 @@ val CASPER_RUUD = RegisterAsProCommand(
     backhandStyle = BackhandStyle.TWO_HANDED,
     country = Country.Norway
 )
+
+val MIKHAIL_YOUZHNY = RegisterAsProCommand(
+    firstName = "Mikhail",
+    familyName = "Youzhny",
+    dateOfBirth = LocalDate.of(1982, 6, 25),
+    dominantHand = DominantHand.RIGHT,
+    backhandStyle = BackhandStyle.ONE_HANDED,
+    country = Country.Russia
+)

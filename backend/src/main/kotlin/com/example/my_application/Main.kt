@@ -176,12 +176,13 @@ class MainApplication(
     }
 
     private fun tennis() {
-        val monte_carlo = tennis.registerTournament(MONTE_CARLO)
+        val monteCarlo = tennis.registerTournament(MONTE_CARLO)
         tennis.registerTournament(AUSTRALIAN_OPEN)
         tennis.registerTournament(BNP_PARIBAS_OPEN)
         tennis.registerTournament(MIAMI_OPEN)
         tennis.registerTournament(HOUSTON)
 
+        tennis.registerAsPro(MIKHAIL_YOUZHNY)
         tennis.registerAsPro(RAFAEL_NADAL)
         tennis.registerAsPro(NOVAK_DJOKOVIC)
         tennis.registerAsPro(DANIIL_MEDVEDEV)
@@ -209,7 +210,7 @@ class MainApplication(
 
         tennis.holdTournament(
             HoldTournamentCommand(
-                monte_carlo.id,
+                monteCarlo.id,
                 LocalDate.of(2023, 4, 7),
                 LocalDate.of(2023, 4, 14)
             )
