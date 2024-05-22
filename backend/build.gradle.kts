@@ -1,7 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.7.22"
-    kotlin("plugin.allopen") version "1.7.22"
-    kotlin("plugin.noarg") version "1.7.22"
+    kotlin("jvm") version "1.9.24"
+    kotlin("plugin.allopen") version "1.9.24"
+    kotlin("plugin.noarg") version "1.9.24"
     id("io.quarkus")
 }
 
@@ -35,9 +35,8 @@ dependencies {
 group = "com.example.my_application"
 version = "0.0.1-SNAPSHOT"
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+kotlin {
+    jvmToolchain(17)
 }
 
 tasks.withType<Test> {
