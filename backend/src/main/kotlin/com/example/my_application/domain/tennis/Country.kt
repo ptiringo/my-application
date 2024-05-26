@@ -16,5 +16,7 @@ enum class Country {
     Italy,
     USA,
     Austria,
-    Norway
+    Norway,
+    CzechRepublic,
+    France
 }

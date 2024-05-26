@@ -48,7 +48,9 @@ class MainApplication(
 
     fun insertData() {
         horseRacing()
-        sakamichi()
+        nogizaka()
+        sakurazaka()
+        hinatazaka()
         tennis()
         urbanSociology()
     }
@@ -96,15 +98,15 @@ class MainApplication(
         horseRacing.registerHorseOwner(KUMETA_MASAAKI)
     }
 
-    private fun sakamichi() {
-        // 乃木坂
+    private fun nogizaka() {
         val nogizaka46 = sakamichi.createNewGroup(NOGIZAKA46)
         val nogi1stGen = nogizaka46.generation.first()
         val nogi1stMembers = nogi1stGen.members
         val nishinoNanase = nogi1stMembers.single { it.name.familyName == "西野" && it.name.firstName == "七瀬" }
 
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
-        sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
+        val nogi3rdGen = sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
+        val sakaguchiTamami = nogi3rdGen.members.single { it.name.familyName == "坂口" && it.name.firstName == "珠美" }
 
         sakamichi.releaseNewSingle(BARRETTA(nogizaka46.id))
 
@@ -129,8 +131,9 @@ class MainApplication(
         }
 
         sakamichi.releaseNewSingle(CHANCE_HA_BYOUDOU(nogizaka46.id))
+    }
 
-        // 櫻坂
+    private fun sakurazaka() {
         val sakurazaka46 = sakamichi.createNewGroup(SAKURAZAKA46)
         val sakura1stGen = sakurazaka46.generation.first()
         val sakura1stMembers = sakura1stGen.members
@@ -154,8 +157,9 @@ class MainApplication(
         sakamichi.graduate(kobayashiYui.id, LocalDate.of(2024, 2, 1))
 
         sakamichi.holdLive(FOURTH_ARENA_TOUR_2024(sakurazaka46.id))
+    }
 
-        // 日向坂
+    private fun hinatazaka() {
         val hinatazaka46 = sakamichi.createNewGroup(HINATAZAKA46)
         val hinata1stGen = sakamichi.joinNewMembers(HINATAZAKA46_MEMBERS_GEN1(hinatazaka46.id))
         val hinata1stMembers = hinata1stGen.members
@@ -181,6 +185,7 @@ class MainApplication(
         tennis.registerTournament(BNP_PARIBAS_OPEN)
         tennis.registerTournament(MIAMI_OPEN)
         tennis.registerTournament(HOUSTON)
+        tennis.registerTournament(ROLAND_GARROS)
 
         tennis.registerAsPro(MIKHAIL_YOUZHNY)
         tennis.registerAsPro(RAFAEL_NADAL)
@@ -207,6 +212,8 @@ class MainApplication(
         tennis.registerAsPro(SEBASTIAN_OFNER)
         tennis.registerAsPro(DOMINIC_THIEM)
         tennis.registerAsPro(CASPER_RUUD)
+        tennis.registerAsPro(TOMAS_MACHAC)
+        tennis.registerAsPro(RICHARD_GASQUET)
 
         tennis.holdTournament(
             HoldTournamentCommand(

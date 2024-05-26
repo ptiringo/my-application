@@ -38,3 +38,10 @@ val HOUSTON = RegisterTournamentCommand(
     tournamentCategory = TournamentCategory.ATP_TOUR_250,
     tennisSurface = TennisSurface.CLAY
 )
+
+val ROLAND_GARROS = RegisterTournamentCommand(
+    name = "Roland Garros",
+    location = "Paris",
+    tournamentCategory = TournamentCategory.GRAND_SLAM,
+    tennisSurface = TennisSurface.CLAY
+)
