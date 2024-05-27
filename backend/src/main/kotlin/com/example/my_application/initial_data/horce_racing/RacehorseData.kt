@@ -57,3 +57,8 @@ val DANON_PREMIUM = RegisterRacehorseCommand(
     name = "ダノンプレミアム",
     dateOfBirth = LocalDate.of(2015, 4, 3)
 )
+
+val GRAN_ALEGRIA = RegisterRacehorseCommand(
+    name = "グランアレグリア",
+    dateOfBirth = LocalDate.of(2016, 1, 24)
+)

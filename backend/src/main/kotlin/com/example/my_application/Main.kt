@@ -67,6 +67,7 @@ class MainApplication(
         horseRacing.registerRacehorse(PEPTIDE_NILE)
         horseRacing.registerRacehorse(ELUSIVE_PANTHER)
         horseRacing.registerRacehorse(DANON_PREMIUM)
+        horseRacing.registerRacehorse(GRAN_ALEGRIA)
 
         horseRacing.registerJockey(CHRISTOPHE_LEMAIRE)
         horseRacing.registerJockey(ANDO_KATSUMI)
@@ -106,7 +107,7 @@ class MainApplication(
 
         sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN2(nogizaka46.id))
         val nogi3rdGen = sakamichi.joinNewMembers(NOGIZAKA46_MEMBERS_GEN3(nogizaka46.id))
-        val sakaguchiTamami = nogi3rdGen.members.single { it.name.familyName == "坂口" && it.name.firstName == "珠美" }
+        val sakaguchiTamami = nogi3rdGen.members.single { it.name.familyName == "阪口" && it.name.firstName == "珠美" }
 
         sakamichi.releaseNewSingle(BARRETTA(nogizaka46.id))
 
@@ -185,7 +186,7 @@ class MainApplication(
         tennis.registerTournament(BNP_PARIBAS_OPEN)
         tennis.registerTournament(MIAMI_OPEN)
         tennis.registerTournament(HOUSTON)
-        tennis.registerTournament(ROLAND_GARROS)
+        val rolandGarros = tennis.registerTournament(ROLAND_GARROS)
 
         tennis.registerAsPro(MIKHAIL_YOUZHNY)
         tennis.registerAsPro(RAFAEL_NADAL)
@@ -218,8 +219,16 @@ class MainApplication(
         tennis.holdTournament(
             HoldTournamentCommand(
                 monteCarlo.id,
-                LocalDate.of(2023, 4, 7),
-                LocalDate.of(2023, 4, 14)
+                startDate = LocalDate.of(2023, 4, 7),
+                endDate = LocalDate.of(2023, 4, 14)
+            )
+        )
+
+        tennis.holdTournament(
+            HoldTournamentCommand(
+                rolandGarros.id,
+                startDate = LocalDate.of(2023, 5, 26),
+                endDate = LocalDate.of(2023, 6, 9)
             )
         )
     }
