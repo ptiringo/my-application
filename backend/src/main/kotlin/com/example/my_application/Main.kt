@@ -152,12 +152,14 @@ class MainApplication(
 
         sakamichi.releaseNewSingle(START_OVER(sakurazaka46.id))
         sakamichi.releaseNewSingle(SHOUNIN_YOKKYU(sakurazaka46.id))
-        sakamichi.releaseNewSingle(IKUTSU_NO_KORONI_MODORITAINOKA(sakurazaka46.id))
 
         sakamichi.graduate(habuMizuho.id, LocalDate.of(2023, 11, 25))
         sakamichi.graduate(kobayashiYui.id, LocalDate.of(2024, 2, 1))
+        sakamichi.releaseNewSingle(IKUTSU_NO_KORONI_MODORITAINOKA(sakurazaka46.id))
 
         sakamichi.holdLive(FOURTH_ARENA_TOUR_2024(sakurazaka46.id))
+
+        sakamichi.releaseNewSingle(JIGOUJITOKU(sakurazaka46.id))
     }
 
     private fun hinatazaka() {
@@ -215,6 +217,7 @@ class MainApplication(
         tennis.registerAsPro(CASPER_RUUD)
         tennis.registerAsPro(TOMAS_MACHAC)
         tennis.registerAsPro(RICHARD_GASQUET)
+        tennis.registerAsPro(BORNA_CORIC)
 
         tennis.holdTournament(
             HoldTournamentCommand(

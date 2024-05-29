@@ -248,3 +248,12 @@ val RICHARD_GASQUET = RegisterAsProCommand(
     backhandStyle = BackhandStyle.OneHanded,
     country = Country.France
 )
+
+val BORNA_CORIC = RegisterAsProCommand(
+    firstName = "Borna",
+    familyName = "Coric",
+    dateOfBirth = LocalDate.of(1996, 11, 14),
+    dominantHand = DominantHand.Right,
+    backhandStyle = BackhandStyle.TwoHanded,
+    country = Country.Croatia
+)

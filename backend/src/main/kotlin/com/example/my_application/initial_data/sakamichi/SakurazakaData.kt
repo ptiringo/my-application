@@ -266,6 +266,15 @@ val IKUTSU_NO_KORONI_MODORITAINOKA = { groupId: Long ->
     )
 }
 
+val JIGOUJITOKU = { groupId: Long ->
+    ReleaseNewSingleCommand(
+        groupId = groupId,
+        number = 9,
+        title = "自業自得",
+        releaseDate = LocalDate.of(2024, 6, 26)
+    )
+}
+
 // ライブ
 
 val FOURTH_ARENA_TOUR_2024 = { groupId: Long ->
