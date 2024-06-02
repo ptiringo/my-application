@@ -2,6 +2,7 @@ package com.example.my_application.initial_data.sakamichi
 
 import com.example.my_application.application.sakamichi.*
 import java.time.LocalDate
+import java.time.LocalTime
 
 /** 櫻坂46 */
 val SAKURAZAKA46 =
@@ -276,10 +277,23 @@ val JIGOUJITOKU = { groupId: Long ->
 }
 
 // ライブ
-
 val FOURTH_ARENA_TOUR_2024 = { groupId: Long ->
     HoldLiveCommand(
         groupId = groupId,
-        title = "4th ARENA TOUR 2024 新・櫻前線 -Go on back?- IN 東京ドーム"
+        title = "4th ARENA TOUR 2024 新・櫻前線 -Go on back?- IN 東京ドーム",
+        schedules = listOf(
+            HoldLiveScheduleCommand(
+                date = LocalDate.of(2024, 6, 15),
+                venue = "東京ドーム",
+                openAt = LocalTime.of(15, 30),
+                startAt = LocalTime.of(18, 0)
+            ),
+            HoldLiveScheduleCommand(
+                date = LocalDate.of(2024, 6, 16),
+                venue = "東京ドーム",
+                openAt = LocalTime.of(15, 30),
+                startAt = LocalTime.of(18, 0)
+            ),
+        )
     )
 }

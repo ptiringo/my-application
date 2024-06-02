@@ -1,6 +1,8 @@
 package com.example.my_application.domain.sakamichi.live
 
 import com.example.my_application.domain.sakamichi.group.Group
+import java.time.LocalDate
+import java.time.LocalTime
 import javax.persistence.*
 
 /** ライブ */
@@ -19,7 +21,31 @@ class Live(
     /** 公演名 */
     val title: String,
 ) {
+    @OneToMany(
+        cascade = [CascadeType.ALL],
+        fetch = FetchType.EAGER,
+        mappedBy = "live"
+    )
+    val schedules: MutableList<LiveSchedule> = arrayListOf()
+
     @Id
     @GeneratedValue
     val id: Long = 0
+
+    fun addSchedule(
+        date: LocalDate,
+        venue: String,
+        openAt: LocalTime,
+        startAt: LocalTime
+    ) {
+        this.schedules.add(
+            LiveSchedule(
+                date = date,
+                venue = venue,
+                openAt = openAt,
+                startAt = startAt,
+                live = this
+            )
+        )
+    }
 }

@@ -114,8 +114,15 @@ class SakamichiApplicationService(
     fun holdLive(command: HoldLiveCommand): Live {
         val group = groupRepository.findById(command.groupId)!!
         val live = Live(group = group, title = command.title)
+        command.schedules.forEach {
+            live.addSchedule(
+                date = it.date,
+                venue = it.venue,
+                openAt = it.openAt,
+                startAt = it.startAt,
+            )
+        }
         liveRepository.persist(live)
         return live
     }
-
 }
