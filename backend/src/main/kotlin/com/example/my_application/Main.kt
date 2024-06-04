@@ -56,6 +56,7 @@ class MainApplication(
     }
 
     private fun horseRacing() {
+        val kingKamehameha = horseRacing.registerRacehorse(KING_KAMEHAMEHA)
         horseRacing.registerRacehorse(LOGIC)
         horseRacing.registerRacehorse(KITASAN_BLACK)
         horseRacing.registerRacehorse(FIRST_FORCE)
@@ -83,6 +84,7 @@ class MainApplication(
         horseRacing.registerRacecourse(EPSOM)
         val nakayama = horseRacing.registerRacecourse(NAKAYAMA)
         horseRacing.registerRacecourse(KANAZAWA)
+        val leopardstown = horseRacing.registerRacecourse(LEOPARDSTOWN)
 
         horseRacing.registerRace(DUBAI_SHEEMA_CLASSIC(meydan.id))
         horseRacing.registerRace(ALL_AGED_STAKES(randwick.id))
@@ -91,12 +93,15 @@ class MainApplication(
         horseRacing.registerRace(SAUDI_CUP(kingAbdulaziz.id))
         horseRacing.registerRace(DUBAI_GOLDEN_SHAHEEN(meydan.id))
         horseRacing.registerRace(SATSUKI_SHO(nakayama.id))
+        horseRacing.registerRace(IRISH_CHAMPION_STAKES(leopardstown.id))
 
         horseRacing.registerTrainer(KATO_KAZUHIRO)
         horseRacing.registerTrainer(SUGIYAMA_HARUKI)
         horseRacing.registerTrainer(FUKUNAGA_YUICHI)
 
         horseRacing.registerHorseOwner(KUMETA_MASAAKI)
+
+        horseRacing.selectAsKenshoba(kingKamehameha.id, 2024)
     }
 
     private fun nogizaka() {

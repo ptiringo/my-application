@@ -73,3 +73,13 @@ val SATSUKI_SHO = { racecourseId: Long ->
         racecourseId = racecourseId,
     )
 }
+
+val IRISH_CHAMPION_STAKES = { racecourseId: Long ->
+    RegisterRaceCommand(
+        name = "アイリッシュチャンピオンステークス",
+        grade = Grade.G1,
+        truckSurface = TrackSurface.TURF,
+        distance = 2000,
+        racecourseId = racecourseId,
+    )
+}

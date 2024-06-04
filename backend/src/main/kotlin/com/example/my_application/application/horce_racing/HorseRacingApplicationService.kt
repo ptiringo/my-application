@@ -89,4 +89,10 @@ class HorseRacingApplicationService(
         raceRepository.persist(race)
         return race
     }
+
+    @Transactional
+    fun selectAsKenshoba(horseId: Long, selectedYear: Int) {
+        val horse = horseRepository.findById(horseId)!!
+        horse.selectedAsKenshoba(selectedYear)
+    }
 }

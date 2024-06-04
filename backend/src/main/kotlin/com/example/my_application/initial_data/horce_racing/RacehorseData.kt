@@ -62,3 +62,8 @@ val GRAN_ALEGRIA = RegisterRacehorseCommand(
     name = "グランアレグリア",
     dateOfBirth = LocalDate.of(2016, 1, 24)
 )
+
+val KING_KAMEHAMEHA = RegisterRacehorseCommand(
+    name = "キングカメハメハ",
+    dateOfBirth = LocalDate.of(2001, 3, 20)
+)

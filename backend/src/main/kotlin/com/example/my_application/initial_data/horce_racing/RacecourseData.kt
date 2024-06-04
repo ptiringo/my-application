@@ -47,3 +47,8 @@ val KANAZAWA = RegisterRacecourseCommand(
     name = "金沢",
     country = Country.Japan
 )
+
+val LEOPARDSTOWN = RegisterRacecourseCommand(
+    name = "レパーズタウン",
+    country = Country.Ireland
+)
