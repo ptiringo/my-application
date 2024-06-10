@@ -7,6 +7,7 @@ import javax.persistence.*
 @Entity
 class Horse(
 
+    /** 馬名 */
     @Column(nullable = false)
     val name: String,
 

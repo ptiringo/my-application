@@ -5,7 +5,7 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
-/** 騎乗依頼仲介者 **/
+/** 騎乗依頼仲介者（エージェント） **/
 @Entity
 class Agent(
 

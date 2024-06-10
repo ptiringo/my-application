@@ -1,18 +1,18 @@
-package com.example.my_application.domain.sakamichi.release_package
+package com.example.my_application.domain.sakamichi.single_product
 
 import com.example.my_application.domain.sakamichi.song.Song
 import javax.persistence.*
 
 @Entity
-class PackageSong(
+class SingleProductSong(
 
     val number: Int,
 
     @ManyToOne
-    val releasePackage: ReleasePackage,
+    val singleProduct: SingleProduct,
 
     @ManyToMany(
-        mappedBy = "packageSongs",
+        mappedBy = "singleProductSongs",
         cascade = [CascadeType.ALL],
         fetch = FetchType.LAZY
     )

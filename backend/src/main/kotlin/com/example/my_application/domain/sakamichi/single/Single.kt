@@ -1,7 +1,7 @@
 package com.example.my_application.domain.sakamichi.single
 
 import com.example.my_application.domain.sakamichi.group.Group
-import com.example.my_application.domain.sakamichi.release_package.ReleasePackage
+import com.example.my_application.domain.sakamichi.single_product.SingleProduct
 import java.time.LocalDate
 import javax.persistence.*
 
@@ -36,7 +36,7 @@ class Single(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    val releasePackages: List<ReleasePackage> = emptyList(),
+    val singleProducts: List<SingleProduct> = emptyList(),
 ) {
     @Id
     @GeneratedValue

@@ -1,6 +1,6 @@
 package com.example.my_application.domain.sakamichi.song
 
-import com.example.my_application.domain.sakamichi.release_package.PackageSong
+import com.example.my_application.domain.sakamichi.single_product.SingleProductSong
 import javax.persistence.*
 
 /** 曲 */
@@ -13,7 +13,7 @@ class Song(
     val formation: Formation,
 
     @ManyToMany
-    val packageSongs: List<PackageSong> = emptyList(),
+    val singleProductSongs: List<SingleProductSong> = emptyList(),
 ) {
     @Id
     @GeneratedValue

@@ -13,6 +13,7 @@ import com.example.my_application.infrastructure.horse_racing.trainer.TrainerRep
 import javax.enterprise.context.ApplicationScoped
 import javax.transaction.Transactional
 
+/** 競馬アプリケーションサービス */
 @ApplicationScoped
 class HorseRacingApplicationService(
     private val horseRepository: HorseRepository,
@@ -22,6 +23,7 @@ class HorseRacingApplicationService(
     private val raceRepository: RaceRepository,
     private val racecourseRepository: RacecourseRepository
 ) {
+    /** 競走馬登録 */
     @Transactional
     fun registerRacehorse(command: RegisterRacehorseCommand): Horse {
         val horse = Horse(
@@ -33,6 +35,7 @@ class HorseRacingApplicationService(
         return horse
     }
 
+    /** 騎手登録 */
     @Transactional
     fun registerJockey(command: RegisterJockeyCommand): Jockey {
         val jockey = Jockey(
@@ -49,6 +52,7 @@ class HorseRacingApplicationService(
         return jockey
     }
 
+    /** 調教師登録 */
     @Transactional
     fun registerTrainer(command: RegisterTrainerCommand): Trainer {
         val trainer = Trainer(
@@ -59,6 +63,7 @@ class HorseRacingApplicationService(
         return trainer
     }
 
+    /** 馬主登録 */
     @Transactional
     fun registerHorseOwner(command: RegisterHorseOwnerCommand): HorseOwner {
         val horseOwner = HorseOwner(name = command.name)
@@ -66,6 +71,7 @@ class HorseRacingApplicationService(
         return horseOwner
     }
 
+    /** 競馬場登録 */
     @Transactional
     fun registerRacecourse(command: RegisterRacecourseCommand): Racecourse {
         val racecourse = Racecourse(
@@ -76,6 +82,7 @@ class HorseRacingApplicationService(
         return racecourse
     }
 
+    /** 競走登録 */
     @Transactional
     fun registerRace(command: RegisterRaceCommand): Race {
         val racecourse = racecourseRepository.findById(command.racecourseId)!!
@@ -90,6 +97,7 @@ class HorseRacingApplicationService(
         return race
     }
 
+    /** 顕彰馬として選出 */
     @Transactional
     fun selectAsKenshoba(horseId: Long, selectedYear: Int) {
         val horse = horseRepository.findById(horseId)!!

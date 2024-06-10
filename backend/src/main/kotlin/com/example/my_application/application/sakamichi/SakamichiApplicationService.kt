@@ -125,4 +125,10 @@ class SakamichiApplicationService(
         liveRepository.persist(live)
         return live
     }
+
+    /** シングル製品発売 */
+    fun launchSingleProduct(command: LaunchSingleProductCommand) {
+        // TODO: 実装
+        throw NotImplementedError()
+    }
 }
