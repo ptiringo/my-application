@@ -16,6 +16,7 @@ import java.time.LocalDate
 import javax.enterprise.context.ApplicationScoped
 import javax.transaction.Transactional
 
+/** 坂道アプリケーションサービス */
 @Transactional
 @ApplicationScoped
 class SakamichiApplicationService(

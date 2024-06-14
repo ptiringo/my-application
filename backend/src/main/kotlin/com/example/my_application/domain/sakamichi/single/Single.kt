@@ -27,7 +27,7 @@ class Single(
     )
     val group: Group,
 
-    /** 発売日 */
+    /** リリース日 */
     val releaseDate: LocalDate,
 
     @OneToMany(

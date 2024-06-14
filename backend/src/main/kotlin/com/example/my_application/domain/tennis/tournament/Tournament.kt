@@ -29,6 +29,7 @@ class Tournament(
     val id: Long = 0
 }
 
+/** 大会カテゴリ */
 enum class TournamentCategory {
     GRAND_SLAM,
     ATP_FINALS,
@@ -38,6 +39,7 @@ enum class TournamentCategory {
     ATP_CHALLENGER_TOUR,
 }
 
+/** サーフェス */
 enum class TennisSurface {
     HARD,
     CLAY,
