@@ -14,6 +14,25 @@ import com.example.my_application.infrastructure.urban_sociology.PrefectureRepos
 import com.example.my_application.infrastructure.urban_sociology.ikebukuro.IkebukuroIncidentRepository
 import com.example.my_application.initial_data.horce_racing.*
 import com.example.my_application.initial_data.sakamichi.*
+import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATAZAKA46
+import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATAZAKA46_MEMBERS_GEN1
+import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATAZAKA46_MEMBERS_GEN2
+import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATAZAKA46_MEMBERS_GEN3
+import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATAZAKA46_MEMBERS_GEN4
+import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATA_FES_2024
+import com.example.my_application.initial_data.sakamichi.hinatazaka.KIMIWA_HONEYDEW
+import com.example.my_application.initial_data.sakamichi.hinatazaka.ONE_CHOICE
+import com.example.my_application.initial_data.sakamichi.nogizaka.BARRETTA
+import com.example.my_application.initial_data.sakamichi.nogizaka.CHANCE_HA_BYOUDOU
+import com.example.my_application.initial_data.sakamichi.nogizaka.MONOPOLY
+import com.example.my_application.initial_data.sakamichi.nogizaka.NOGIZAKA46
+import com.example.my_application.initial_data.sakamichi.nogizaka.NOGIZAKA46_MEMBERS_GEN2
+import com.example.my_application.initial_data.sakamichi.nogizaka.NOGIZAKA46_MEMBERS_GEN3
+import com.example.my_application.initial_data.sakamichi.nogizaka.NOGIZAKA46_MEMBERS_GEN4
+import com.example.my_application.initial_data.sakamichi.nogizaka.NOGIZAKA46_MEMBERS_GEN5
+import com.example.my_application.initial_data.sakamichi.nogizaka.SHIAWASE_NO_HOGOSHOKU
+import com.example.my_application.initial_data.sakamichi.nogizaka.SING_OUT
+import com.example.my_application.initial_data.sakamichi.nogizaka.UNDER_LIVE_35TH_SINGLE
 import com.example.my_application.initial_data.tennis.*
 import io.quarkus.runtime.Quarkus
 import io.quarkus.runtime.QuarkusApplication
@@ -137,6 +156,8 @@ class MainApplication(
         }
 
         sakamichi.releaseNewSingle(CHANCE_HA_BYOUDOU(nogizaka46.id))
+
+        sakamichi.holdLive(UNDER_LIVE_35TH_SINGLE(nogizaka46.id))
     }
 
     private fun sakurazaka() {
@@ -184,7 +205,9 @@ class MainApplication(
 
         sakamichi.graduate(memberId = saitoKyoko.id, leavedDate = LocalDate.of(2024, 4, 5))
 
-        sakamichi.releaseNewSingle(KIMIHA_HONEYDEW(hinatazaka46.id))
+        sakamichi.releaseNewSingle(KIMIWA_HONEYDEW(hinatazaka46.id))
+
+        sakamichi.holdLive(HINATA_FES_2024(hinatazaka46.id))
     }
 
     private fun tennis() {

@@ -284,13 +284,13 @@ val FOURTH_ARENA_TOUR_2024 = { groupId: Long ->
         schedules = listOf(
             HoldLiveScheduleInfo(
                 date = LocalDate.of(2024, 6, 15),
-                venue = "東京ドーム",
+                venue = setOf("東京ドーム"),
                 openAt = LocalTime.of(15, 30),
                 startAt = LocalTime.of(18, 0)
             ),
             HoldLiveScheduleInfo(
                 date = LocalDate.of(2024, 6, 16),
-                venue = "東京ドーム",
+                venue = setOf("東京ドーム"),
                 openAt = LocalTime.of(15, 30),
                 startAt = LocalTime.of(18, 0)
             ),

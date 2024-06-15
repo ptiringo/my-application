@@ -2,6 +2,7 @@ package com.example.my_application.domain.sakamichi.live
 
 import java.time.LocalDate
 import java.time.LocalTime
+import javax.persistence.ElementCollection
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
@@ -13,7 +14,8 @@ class LiveSchedule(
     val date: LocalDate,
 
     /** 会場 */
-    val venue: String,
+    @ElementCollection
+    val venue: Set<String>,
 
     /** 開場時刻 */
     val openAt: LocalTime,

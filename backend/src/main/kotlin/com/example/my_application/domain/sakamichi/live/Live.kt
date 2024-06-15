@@ -34,7 +34,7 @@ class Live(
 
     fun addSchedule(
         date: LocalDate,
-        venue: String,
+        venue: Set<String>,
         openAt: LocalTime,
         startAt: LocalTime
     ) {

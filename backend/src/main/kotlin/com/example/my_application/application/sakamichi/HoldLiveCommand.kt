@@ -21,7 +21,7 @@ class HoldLiveScheduleInfo(
     val date: LocalDate,
 
     /** 会場 */
-    val venue: String,
+    val venue: Set<String>,
 
     /** 開場時刻 */
     val openAt: LocalTime,

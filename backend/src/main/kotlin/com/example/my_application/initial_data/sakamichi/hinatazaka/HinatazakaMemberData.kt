@@ -1,11 +1,9 @@
-package com.example.my_application.initial_data.sakamichi
+package com.example.my_application.initial_data.sakamichi.hinatazaka
 
 import com.example.my_application.application.sakamichi.CreateNewGroupCommand
 import com.example.my_application.application.sakamichi.JoinNewMembersCommand
 import com.example.my_application.application.sakamichi.NewMemberInfo
-import com.example.my_application.application.sakamichi.ReleaseNewSingleCommand
 import java.time.LocalDate
-
 
 /** 日向坂46 */
 val HINATAZAKA46 =
@@ -256,23 +254,5 @@ val HINATAZAKA46_MEMBERS_GEN4 = { groupId: Long ->
                 dateOfBirth = LocalDate.of(2003, 5, 20)
             )
         )
-    )
-}
-
-val ONE_CHOICE = { groupId: Long ->
-    ReleaseNewSingleCommand(
-        groupId = groupId,
-        number = 9,
-        title = "One Choice",
-        releaseDate = LocalDate.of(2023, 4, 19)
-    )
-}
-
-val KIMIHA_HONEYDEW = { groupId: Long ->
-    ReleaseNewSingleCommand(
-        groupId = groupId,
-        number = 11,
-        title = "君はハニーデュー",
-        releaseDate = LocalDate.of(2024, 5, 8)
     )
 }
