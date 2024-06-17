@@ -4,17 +4,19 @@ import com.example.my_application.domain.sakamichi.member.Member
 import java.time.LocalDate
 import javax.persistence.*
 
+/** 期 */
 @Entity
 class Generation(
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    val group: Group,
+    /** グループ */
+    @ManyToOne @JoinColumn(name = "group_id") val group: Group,
 
-    @OneToMany(mappedBy = "generation", cascade = [CascadeType.PERSIST])
-    val members: MutableList<Member>,
+    /** メンバー */
+    @OneToMany(
+        mappedBy = "generation", cascade = [CascadeType.PERSIST]
+    ) val members: MutableList<Member>,
 
-    @Column(nullable = false)
-    val joinDate: LocalDate,
+    /** 加入日 */
+    @Column(nullable = false) val joinDate: LocalDate,
 ) {
     @Id
     @GeneratedValue

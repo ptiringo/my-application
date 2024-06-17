@@ -11,8 +11,7 @@ class Group(
     /** グループ名 */
     name: String,
 
-    @Column(nullable = false)
-    val formationDate: LocalDate,
+    @Column(nullable = false) val formationDate: LocalDate,
 
     members: MutableList<Member>,
 ) {
@@ -23,7 +22,7 @@ class Group(
     @OneToMany(
         fetch = FetchType.LAZY,
         mappedBy = "group",
-        cascade = [CascadeType.ALL],
+        cascade = [CascadeType.ALL]
     )
     val groupAttributesHistories: MutableList<GroupAttributes> = arrayListOf()
 

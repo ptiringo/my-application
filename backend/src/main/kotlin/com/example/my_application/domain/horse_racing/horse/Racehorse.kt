@@ -5,6 +5,7 @@ import javax.persistence.*
 /** 競走馬 */
 @Entity
 class Racehorse(
+    /** 馬 */
     @OneToOne
     @MapsId
     @JoinColumn(name = "horse_id", nullable = false)

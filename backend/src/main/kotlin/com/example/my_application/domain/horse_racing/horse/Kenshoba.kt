@@ -11,11 +11,13 @@ import javax.persistence.OneToOne
 /** 顕彰馬 */
 @Entity
 class Kenshoba(
+    /** 馬 */
     @OneToOne
     @MapsId
     @JoinColumn(name = "horse_id", nullable = false)
     val horse: Horse,
 
+    /** 選出年 */
     @Column(nullable = false)
     val selectedYear: Int
 ) {

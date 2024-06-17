@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 /** グループ属性 */
 @Entity
 class GroupAttributes(
-
+    /** グループ */
     @ManyToOne(optional = false)
     val group: Group,
 

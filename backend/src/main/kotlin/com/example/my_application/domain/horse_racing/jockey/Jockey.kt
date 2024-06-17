@@ -3,8 +3,10 @@ package com.example.my_application.domain.horse_racing.jockey
 import org.hibernate.annotations.Comment
 import javax.persistence.*
 
+/** 騎手 */
 @Entity
 class Jockey(
+    /** 氏名 */
     @Embedded
     val name: Name,
 ) {

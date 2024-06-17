@@ -11,19 +11,23 @@ class Horse(
     @Column(nullable = false)
     val name: String,
 
+    /** 生年月日 */
     @Column(nullable = false)
     val dateOfBirth: LocalDate,
 
+    /** 競走馬 */
     @OneToOne(mappedBy = "horse", cascade = [CascadeType.ALL])
     @JoinColumn(nullable = true)
     @PrimaryKeyJoinColumn
     var racehorse: Racehorse? = null,
 
+    /** 種牡馬 */
     @OneToOne(mappedBy = "horse", cascade = [CascadeType.ALL])
     @JoinColumn(nullable = true)
     @PrimaryKeyJoinColumn
     var stallion: Stallion? = null
 ) {
+    /** 顕彰馬 */
     @OneToOne(mappedBy = "horse", cascade = [CascadeType.ALL])
     @JoinColumn(nullable = true)
     @PrimaryKeyJoinColumn

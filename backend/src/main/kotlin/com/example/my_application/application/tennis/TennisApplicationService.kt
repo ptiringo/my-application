@@ -9,6 +9,7 @@ import com.example.my_application.infrastructure.tennis.TournamentRepository
 import javax.enterprise.context.ApplicationScoped
 import javax.transaction.Transactional
 
+/** テニスアプリケーションサービス */
 @Transactional
 @ApplicationScoped
 class TennisApplicationService(
@@ -16,6 +17,7 @@ class TennisApplicationService(
     private val tournamentRepository: TournamentRepository,
     private val heldTournamentRepository: HeldTournamentRepository
 ) {
+    /** プレイヤーの登録 */
     fun registerAsPro(command: RegisterAsProCommand): Player {
         val player = Player(
             firstName = command.firstName,
@@ -29,6 +31,7 @@ class TennisApplicationService(
         return player
     }
 
+    /** トーナメントの登録 */
     fun registerTournament(command: RegisterTournamentCommand): Tournament {
         val tournament = Tournament(
             name = command.name,
@@ -40,6 +43,7 @@ class TennisApplicationService(
         return tournament
     }
 
+    /** トーナメントの開催 */
     fun holdTournament(command: HoldTournamentCommand): HeldTournament {
         val tournament = tournamentRepository.findById(command.tournamentId)
             ?: throw IllegalArgumentException("Tournament not found")
