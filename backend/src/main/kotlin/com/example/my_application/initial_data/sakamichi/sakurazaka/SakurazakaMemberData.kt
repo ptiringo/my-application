@@ -1,8 +1,9 @@
-package com.example.my_application.initial_data.sakamichi
+package com.example.my_application.initial_data.sakamichi.sakurazaka
 
-import com.example.my_application.application.sakamichi.*
+import com.example.my_application.application.sakamichi.CreateNewGroupCommand
+import com.example.my_application.application.sakamichi.JoinNewMembersCommand
+import com.example.my_application.application.sakamichi.NewMemberInfo
 import java.time.LocalDate
-import java.time.LocalTime
 
 /** 櫻坂46 */
 val SAKURAZAKA46 =
@@ -89,7 +90,6 @@ val SAKURAZAKA46 =
             )
         )
     )
-
 
 /** 2期生 */
 val SAKURAZAKA46_MEMBERS_GEN2 = { groupId: Long ->
@@ -226,74 +226,6 @@ val SAKURAZAKA46_MEMBERS_GEN3 = { groupId: Long ->
                 familyNameKana = "むらい",
                 dateOfBirth = LocalDate.of(2004, 8, 18)
             )
-        )
-    )
-}
-
-// シングルリリース
-val SILENT_MAJORITY = { groupId: Long ->
-    ReleaseNewSingleCommand(
-        groupId = groupId,
-        number = 1,
-        title = "サイレントマジョリティー",
-        releaseDate = LocalDate.of(2016, 4, 6)
-    )
-}
-
-val START_OVER = { groupId: Long ->
-    ReleaseNewSingleCommand(
-        groupId = groupId,
-        number = 6,
-        title = "Start over!",
-        releaseDate = LocalDate.of(2023, 6, 28)
-    )
-}
-
-val SHOUNIN_YOKKYU = { groupId: Long ->
-    ReleaseNewSingleCommand(
-        groupId = groupId,
-        number = 7,
-        title = "承認欲求",
-        releaseDate = LocalDate.of(2023, 10, 18)
-    )
-}
-
-val IKUTSU_NO_KORONI_MODORITAINOKA = { groupId: Long ->
-    ReleaseNewSingleCommand(
-        groupId = groupId,
-        number = 8,
-        title = "何歳の頃に戻りたいのか",
-        releaseDate = LocalDate.of(2024, 2, 21)
-    )
-}
-
-val JIGOUJITOKU = { groupId: Long ->
-    ReleaseNewSingleCommand(
-        groupId = groupId,
-        number = 9,
-        title = "自業自得",
-        releaseDate = LocalDate.of(2024, 6, 26)
-    )
-}
-
-// ライブ
-val FOURTH_ARENA_TOUR_2024 = { groupId: Long ->
-    HoldLiveCommand(
-        groupId = groupId,
-        title = "4th ARENA TOUR 2024 新・櫻前線 -Go on back?- IN 東京ドーム",
-        schedules = listOf(
-            HoldLiveScheduleInfo(
-                date = LocalDate.of(2024, 6, 15),
-                venue = setOf("東京ドーム"),
-                openAt = LocalTime.of(15, 30),
-                startAt = LocalTime.of(18, 0)
-            ),
-            HoldLiveScheduleInfo(
-                date = LocalDate.of(2024, 6, 16),
-                venue = setOf("東京ドーム"),
-                openAt = LocalTime.of(15, 30),
-                startAt = LocalTime.of(18, 0)
-            ),
         )
     )
 }

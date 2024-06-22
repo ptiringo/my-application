@@ -13,7 +13,6 @@ import com.example.my_application.infrastructure.urban_sociology.MunicipalityRep
 import com.example.my_application.infrastructure.urban_sociology.PrefectureRepository
 import com.example.my_application.infrastructure.urban_sociology.ikebukuro.IkebukuroIncidentRepository
 import com.example.my_application.initial_data.horce_racing.*
-import com.example.my_application.initial_data.sakamichi.*
 import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATAZAKA46
 import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATAZAKA46_MEMBERS_GEN1
 import com.example.my_application.initial_data.sakamichi.hinatazaka.HINATAZAKA46_MEMBERS_GEN2
@@ -33,6 +32,15 @@ import com.example.my_application.initial_data.sakamichi.nogizaka.NOGIZAKA46_MEM
 import com.example.my_application.initial_data.sakamichi.nogizaka.SHIAWASE_NO_HOGOSHOKU
 import com.example.my_application.initial_data.sakamichi.nogizaka.SING_OUT
 import com.example.my_application.initial_data.sakamichi.nogizaka.UNDER_LIVE_35TH_SINGLE
+import com.example.my_application.initial_data.sakamichi.sakurazaka.FOURTH_ARENA_TOUR_2024
+import com.example.my_application.initial_data.sakamichi.sakurazaka.IKUTSU_NO_KORONI_MODORITAINOKA
+import com.example.my_application.initial_data.sakamichi.sakurazaka.JIGOUJITOKU
+import com.example.my_application.initial_data.sakamichi.sakurazaka.SAKURAZAKA46
+import com.example.my_application.initial_data.sakamichi.sakurazaka.SAKURAZAKA46_MEMBERS_GEN2
+import com.example.my_application.initial_data.sakamichi.sakurazaka.SAKURAZAKA46_MEMBERS_GEN3
+import com.example.my_application.initial_data.sakamichi.sakurazaka.SHOUNIN_YOKKYU
+import com.example.my_application.initial_data.sakamichi.sakurazaka.SILENT_MAJORITY
+import com.example.my_application.initial_data.sakamichi.sakurazaka.START_OVER
 import com.example.my_application.initial_data.tennis.*
 import io.quarkus.runtime.Quarkus
 import io.quarkus.runtime.QuarkusApplication
