@@ -21,6 +21,7 @@ class Live(
     /** 公演名 */
     val title: String,
 ) {
+    /** ライブスケジュール */
     @OneToMany(
         cascade = [CascadeType.ALL],
         fetch = FetchType.EAGER,
@@ -32,6 +33,7 @@ class Live(
     @GeneratedValue
     val id: Long = 0
 
+    /** ライブスケジュールを追加する */
     fun addSchedule(
         date: LocalDate,
         venue: Set<String>,

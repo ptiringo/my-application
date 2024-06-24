@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.ManyToOne
 
+/** ライブスケジュール */
 @Entity
 class LiveSchedule(
     /** 日付 */

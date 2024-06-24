@@ -30,6 +30,7 @@ class Single(
     /** リリース日 */
     val releaseDate: LocalDate,
 
+    /** シングル製品 */
     @OneToMany(
         mappedBy = "single",
         fetch = FetchType.LAZY,

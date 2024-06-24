@@ -15,8 +15,10 @@ class HeldTournament(
     @ManyToOne
     val tournament: Tournament,
 
+    /** 開始日 */
     val startDate: LocalDate,
 
+    /** 終了日 */
     val endDate: LocalDate,
 ) {
     @Id

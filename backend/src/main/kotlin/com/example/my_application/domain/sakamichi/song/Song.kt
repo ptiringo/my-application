@@ -9,9 +9,11 @@ class Song(
     /** 曲名 */
     val title: String,
 
+    /** フォーメーション */
     @OneToOne
     val formation: Formation,
 
+    /** シングル製品曲 */
     @ManyToMany
     val singleProductSongs: List<SingleProductSong> = emptyList(),
 ) {

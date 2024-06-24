@@ -12,6 +12,7 @@ import javax.persistence.OneToMany
 @Entity
 class SingleProduct(
 
+    /** シングル */
     @ManyToOne(
         cascade = [],
         optional = false,
@@ -19,6 +20,7 @@ class SingleProduct(
     )
     val single: Single,
 
+    /** シングル製品曲 */
     @OneToMany(
         mappedBy = "singleProduct",
         fetch = FetchType.LAZY,

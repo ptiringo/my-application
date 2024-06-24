@@ -7,6 +7,7 @@ import javax.persistence.*
 @Entity
 class ReturnToActivity(
 
+    /** 活動休止 */
     @OneToOne(optional = false)
     val breakOfActivity: BreakOfActivity,
 

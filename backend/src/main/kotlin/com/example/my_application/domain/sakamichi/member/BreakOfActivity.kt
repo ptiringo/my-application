@@ -7,6 +7,7 @@ import javax.persistence.*
 @Entity
 class BreakOfActivity(
 
+    /** メンバー */
     @ManyToOne(optional = false)
     val member: Member,
 
@@ -18,6 +19,7 @@ class BreakOfActivity(
     @GeneratedValue
     val id: Long = 0
 
+    /** 活動再開 */
     @OneToOne(
         optional = true,
         fetch = FetchType.EAGER,
