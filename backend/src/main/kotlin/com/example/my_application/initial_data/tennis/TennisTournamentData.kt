@@ -45,3 +45,10 @@ val ROLAND_GARROS = RegisterTournamentCommand(
     tournamentCategory = TournamentCategory.GRAND_SLAM,
     tennisSurface = TennisSurface.CLAY
 )
+
+val ROTHESAY_INTERNATIONAL = RegisterTournamentCommand(
+    name = "Rothesay International",
+    location = "Eastbourne",
+    tournamentCategory = TournamentCategory.ATP_TOUR_250,
+    tennisSurface = TennisSurface.GRASS
+)

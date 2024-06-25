@@ -225,6 +225,7 @@ class MainApplication(
         tennis.registerTournament(MIAMI_OPEN)
         tennis.registerTournament(HOUSTON)
         val rolandGarros = tennis.registerTournament(ROLAND_GARROS)
+        tennis.registerTournament(ROTHESAY_INTERNATIONAL)
 
         tennis.registerAsPro(MIKHAIL_YOUZHNY)
         tennis.registerAsPro(RAFAEL_NADAL)
