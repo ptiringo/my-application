@@ -227,6 +227,7 @@ class MainApplication(
         val rolandGarros = tennis.registerTournament(ROLAND_GARROS)
         tennis.registerTournament(ROTHESAY_INTERNATIONAL)
 
+        tennis.registerAsPro(SHUZO_MATSUOKA)
         tennis.registerAsPro(MIKHAIL_YOUZHNY)
         tennis.registerAsPro(RAFAEL_NADAL)
         tennis.registerAsPro(NOVAK_DJOKOVIC)
@@ -255,6 +256,7 @@ class MainApplication(
         tennis.registerAsPro(TOMAS_MACHAC)
         tennis.registerAsPro(RICHARD_GASQUET)
         tennis.registerAsPro(BORNA_CORIC)
+        tennis.registerAsPro(FRANCES_TIAFOE)
 
         tennis.holdTournament(
             HoldTournamentCommand(

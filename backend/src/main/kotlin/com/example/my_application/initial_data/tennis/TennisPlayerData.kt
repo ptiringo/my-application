@@ -257,3 +257,21 @@ val BORNA_CORIC = RegisterAsProCommand(
     backhandStyle = BackhandStyle.TwoHanded,
     country = Country.Croatia
 )
+
+val FRANCES_TIAFOE = RegisterAsProCommand(
+    firstName = "Frances",
+    familyName = "Tiafoe",
+    dateOfBirth = LocalDate.of(1998, 1, 20),
+    dominantHand = DominantHand.Right,
+    backhandStyle = BackhandStyle.TwoHanded,
+    country = Country.USA
+)
+
+val SHUZO_MATSUOKA = RegisterAsProCommand(
+    firstName = "Shuzo",
+    familyName = "Matsuoka",
+    dateOfBirth = LocalDate.of(1967, 11, 6),
+    dominantHand = DominantHand.Right,
+    backhandStyle = BackhandStyle.TwoHanded,
+    country = Country.Japan
+)
